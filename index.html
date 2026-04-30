@@ -616,6 +616,27 @@
       font-size: 16px;
     }
 
+    .project-links {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 650;
+      border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+    }
+
     .case-list {
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
@@ -905,11 +926,11 @@
       </h1>
       <p>
         <span class="zh">我是李翔，关注智能终端、用户洞察与新品发布表达。目前在 vivo 参与新品功能卖点包装、发布会框架搭建、物料评审、竞品发布会跟踪与舆情用户分析。</span>
-        <span class="en">I am Shawn Lee, focused on consumer technology, user insight, and product launch communication. At vivo, I support feature packaging, launch framework building, material review, competitor tracking, and user opinion analysis.</span>
+        <span class="en">I work at the intersection of product marketing, consumer insight, and AI workflow design, with a focus on smartphone launches, product narratives, and user feedback analysis. At vivo, I support feature packaging, launch frameworks, material review, competitor tracking, and opinion analysis.</span>
       </p>
       <div class="hero-actions">
         <a class="btn" href="#projects"><span class="zh">查看项目</span><span class="en">View Projects</span></a>
-        <a class="btn secondary" href="resume.pdf" target="_blank" rel="noopener"><span class="zh">打开简历</span><span class="en">Open Resume</span></a>
+        <a class="btn secondary" href="resume.pdf" target="_blank" rel="noopener"><span class="zh">打开简历</span><span class="en">View Chinese Resume</span></a>
       </div>
 
       <div class="intro-card">
@@ -958,13 +979,13 @@
         <div class="section-head">
           <div class="eyebrow">About</div>
           <div>
-            <h2 class="section-title"><span class="zh">一个更偏产品视角的复合型候选人。</span><span class="en">A product-minded candidate with hands-on execution.</span></h2>
+            <h2 class="section-title"><span class="zh">一个更偏产品视角的复合型候选人。</span><span class="en">A product-minded builder connecting insight, narrative, and tools.</span></h2>
             <p class="section-desc"><span class="zh">简历负责证明经历，作品集负责证明判断方式。</span><span class="en">A resume shows what I have done. A portfolio shows how I think.</span></p>
           </div>
         </div>
         <p class="about-copy">
           <span class="zh">我的经历并不是单一的技术或营销路径，而是从旅游管理、服务体验、活动执行，逐步延伸到智能终端产品营销与 AI 工具搭建。我更在意三个问题：用户真正感知到什么，产品价值应该如何表达，以及如何用工具把分散信息转化为可汇报、可决策的结论。</span>
-          <span class="en">My path combines tourism management, service experience, project execution, consumer technology marketing, and AI tool building. I care about three questions: what users truly notice, how product value should be communicated, and how tools can turn scattered information into decision-ready insight.</span>
+          <span class="en">My background connects service experience, project execution, consumer technology marketing, and AI tool building. I use a product lens to understand what users notice, how value should be communicated, and how scattered feedback can become decision-ready insight.</span>
         </p>
         <div class="chips">
           <span class="chip">Product Marketing</span>
@@ -1040,7 +1061,7 @@
             </div>
             <div class="project-type">WeChat Mini Program</div>
             <h3>Trainee Lab<span>智能工作流工具台</span></h3>
-            <p><span class="zh">面向实习生与职场新人的 AI 工作流小程序，提供周报优化、会议纪要、表格整理、汇报大纲生成等功能，帮助用户把零散文字转化为更适合职场表达的结构化内容。</span><span class="en">An AI workflow mini program for interns and young professionals. It helps transform rough notes into structured weekly reports, meeting minutes, tables, and presentation outlines.</span></p>
+            <p><span class="zh">面向实习生与职场新人的 AI 工作流小程序，提供周报优化、会议纪要、表格整理、汇报大纲生成等功能，帮助用户把零散文字转化为更适合职场表达的结构化内容。</span><span class="en">An AI workflow product prototype for interns and young professionals. It helps transform rough notes into structured weekly reports, meeting minutes, tables, and presentation outlines.</span></p>
             <div class="chips"><span class="chip">Product Design</span><span class="chip">Mini Program</span><span class="chip">AI Workflow</span></div>
           </article>
 
@@ -1052,6 +1073,9 @@
             <div class="project-type">Streamlit Website</div>
             <h3>Strategy Hub<span>终端产品全维度研判平台</span></h3>
             <p><span class="zh">面向产品营销场景搭建的舆情与竞品分析网站，支持从小红书、微博、抖音等平台寻找产品反馈，并将用户语料转化为适合复盘和管理层汇报的洞察报告。</span><span class="en">A product opinion and competitor analysis platform for product marketing. It turns scattered UGC into structured insight reports for product review and executive communication.</span></p>
+            <div class="project-links">
+              <a class="project-link" href="https://sentiment-analysis-tool-crmjjevyehgry45eh9wq37.streamlit.app" target="_blank" rel="noopener"><span class="zh">访问网站</span><span class="en">Visit Site</span> ↗</a>
+            </div>
             <div class="chips"><span class="chip">PMM Tool</span><span class="chip">UGC Insight</span><span class="chip">Reporting</span></div>
           </article>
 
@@ -1141,7 +1165,7 @@
           <p><span class="zh">如果你正在看我的简历，也可以通过这个网站快速了解我的项目、分析方式与职业兴趣。</span><span class="en">If you are reviewing my resume, this website gives a quick view of my projects, thinking style, and career interests.</span></p>
           <div class="hero-actions">
             <a class="btn" href="mailto:x_222324@163.com"><span class="zh">发送邮件</span><span class="en">Email Me</span></a>
-            <a class="btn secondary" href="resume.pdf" target="_blank" rel="noopener"><span class="zh">打开简历</span><span class="en">Open Resume</span></a>
+            <a class="btn secondary" href="resume.pdf" target="_blank" rel="noopener"><span class="zh">打开简历</span><span class="en">View Chinese Resume</span></a>
           </div>
         </div>
       </div>
