@@ -119,6 +119,15 @@
       font-weight: 700;
       font-size: 12px;
       letter-spacing: -0.02em;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .brand-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .brand strong {
@@ -856,10 +865,12 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <a href="#top" class="brand" aria-label="Back to top">
-        <div class="brand-mark">LX</div>
+        <div class="brand-mark brand-avatar">
+          <img src="assets/avatar.png" alt="李翔头像" onerror="this.style.display='none'; this.parentElement.innerHTML='LX';" />
+        </div>
         <div>
-          <strong>李翔 Shawn Lee</strong>
-          <span>Product Strategy Portfolio</span>
+          <strong><span class="zh">李翔</span><span class="en">Shawn Lee</span></strong>
+          <span><span class="zh">产品策略作品集</span><span class="en">Product Strategy Portfolio</span></span>
         </div>
       </a>
 
@@ -893,7 +904,7 @@
         <span class="en">Turning scattered signals into clear product judgment.</span>
       </h1>
       <p>
-        <span class="zh">我是李翔 Shawn Lee，关注智能终端、用户洞察与新品发布表达。目前在 vivo 参与新品功能卖点包装、发布会框架搭建、物料评审、竞品发布会跟踪与舆情用户分析。</span>
+        <span class="zh">我是李翔，关注智能终端、用户洞察与新品发布表达。目前在 vivo 参与新品功能卖点包装、发布会框架搭建、物料评审、竞品发布会跟踪与舆情用户分析。</span>
         <span class="en">I am Shawn Lee, focused on consumer technology, user insight, and product launch communication. At vivo, I support feature packaging, launch framework building, material review, competitor tracking, and user opinion analysis.</span>
       </p>
       <div class="hero-actions">
@@ -1017,7 +1028,7 @@
           <div class="eyebrow">Selected Works</div>
           <div>
             <h2 class="section-title"><span class="zh">我如何发现问题，并把它做成工具或分析框架。</span><span class="en">How I turn problems into tools and frameworks.</span></h2>
-            <p class="section-desc"><span class="zh">这里是网站最重要的部分。后续可以继续补真实链接、截图和案例页。</span><span class="en">This is the core of the portfolio. More links, screenshots, and case pages can be added later.</span></p>
+            <p class="section-desc"><span class="zh">展示我如何把真实工作中的信息整理、产品表达和判断流程，转化为可复用的工具与分析框架。</span><span class="en">A selection of tools and frameworks that show how I turn information, product narratives, and judgment workflows into reusable outputs.</span></p>
           </div>
         </div>
 
