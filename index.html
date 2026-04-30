@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>李翔 Shawn Lee | Product Strategy Portfolio</title>
+  <meta name="description" content="李翔 Shawn Lee 的产品策略、产品营销与 AI 工作流作品集网站。" />
+  <style>
+    :root {
+      --bg: #f7f7f3;
+      --card: rgba(255, 255, 255, 0.72);
+      --text: #111111;
+      --muted: #666666;
+      --line: rgba(20, 20, 20, 0.1);
+      --black: #111111;
+      --white: #ffffff;
+      --soft: #efefea;
+      --accent: #7db7d8;
+      --accent2: #dfeee9;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.08);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 82% 4%, rgba(125, 183, 216, 0.35), transparent 32%),
+        radial-gradient(circle at 10% 24%, rgba(223, 238, 233, 0.86), transparent 30%),
+        linear-gradient(180deg, #f8f8f4 0%, #f3f3ee 100%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      letter-spacing: -0.01em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--line);
+      background: rgba(247, 247, 243, 0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: var(--black);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+    }
+
+    .brand-title {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .brand-subtitle {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .lang-switch {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.72);
+      border-radius: 999px;
+      padding: 5px;
+      display: inline-flex;
+      gap: 4px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04);
+    }
+
+    .lang-switch button {
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: transparent;
+      color: #666;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .lang-switch button.active {
+      background: var(--black);
+      color: white;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+      min-height: calc(100vh - 74px);
+      padding: 76px 0 96px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.64);
+      border-radius: 999px;
+      padding: 9px 14px;
+      color: #555;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #2f9ed8;
+      box-shadow: 0 0 0 6px rgba(47, 158, 216, 0.12);
+    }
+
+    h1 {
+      margin-top: 26px;
+      max-width: 780px;
+      font-size: clamp(48px, 7vw, 78px);
+      line-height: 0.92;
+      letter-spacing: -0.075em;
+      font-weight: 760;
+    }
+
+    .hero-text {
+      margin-top: 28px;
+      max-width: 700px;
+      color: #5e5e5e;
+      font-size: 20px;
+      line-height: 1.75;
+    }
+
+    .hero-subtext {
+      margin-top: 12px;
+      max-width: 680px;
+      color: #777;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      margin-top: 34px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 18px;
+      padding: 13px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--black);
+      color: var(--white);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--black);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-card {
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.58);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .profile-card {
+      border-radius: 28px;
+      padding: 28px;
+      min-height: 530px;
+      background:
+        radial-gradient(circle at top right, rgba(125, 183, 216, 0.42), transparent 34%),
+        linear-gradient(150deg, #111 0%, #232323 100%);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .profile-card::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      bottom: -80px;
+      width: 220px;
+      height: 220px;
+      border-radius: 60px;
+      background: rgba(255, 255, 255, 0.06);
+      transform: rotate(18deg);
+    }
+
+    .profile-top,
+    .profile-bottom {
+      position: relative;
+      z-index: 2;
+    }
+
+    .profile-label {
+      color: rgba(255, 255, 255, 0.42);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-weight: 700;
+    }
+
+    .profile-name {
+      margin-top: 16px;
+      font-size: 34px;
+      font-weight: 760;
+      letter-spacing: -0.05em;
+    }
+
+    .profile-role {
+      margin-top: 10px;
+      color: rgba(255, 255, 255, 0.62);
+      line-height: 1.6;
+    }
+
+    .metric-grid {
+      margin-top: 38px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .metric {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .metric span {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 12px;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 17px;
+    }
+
+    section {
+      padding: 84px 0;
+    }
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 34px;
+    }
+
+    .section-kicker {
+      margin-bottom: 14px;
+      color: #9a9a9a;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.03;
+      letter-spacing: -0.055em;
+      font-weight: 760;
+    }
+
+    .section-desc {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      background: var(--card);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.04);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .card h3 {
+      font-size: 22px;
+      letter-spacing: -0.035em;
+      line-height: 1.2;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 15px;
+    }
+
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      background: var(--black);
+      color: white;
+      font-size: 20px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 11px;
+      background: rgba(255, 255, 255, 0.62);
+      color: #626262;
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .experience-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .experience-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      background: var(--card);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.04);
+    }
+
+    .experience-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .experience-title {
+      font-size: 26px;
+      font-weight: 760;
+      letter-spacing: -0.045em;
+    }
+
+    .experience-role,
+    .experience-time {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .experience-points {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      list-style: none;
+    }
+
+    .experience-points li {
+      border-radius: 18px;
+      padding: 14px 16px;
+      background: rgba(245, 245, 241, 0.92);
+    }
+
+    .project-card {
+      min-height: 370px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: var(--shadow);
+    }
+
+    .project-type {
+      margin-bottom: 14px;
+      color: #9a9a9a;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .project-card p {
+      margin-top: 18px;
+      flex: 1;
+    }
+
+    .resume-block {
+      border-radius: 34px;
+      padding: 36px;
+      background: #111;
+      color: white;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .resume-block p {
+      color: rgba(255, 255, 255, 0.62);
+      line-height: 1.75;
+    }
+
+    .resume-mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .resume-mini {
+      border-radius: 24px;
+      padding: 22px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .resume-mini h3 {
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.8fr;
+      gap: 18px;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    [data-lang="en"] .zh,
+    [data-lang="zh"] .en {
+      display: none !important;
+    }
+
+    @media (max-width: 880px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero,
+      .grid-2,
+      .grid-3,
+      .resume-block,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 54px;
+      }
+
+      .profile-card {
+        min-height: 430px;
+      }
+
+      .experience-head {
+        flex-direction: column;
+      }
+
+      .experience-points,
+      .resume-mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 64px 0;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .nav-inner {
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .brand-subtitle {
+        display: none;
+      }
+
+      h1 {
+        font-size: 46px;
+      }
+
+      .hero-text {
+        font-size: 17px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .card,
+      .experience-card,
+      .resume-block {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body data-lang="zh">
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Back to top">
+        <div class="logo">LX</div>
+        <div>
+          <div class="brand-title">李翔 Shawn Lee</div>
+          <div class="brand-subtitle">Product Strategy Portfolio</div>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="#about"><span class="zh">关于我</span><span class="en">About</span></a>
+        <a href="#experience"><span class="zh">经历</span><span class="en">Experience</span></a>
+        <a href="#projects"><span class="zh">项目</span><span class="en">Projects</span></a>
+        <a href="#cases"><span class="zh">案例</span><span class="en">Cases</span></a>
+        <a href="#contact"><span class="zh">联系</span><span class="en">Contact</span></a>
+      </div>
+      <div class="lang-switch" aria-label="Language switch">
+        <button class="active" type="button" data-set-lang="zh">中</button>
+        <button type="button" data-set-lang="en">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero container">
+      <div>
+        <div class="kicker"><span class="dot"></span><span class="zh">产品营销 · AI 工具 · 智能终端洞察</span><span class="en">Product Marketing · AI Tools · Consumer Tech Insight</span></div>
+        <h1>
+          <span class="zh">把复杂信息，转化为清晰的产品判断。</span>
+          <span class="en">Build sharper product narratives with insight and AI.</span>
+        </h1>
+        <p class="hero-text">
+          <span class="zh">我是李翔 Shawn Lee，关注智能终端产品策略、产品营销与 AI 工作流，希望把用户反馈、竞品观察和产品卖点转化为更适合决策与汇报的内容。</span>
+          <span class="en">I am Shawn Lee, focusing on product strategy, product marketing and AI workflow tools for consumer technology.</span>
+        </p>
+        <p class="hero-subtext">
+          <span class="zh">目前在 vivo 参与新品功能卖点包装、发布会框架搭建、物料评审、竞品发布会跟踪与舆情用户分析。</span>
+          <span class="en">Currently at vivo, I support product narrative packaging, launch framework building, launch material review, competitor tracking and user opinion analysis.</span>
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects"><span class="zh">查看项目</span><span class="en">View Projects</span> →</a>
+          <a class="btn btn-secondary" href="resume.pdf" target="_blank" rel="noopener"><span class="zh">下载简历</span><span class="en">Download Resume</span> ↗</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="profile-card">
+          <div class="profile-top">
+            <div class="profile-label">Portfolio Card</div>
+            <div class="profile-name">李翔<br />Shawn Lee</div>
+            <div class="profile-role">
+              <span class="zh">产品策略 / 产品营销 / AI 工作流工具搭建</span>
+              <span class="en">Product Strategy / Product Marketing / AI Workflow Builder</span>
+            </div>
+            <div class="metric-grid">
+              <div class="metric"><span>Current</span><strong>vivo Intern</strong></div>
+              <div class="metric"><span>Focus</span><strong>Consumer Tech</strong></div>
+              <div class="metric"><span>Builder</span><strong>AI Tools</strong></div>
+              <div class="metric"><span>Location</span><strong>DG · SZ · HK</strong></div>
+            </div>
+          </div>
+          <div class="profile-bottom">
+            <div class="profile-label">Contact</div>
+            <div style="margin-top: 12px; color: rgba(255,255,255,.72);">x_222324@163.com</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">About</div>
+          <h2><span class="zh">一个更偏产品视角的复合型候选人。</span><span class="en">A product-minded builder with consumer tech insight.</span></h2>
+          <p class="section-desc">
+            <span class="zh">我希望进入产品策略、产品营销或用户洞察相关岗位，尤其关注智能终端、AI OS、折叠屏和新品发布表达。我的优势在于既能做产品分析，也能动手搭建工具，把洞察流程变得更高效。</span>
+            <span class="en">I aim to grow in product strategy, product marketing and user insight roles, especially in smartphones, AI OS, foldable devices and launch communications.</span>
+          </p>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <div class="icon-box">◎</div>
+            <h3><span class="zh">个人定位</span><span class="en">Positioning</span></h3>
+            <p style="margin-top: 16px;">
+              <span class="zh">从旅游管理背景出发，结合 vivo 产品营销实习、AI 工具搭建和发布会分析经验，形成“用户理解 + 产品表达 + 工具执行”的复合能力。</span>
+              <span class="en">With a background in tourism management and hands-on product marketing experience at vivo, I combine user understanding, product narratives and tool-building execution.</span>
+            </p>
+          </div>
+          <div class="card">
+            <h3><span class="zh">能力关键词</span><span class="en">Skills & Keywords</span></h3>
+            <div class="tag-row">
+              <span class="tag">Product Marketing</span>
+              <span class="tag">Product Strategy</span>
+              <span class="tag">Consumer Insight</span>
+              <span class="tag">Launch Analysis</span>
+              <span class="tag">Competitive Research</span>
+              <span class="tag">AI Workflow</span>
+              <span class="tag">WeChat Mini Program</span>
+              <span class="tag">Streamlit</span>
+              <span class="tag">Public Opinion Analysis</span>
+              <span class="tag">Executive Reporting</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Experience</div>
+          <h2><span class="zh">实习经历围绕产品表达、用户洞察与项目执行展开。</span><span class="en">Experience across product marketing, insight and execution.</span></h2>
+        </div>
+        <div class="experience-list">
+          <article class="experience-card">
+            <div class="experience-head">
+              <div>
+                <div class="experience-title">vivo</div>
+                <div class="experience-role"><span class="zh">产品营销实习生</span><span class="en">Product Marketing Intern</span></div>
+              </div>
+              <div class="experience-time">Mar 2026 — Present</div>
+            </div>
+            <ul class="experience-points">
+              <li><span class="zh">参与新品功能卖点包装，协助梳理产品核心价值、使用场景与发布会表达逻辑。</span><span class="en">Supported product feature packaging by clarifying core value, scenarios and launch communication logic.</span></li>
+              <li><span class="zh">参与新品发布会相关物料评审，围绕信息准确性、卖点表达与用户感知进行反馈。</span><span class="en">Reviewed launch materials and provided feedback on message accuracy, selling points and user perception.</span></li>
+              <li><span class="zh">跟踪其他品牌发布会内容，进行竞品亮点、传播话术与产品策略对比分析。</span><span class="en">Tracked competitor launches and analyzed highlights, communication wording and product strategies.</span></li>
+              <li><span class="zh">使用 AI 搭建产品舆情分析工具，辅助完成用户反馈整理、社媒语料分析与汇报输出。</span><span class="en">Built an AI-assisted opinion analysis tool to support user feedback organization, social data analysis and reporting.</span></li>
+            </ul>
+          </article>
+
+          <article class="experience-card">
+            <div class="experience-head">
+              <div>
+                <div class="experience-title">Marriott</div>
+                <div class="experience-role"><span class="zh">宾客关系实习经历</span><span class="en">Guest Relations Experience</span></div>
+              </div>
+              <div class="experience-time">Previous Internship</div>
+            </div>
+            <ul class="experience-points">
+              <li><span class="zh">参与酒店前厅与宾客沟通工作，理解高标准服务流程、用户体验与现场问题处理机制。</span><span class="en">Worked in guest-facing service scenarios and developed understanding of service experience and issue handling.</span></li>
+              <li><span class="zh">在高频真实服务场景中提升沟通、观察与跨部门协作能力。</span><span class="en">Improved communication, observation and cross-functional coordination in real service settings.</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Projects</div>
+          <h2><span class="zh">项目作品展示我真的做过工具，也拆过产品。</span><span class="en">Selected projects that show product thinking and execution.</span></h2>
+          <p class="section-desc"><span class="zh">这部分是网站最重要的板块，后续可以继续补截图、链接和真实案例。</span><span class="en">This is the most important part of the portfolio and can be expanded with screenshots, links and real cases.</span></p>
+        </div>
+        <div class="grid-3">
+          <article class="card project-card">
+            <div class="project-type">WeChat Mini Program</div>
+            <h3>Trainee Lab<br /><span style="color:#777; font-size:16px;">智能工作流工具台</span></h3>
+            <p><span class="zh">面向实习生与职场新人的 AI 工作流小程序，提供周报优化、会议纪要、表格整理、汇报大纲生成等功能，帮助用户把零散文字转化为更适合职场表达的结构化内容。</span><span class="en">An AI workflow mini program for interns and young professionals, covering weekly report polishing, meeting minutes, table organization and presentation outlines.</span></p>
+            <div class="tag-row"><span class="tag">Product Design</span><span class="tag">Mini Program</span><span class="tag">AI Workflow</span></div>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-type">Streamlit Website</div>
+            <h3>Strategy Hub<br /><span style="color:#777; font-size:16px;">终端产品全维度研判平台</span></h3>
+            <p><span class="zh">面向产品营销场景搭建的舆情与竞品分析网站，支持从小红书、微博、抖音等平台寻找产品反馈，并将用户语料转化为适合复盘和管理层汇报的洞察报告。</span><span class="en">A product opinion and competitor analysis website designed for product marketing scenarios, turning scattered UGC into structured insight reports.</span></p>
+            <div class="tag-row"><span class="tag">Opinion Analysis</span><span class="tag">PMM Tool</span><span class="tag">Reporting</span></div>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-type">Product Strategy Case</div>
+            <h3>Launch Analysis Framework<br /><span style="color:#777; font-size:16px;">新品发布会分析框架</span></h3>
+            <p><span class="zh">围绕智能终端发布会内容，拆解品牌如何表达影像、AI、OS、大屏体验与旗舰配置，并提炼可复用的发布会叙事框架。</span><span class="en">A reusable launch analysis framework for smartphone launches, focusing on imaging, AI, OS, large-screen experience and flagship configuration narratives.</span></p>
+            <div class="tag-row"><span class="tag">Launch</span><span class="tag">AI OS</span><span class="tag">Foldable</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Case Studies</div>
+          <h2><span class="zh">产品分析案例可以成为你求职时的差异化证据。</span><span class="en">Product analysis cases as proof of differentiated thinking.</span></h2>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3><span class="zh">折叠屏发布会分析</span><span class="en">Foldable Launch Analysis</span></h3>
+            <p style="margin-top:16px;"><span class="zh">分析华为、OPPO、荣耀等品牌在折叠屏评测与发布会中的表达重点，关注大屏体验、AI 能力、影像配置与场景叙事。</span><span class="en">Analysis of how brands communicate foldable experience, AI capabilities, imaging and scenario narratives.</span></p>
+          </div>
+          <div class="card">
+            <h3><span class="zh">AI OS 表达研究</span><span class="en">AI OS Communication Study</span></h3>
+            <p style="margin-top:16px;"><span class="zh">研究手机厂商如何将 AI 能力与系统体验结合，重点观察任务流转、智能助手、跨应用能力与用户场景包装方式。</span><span class="en">Research on how smartphone brands package AI features into system-level user experiences.</span></p>
+          </div>
+          <div class="card">
+            <h3><span class="zh">产品舆情监测</span><span class="en">Product Opinion Monitoring</span></h3>
+            <p style="margin-top:16px;"><span class="zh">通过社媒内容、用户评论与竞品反馈，提炼产品亮点、痛点与传播风险，并形成适合内部汇报的结构化结论。</span><span class="en">Turning social comments, user feedback and competitor signals into structured product insights.</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resume">
+      <div class="container">
+        <div class="resume-block">
+          <div>
+            <div class="section-kicker">Resume</div>
+            <h2><span class="zh">简历与作品集互相补充。</span><span class="en">Resume and portfolio work together.</span></h2>
+            <p style="margin-top:18px;"><span class="zh">简历负责快速筛选，网站负责展示作品、项目和产品思考。正式上线时，把你的简历 PDF 上传到 GitHub，并命名为 resume.pdf，顶部按钮就能直接下载。</span><span class="en">The resume supports quick screening, while this portfolio demonstrates projects, cases and product thinking. Upload your PDF resume as resume.pdf to enable the download button.</span></p>
+          </div>
+          <div class="resume-mini-grid">
+            <div class="resume-mini">
+              <h3><span class="zh">教育背景</span><span class="en">Education</span></h3>
+              <p>City University of Macau<br />International Tourism and Hotel Management</p>
+              <p style="margin-top:10px;">The Chinese University of Hong Kong<br />Sustainable Tourism</p>
+            </div>
+            <div class="resume-mini">
+              <h3><span class="zh">简历下载</span><span class="en">Download</span></h3>
+              <p><span class="zh">上传 resume.pdf 后，这里就可以作为正式作品集链接使用。</span><span class="en">After uploading resume.pdf, this site can be used as your official portfolio link.</span></p>
+              <a class="btn btn-secondary" style="margin-top:16px; background:white;" href="resume.pdf" target="_blank" rel="noopener"><span class="zh">打开简历</span><span class="en">Open Resume</span> ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contact-grid">
+        <div class="card">
+          <div class="section-kicker">Contact</div>
+          <h2><span class="zh">欢迎交流产品、AI 工具与智能终端观察。</span><span class="en">Let’s talk about product, AI tools and consumer tech.</span></h2>
+          <p class="section-desc">x_222324@163.com</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:x_222324@163.com"><span class="zh">发送邮件</span><span class="en">Send Email</span> →</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3><span class="zh">后续可补充</span><span class="en">Next updates</span></h3>
+          <p style="margin-top:16px;"><span class="zh">你可以继续加入 GitHub、LinkedIn、微信二维码、Trainee Lab 截图、Strategy Hub 截图、产品分析文章链接。</span><span class="en">You can later add GitHub, LinkedIn, WeChat QR code, screenshots and product analysis links.</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> 李翔 Shawn Lee.</div>
+      <div>Product Strategy · Product Marketing · AI Workflow</div>
+    </div>
+  </footer>
+
+  <script>
+    const body = document.body;
+    const buttons = document.querySelectorAll("[data-set-lang]");
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const lang = button.getAttribute("data-set-lang");
+        body.setAttribute("data-lang", lang);
+        buttons.forEach((btn) => btn.classList.toggle("active", btn === button));
+        document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+      });
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
