@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>李翔 Shawn Lee | Product Strategy Portfolio</title>
-  <meta name="description" content="李翔 Shawn Lee 的产品策略、产品营销与 AI 工作流作品集网站。" />
+  <title>李翔 Shawn Lee | Personal Portfolio</title>
+  <meta name="description" content="李翔 Shawn Lee 的个人作品集网站，记录教育背景、服务体验、产品思考、AI 工具与研究观察。" />
   <style>
     :root {
-      --bg: #f5f5f2;
+      --bg: #f7f4ee;
       --surface: #ffffff;
       --surface-soft: #fafaf7;
       --ink: #111111;
@@ -15,28 +15,55 @@
       --subtle: #999999;
       --line: rgba(17, 17, 17, 0.1);
       --line-strong: rgba(17, 17, 17, 0.18);
-      --accent: #0071e3;
-      --accent-soft: rgba(0, 113, 227, 0.08);
-      --warm: #f1eee8;
+      --accent: #7a5c3a;
+      --accent-soft: rgba(122, 92, 58, 0.1);
+      --warm: #efe8dc;
       --shadow: 0 28px 80px rgba(0, 0, 0, 0.08);
       --radius-lg: 32px;
       --radius-md: 22px;
-      --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      --serif: "Times New Roman", "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+      --display-cn: "Kaiti SC", "STKaiti", "KaiTi", "Songti SC", "SimSun", serif;
+      --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
     }
 
     [data-theme="dark"] {
-      --bg: #080808;
-      --surface: #151515;
-      --surface-soft: #101010;
+      --bg: #0b0907;
+      --surface: #17130f;
+      --surface-soft: #110e0b;
       --ink: #f5f5f7;
       --muted: #b6b6b8;
       --subtle: #7c7c80;
       --line: rgba(255, 255, 255, 0.12);
       --line-strong: rgba(255, 255, 255, 0.2);
-      --accent: #2997ff;
-      --accent-soft: rgba(41, 151, 255, 0.13);
+      --accent: #d6b47a;
+      --accent-soft: rgba(214, 180, 122, 0.14);
       --warm: #171717;
       --shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
+    }
+
+
+    .zh {
+      font-family: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+    }
+
+    .en {
+      font-family: "Times New Roman", Times, Georgia, serif;
+    }
+
+    .hero h1 .zh,
+    .section-title .zh,
+    .contact-panel h2 .zh {
+      font-family: var(--display-cn);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 .en,
+    .section-title .en,
+    .contact-panel h2 .en {
+      font-family: "Times New Roman", Times, Georgia, serif;
+      font-weight: 500;
+      letter-spacing: -0.035em;
     }
 
     * {
@@ -56,7 +83,7 @@
         radial-gradient(circle at 86% 10%, rgba(142, 142, 147, 0.12), transparent 30%),
         var(--bg);
       color: var(--ink);
-      font-family: var(--sans);
+      font-family: var(--serif);
       letter-spacing: 0;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
@@ -225,7 +252,7 @@
       font-size: clamp(48px, 7vw, 86px);
       line-height: 1.02;
       letter-spacing: -0.045em;
-      font-weight: 720;
+      font-weight: 500;
     }
 
     .hero p {
@@ -331,7 +358,7 @@
       font-size: 38px;
       line-height: 1.08;
       letter-spacing: -0.04em;
-      font-weight: 680;
+      font-weight: 500;
     }
 
     .profile-title {
@@ -441,7 +468,7 @@
       font-size: clamp(34px, 4.2vw, 56px);
       line-height: 1.08;
       letter-spacing: -0.035em;
-      font-weight: 680;
+      font-weight: 500;
     }
 
     .section-desc {
@@ -578,7 +605,7 @@
       font-size: 24px;
       line-height: 1.32;
       letter-spacing: -0.025em;
-      font-weight: 680;
+      font-weight: 500;
     }
 
     .work-main p {
@@ -669,7 +696,7 @@
 
     .project h3 {
       font-size: 28px;
-      font-weight: 680;
+      font-weight: 500;
       letter-spacing: -0.035em;
       line-height: 1.16;
     }
@@ -794,7 +821,7 @@
       font-size: clamp(34px, 4.5vw, 58px);
       line-height: 1.08;
       letter-spacing: -0.04em;
-      font-weight: 680;
+      font-weight: 500;
     }
 
     .contact-panel p {
@@ -976,7 +1003,7 @@
         </div>
         <div>
           <strong><span class="zh">李翔</span><span class="en">Shawn Lee</span></strong>
-          <span><span class="zh">产品策略作品集</span><span class="en">Product Strategy Portfolio</span></span>
+          <span><span class="zh">个人作品集</span><span class="en">Personal Portfolio</span></span>
         </div>
       </a>
 
@@ -1005,17 +1032,17 @@
 
   <main id="top">
     <section class="hero container">
-      <div class="hero-kicker"><span class="live-dot"></span> Product Strategy · Product Marketing · AI Workflow</div>
+      <div class="hero-kicker"><span class="live-dot"></span> Portfolio · Research Notes · AI Workflow</div>
       <h1>
-        <span class="zh">把复杂信息，转化为清晰的产品判断。</span>
-        <span class="en">Turning scattered signals into clear product judgment.</span>
+        <span class="zh">把经历、观察与工具，整理成长期可见的作品集。</span>
+        <span class="en">A portfolio of experience, observation, and tools in progress.</span>
       </h1>
       <p>
-        <span class="zh">我是李翔，关注智能终端、用户洞察与新品发布表达。目前在 vivo 参与新品功能卖点包装、发布会框架搭建、物料评审、竞品发布会跟踪与舆情用户分析。</span>
-        <span class="en">I work at the intersection of product marketing, consumer insight, and AI workflow design, with a focus on smartphone launches, product narratives, and user feedback analysis. At vivo, I support feature packaging, launch frameworks, material review, competitor tracking, and opinion analysis.</span>
+        <span class="zh">我是李翔。这里记录我的教育背景、服务体验、产品思考、AI 工具实践与研究观察。相比只展示一段经历，我更希望它成为一个持续更新的个人主页。</span>
+        <span class="en">I am Shawn Lee. This site records my academic background, service experience, product thinking, AI tool practice, and research notes. More than a resume page, it is designed as a personal home for long-term updates.</span>
       </p>
       <div class="hero-actions">
-        <a class="btn" href="#projects"><span class="zh">查看项目</span><span class="en">View Projects</span></a>
+        <a class="btn" href="#projects"><span class="zh">查看作品</span><span class="en">View Works</span></a>
         <a class="btn secondary" href="resume.pdf" target="_blank" rel="noopener"><span class="zh">打开简历</span><span class="en">View Chinese Resume</span></a>
       </div>
 
@@ -1029,17 +1056,17 @@
               </div>
               <div class="profile-name">李翔<br />Shawn Lee</div>
               <div class="profile-title">
-                <span class="zh">产品策略 / 产品营销 / AI 工作流工具搭建</span>
-                <span class="en">Product Strategy / Product Marketing / AI Workflow Builder</span>
+                <span class="zh">服务体验 / 产品思考 / AI 工具 / 可持续旅游</span>
+                <span class="en">Service Experience / Product Thinking / AI Tools / Sustainable Tourism</span>
               </div>
             </div>
             <div class="profile-meta">
               <div>Dongguan · Shenzhen · Hong Kong</div>
               <div><a href="mailto:x_222324@163.com">x_222324@163.com</a></div>
               <div class="chips" style="margin-top: 4px;">
-                <span class="chip">Consumer Tech</span>
-                <span class="chip">AI OS</span>
-                <span class="chip">Launch Strategy</span>
+                <span class="chip">Service Experience</span>
+                <span class="chip">Product Thinking</span>
+                <span class="chip">AI Workflow</span>
               </div>
             </div>
           </div>
@@ -1065,24 +1092,24 @@
         <div class="section-head">
           <div class="eyebrow">About</div>
           <div>
-            <h2 class="section-title"><span class="zh">一个更偏产品视角的复合型候选人。</span><span class="en">A product-minded builder connecting insight, narrative, and tools.</span></h2>
-            <p class="section-desc"><span class="zh">简历负责证明经历，作品集负责证明判断方式。</span><span class="en">A resume shows what I have done. A portfolio shows how I think.</span></p>
+            <h2 class="section-title"><span class="zh">一个把服务、研究、产品与工具连接起来的人。</span><span class="en">A portfolio connecting service, research, product thinking, and tools.</span></h2>
+            <p class="section-desc"><span class="zh">这里不是简历的重复，而是我长期整理观察、项目与方法的地方。</span><span class="en">This is not a repeat of my resume. It is a place for my notes, projects, and evolving methods.</span></p>
           </div>
         </div>
         <p class="about-copy">
-          <span class="zh">我的经历并不是单一的技术或营销路径，而是从旅游管理、服务体验、活动执行，逐步延伸到智能终端产品营销与 AI 工具搭建。我更在意三个问题：用户真正感知到什么，产品价值应该如何表达，以及如何用工具把分散信息转化为可汇报、可决策的结论。</span>
-          <span class="en">My background connects service experience, project execution, consumer technology marketing, and AI tool building. I use a product lens to understand what users notice, how value should be communicated, and how scattered feedback can become decision-ready insight.</span>
+          <span class="zh">我的背景不是单一路径：从旅游管理与酒店服务，到会务执行、招聘协同，再到产品营销、AI 工具和可持续旅游研究。我关心的是人在真实场景里的体验如何被理解，复杂信息如何被整理，以及一个想法如何被做成清晰、可展示、可复用的作品。</span>
+          <span class="en">My path is not linear: it moves from tourism and hospitality service to event work, RPO coordination, product marketing, AI tools, and sustainable tourism research. I am interested in how real experiences are understood, how complex information is organized, and how ideas become clear, visible, reusable work.</span>
         </p>
         <div class="chips">
-          <span class="chip">Product Marketing</span>
-          <span class="chip">Product Strategy</span>
+          <span class="chip">Service Experience</span>
+          <span class="chip">Sustainable Tourism</span>
+          <span class="chip">Product Thinking</span>
           <span class="chip">Consumer Insight</span>
-          <span class="chip">Launch Analysis</span>
-          <span class="chip">Competitive Research</span>
           <span class="chip">AI Workflow</span>
           <span class="chip">WeChat Mini Program</span>
           <span class="chip">Streamlit</span>
-          <span class="chip">Executive Reporting</span>
+          <span class="chip">Research Notes</span>
+          <span class="chip">Portfolio Building</span>
         </div>
       </div>
     </section>
@@ -1134,7 +1161,7 @@
         <div class="section-head">
           <div class="eyebrow">Experience</div>
           <div>
-            <h2 class="section-title"><span class="zh">围绕产品表达、用户反馈与竞品观察展开。</span><span class="en">Experience across product communication, user feedback, and competitor observation.</span></h2>
+            <h2 class="section-title"><span class="zh">从服务现场到产品表达，再到工具化整理。</span><span class="en">From service scenes to product communication and tool-based organization.</span></h2>
           </div>
         </div>
 
@@ -1149,7 +1176,7 @@
             </div>
             <div class="work-main">
               <h3>vivo · <span class="zh">产品营销实习生</span><span class="en">Product Marketing Intern</span></h3>
-              <p><span class="zh">参与新品产品营销相关工作，覆盖卖点包装、发布会框架、物料评审、竞品发布会跟踪与舆情用户分析。</span><span class="en">I support new product marketing work across feature packaging, launch frameworks, material review, competitor launch tracking, and user opinion analysis.</span></p>
+              <p><span class="zh">当前在 vivo 参与产品营销相关实践，主要围绕信息整理、卖点表达、发布会内容框架、物料评审与用户反馈分析展开。这是我理解产品、用户与传播关系的重要实践样本。</span><span class="en">At vivo, I work on product marketing practice across information organization, feature communication, launch frameworks, material review, and user feedback analysis. It has become an important context for understanding products, users, and communication.</span></p>
               <ul class="bullet-list">
                 <li><span class="zh">协助梳理新品核心价值、用户场景与发布会表达逻辑。</span><span class="en">Clarified core product value, user scenarios, and launch communication logic.</span></li>
                 <li><span class="zh">参与相关物料评审，围绕信息准确性、卖点表达与用户感知进行反馈。</span><span class="en">Reviewed materials through the lens of message accuracy, selling point clarity, and user perception.</span></li>
@@ -1193,8 +1220,8 @@
         <div class="section-head">
           <div class="eyebrow">Selected Works</div>
           <div>
-            <h2 class="section-title"><span class="zh">我如何发现问题，并把它做成工具或分析框架。</span><span class="en">How I turn problems into tools and frameworks.</span></h2>
-            <p class="section-desc"><span class="zh">展示我如何把真实工作中的信息整理、产品表达和判断流程，转化为可复用的工具与分析框架。</span><span class="en">A selection of tools and frameworks that show how I turn information, product narratives, and judgment workflows into reusable outputs.</span></p>
+            <h2 class="section-title"><span class="zh">把日常问题做成可复用的工具与表达方法。</span><span class="en">Turning everyday problems into reusable tools and methods.</span></h2>
+            <p class="section-desc"><span class="zh">这些作品来自学习、实习和个人探索：有工具原型，也有分析框架，重点是呈现我如何把模糊问题整理成清晰输出。</span><span class="en">These works come from study, internship, and personal exploration. Some are tool prototypes, while others are analysis frameworks. Together, they show how I turn vague problems into clear outputs.</span></p>
           </div>
         </div>
 
@@ -1225,16 +1252,16 @@
           </article>
 
           <article class="project">
-            <div class="project-type">Product Strategy Framework</div>
-            <h3>Launch Analysis Framework<span>新品发布会分析框架</span></h3>
-            <p><span class="zh">围绕智能终端发布会内容，拆解品牌如何表达影像、AI、OS、大屏体验与旗舰配置，并提炼可复用的发布会叙事框架。</span><span class="en">A reusable framework for analyzing smartphone launches, covering imaging, AI, OS, large-screen experience, and flagship configuration narratives.</span></p>
-            <div class="chips"><span class="chip">Launch</span><span class="chip">AI OS</span><span class="chip">Narrative</span></div>
+            <div class="project-type">Thinking Framework</div>
+            <h3>Analysis Framework<span>观察与分析框架</span></h3>
+            <p><span class="zh">围绕发布会、服务体验、用户反馈和社交媒体内容，建立可复用的观察框架，帮助我把零散信息整理为观点、结构和判断。</span><span class="en">A reusable framework for observing launches, service experiences, user feedback, and social media content, helping me turn scattered materials into viewpoints, structures, and judgment.</span></p>
+            <div class="chips"><span class="chip">Observation</span><span class="chip">Research</span><span class="chip">Narrative</span></div>
           </article>
 
           <article class="project">
             <div class="project-type">Portfolio Website</div>
-            <h3>Personal Portfolio<span>个人简历与作品集网站</span></h3>
-            <p><span class="zh">基于 GitHub Pages 的个人作品集网站，用来展示个人经历、项目、产品分析案例和简历入口。后续可继续扩展为真实案例库。</span><span class="en">A GitHub Pages portfolio website for presenting experience, projects, product analysis cases, and resume access. It can later grow into a full case library.</span></p>
+            <h3>Personal Portfolio<span>个人主页与作品集网站</span></h3>
+            <p><span class="zh">基于 GitHub Pages 搭建的个人主页，用来记录教育、经历、项目、观察与简历入口。它会持续更新，而不是一次性完成的静态页面。</span><span class="en">A personal website built with GitHub Pages to record education, experience, projects, notes, and resume access. It is designed to grow over time rather than remain a one-time static page.</span></p>
             <div class="chips"><span class="chip">GitHub Pages</span><span class="chip">Portfolio</span><span class="chip">Bilingual</span></div>
           </article>
         </div>
@@ -1244,34 +1271,34 @@
     <section class="section" id="cases">
       <div class="container">
         <div class="section-head">
-          <div class="eyebrow">Case Studies</div>
+          <div class="eyebrow">Notes & Cases</div>
           <div>
-            <h2 class="section-title"><span class="zh">产品分析案例，是求职时的差异化证据。</span><span class="en">Product analysis cases make the portfolio more convincing.</span></h2>
-            <p class="section-desc"><span class="zh">围绕智能终端、AI OS、折叠屏与新品传播，沉淀可复用的观察框架和分析结论。</span><span class="en">Selected observations and frameworks around consumer technology, AI OS, foldables, and product launch communication.</span></p>
+            <h2 class="section-title"><span class="zh">一些持续积累的观察主题。</span><span class="en">A few themes I keep observing and refining.</span></h2>
+            <p class="section-desc"><span class="zh">这里保留我对服务体验、消费科技、AI 工具和可持续旅游的阶段性思考。它们既方便别人快速理解我，也会成为长期学习和表达的素材库。</span><span class="en">This section keeps my ongoing thoughts on service experience, consumer technology, AI tools, and sustainable tourism. It helps others understand me quickly while also serving as a long-term library for learning and expression.</span></p>
           </div>
         </div>
 
         <div class="case-list">
           <article class="case-row">
             <div>
-              <h3><span class="zh">折叠屏发布会与媒体评测观察</span><span class="en">Foldable Launch and Media Review Analysis</span></h3>
-              <p><span class="zh">分析华为、OPPO、荣耀等品牌如何表达大屏体验、AI 能力、影像配置与场景叙事。</span><span class="en">A study of how brands communicate large-screen experience, AI capability, imaging, and usage scenarios.</span></p>
+              <h3><span class="zh">消费科技与产品表达观察</span><span class="en">Consumer Technology and Product Communication</span></h3>
+              <p><span class="zh">观察品牌如何把复杂功能转译成用户能理解的场景、语言和价值感，包括发布会表达、媒体评测与社交平台反馈。</span><span class="en">An observation of how brands translate complex features into scenarios, language, and perceived value through launches, media reviews, and social feedback.</span></p>
             </div>
             <div class="case-tags"><span class="chip">Foldable</span><span class="chip">Media</span></div>
           </article>
           <article class="case-row">
             <div>
-              <h3><span class="zh">AI OS 功能表达研究</span><span class="en">AI OS Communication Study</span></h3>
-              <p><span class="zh">关注手机厂商如何把 AI 能力从“功能展示”转化为“系统级体验”。</span><span class="en">An observation of how smartphone brands turn AI features into system-level user experience.</span></p>
+              <h3><span class="zh">AI 工具与工作流整理</span><span class="en">AI Tools and Workflow Organization</span></h3>
+              <p><span class="zh">关注 AI 如何帮助学生、实习生和职场新人整理信息、优化表达，并把重复任务变成更稳定的工作流。</span><span class="en">A study of how AI helps students, interns, and young professionals organize information, improve expression, and turn repeated tasks into more stable workflows.</span></p>
             </div>
-            <div class="case-tags"><span class="chip">AI OS</span><span class="chip">UX</span></div>
+            <div class="case-tags"><span class="chip">AI Tools</span><span class="chip">Workflow</span></div>
           </article>
           <article class="case-row">
             <div>
-              <h3><span class="zh">新品舆情与用户反馈结构化</span><span class="en">Product Opinion Structuring</span></h3>
-              <p><span class="zh">通过社媒内容、用户评论与竞品反馈，提炼产品亮点、痛点和传播风险。</span><span class="en">Turning social comments and competitor signals into structured product highlights, pain points, and communication risks.</span></p>
+              <h3><span class="zh">服务体验与可持续旅游研究</span><span class="en">Service Experience and Sustainable Tourism</span></h3>
+              <p><span class="zh">从旅游、酒店和服务场景出发，关注体验设计、社会可持续性、数字体验与包容性旅游等议题。</span><span class="en">Starting from tourism, hospitality, and service scenes, I focus on experience design, social sustainability, digital experience, and inclusive tourism.</span></p>
             </div>
-            <div class="case-tags"><span class="chip">UGC</span><span class="chip">Insight</span></div>
+            <div class="case-tags"><span class="chip">Tourism</span><span class="chip">Service</span></div>
           </article>
         </div>
       </div>
@@ -1283,7 +1310,7 @@
           <div class="eyebrow">Updates</div>
           <div>
             <h2 class="section-title"><span class="zh">近期动态</span><span class="en">Recent Updates</span></h2>
-            <p class="section-desc"><span class="zh">记录与产品营销、AI 工具和研究生阶段相关的重要进展。</span><span class="en">Key updates related to product marketing, AI tools, and graduate study.</span></p>
+            <p class="section-desc"><span class="zh">记录学习、实习、项目和个人作品集建设中的重要进展。</span><span class="en">Key updates related to study, internship, projects, and portfolio building.</span></p>
           </div>
         </div>
         <div class="news-list">
@@ -1293,7 +1320,7 @@
           </div>
           <div class="news-item">
             <div class="news-date">2026.03</div>
-            <div class="news-text"><span class="zh">开始 vivo 产品营销相关实习，参与新品营销、发布会与舆情分析工作。</span><span class="en">Started a product marketing internship at vivo, supporting new product marketing, launch work, and opinion analysis.</span></div>
+            <div class="news-text"><span class="zh">开始 vivo 相关实习，参与产品营销、内容框架、物料评审与用户反馈整理。</span><span class="en">Started an internship at vivo, supporting product marketing, content frameworks, material review, and user feedback organization.</span></div>
           </div>
           <div class="news-item">
             <div class="news-date">2026</div>
@@ -1306,8 +1333,8 @@
     <section class="section" id="contact" style="border-bottom: 0;">
       <div class="container">
         <div class="contact-panel">
-          <h2><span class="zh">欢迎交流产品、AI 工具与智能终端观察。</span><span class="en">Let’s talk about product, AI tools, and consumer technology.</span></h2>
-          <p><span class="zh">如果你正在看我的简历，也可以通过这个网站快速了解我的项目、分析方式与职业兴趣。</span><span class="en">If you are reviewing my resume, this website gives a quick view of my projects, thinking style, and career interests.</span></p>
+          <h2><span class="zh">欢迎交流服务体验、产品思考、AI 工具与可持续旅游。</span><span class="en">Let’s talk about service experience, product thinking, AI tools, and sustainable tourism.</span></h2>
+          <p><span class="zh">无论你是通过简历、项目、文章还是其他方式来到这里，都可以把这个网站当作了解我长期兴趣和作品的入口。</span><span class="en">Whether you arrive through my resume, projects, writing, or another context, this site is an entry point to my long-term interests and work.</span></p>
           <div class="hero-actions">
             <a class="btn" href="mailto:x_222324@163.com"><span class="zh">发送邮件</span><span class="en">Email Me</span></a>
             <a class="btn secondary" href="resume.pdf" target="_blank" rel="noopener"><span class="zh">打开简历</span><span class="en">View Chinese Resume</span></a>
@@ -1320,7 +1347,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div>© <span id="year"></span> 李翔 Shawn Lee.</div>
-      <div>Product Strategy · Product Marketing · AI Workflow</div>
+      <div>Portfolio · Research Notes · AI Workflow</div>
     </div>
   </footer>
 
