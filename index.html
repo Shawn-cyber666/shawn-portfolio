@@ -26,22 +26,6 @@
       --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
     }
 
-    [data-theme="dark"] {
-      --bg: #0b0907;
-      --surface: #17130f;
-      --surface-soft: #110e0b;
-      --ink: #f5f5f7;
-      --muted: #b6b6b8;
-      --subtle: #7c7c80;
-      --line: rgba(255, 255, 255, 0.12);
-      --line-strong: rgba(255, 255, 255, 0.2);
-      --accent: #d6b47a;
-      --accent-soft: rgba(214, 180, 122, 0.14);
-      --warm: #171717;
-      --shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
-    }
-
-
     .zh {
       font-family: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", "Source Han Serif SC", serif;
     }
@@ -56,6 +40,13 @@
       font-family: var(--display-cn);
       font-weight: 500;
       letter-spacing: -0.02em;
+    }
+
+    .hero h1 .zh {
+      display: inline-block;
+      font-size: clamp(40px, 5.2vw, 70px);
+      line-height: 1.14;
+      max-width: 1080px;
     }
 
     .hero h1 .en,
@@ -247,7 +238,7 @@
     }
 
     .hero h1 {
-      max-width: 920px;
+      max-width: 1080px;
       margin: 0 auto;
       font-size: clamp(48px, 7vw, 86px);
       line-height: 1.02;
@@ -925,6 +916,11 @@
         font-size: 46px;
       }
 
+      .hero h1 .zh {
+        font-size: 38px;
+        line-height: 1.18;
+      }
+
       .hero p {
         font-size: 18px;
       }
@@ -994,7 +990,7 @@
     }
   </style>
 </head>
-<body data-lang="zh" data-theme="light">
+<body data-lang="zh">
   <header class="topbar">
     <div class="container topbar-inner">
       <a href="#top" class="brand" aria-label="Back to top">
@@ -1021,10 +1017,6 @@
         <div class="pill-switch" aria-label="Language switch">
           <button class="active" type="button" data-set-lang="zh">中</button>
           <button type="button" data-set-lang="en">EN</button>
-        </div>
-        <div class="pill-switch" aria-label="Theme switch">
-          <button class="active" type="button" data-set-theme="light">浅</button>
-          <button type="button" data-set-theme="dark">深</button>
         </div>
       </div>
     </div>
@@ -1364,14 +1356,6 @@
       });
     });
 
-    const themeButtons = document.querySelectorAll("[data-set-theme]");
-    themeButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const theme = button.getAttribute("data-set-theme");
-        body.setAttribute("data-theme", theme);
-        themeButtons.forEach((btn) => btn.classList.toggle("active", btn === button));
-      });
-    });
 
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
