@@ -500,6 +500,41 @@
       line-height: 1.65;
     }
 
+    .work-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      flex-shrink: 0;
+    }
+
+    .work-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 10px;
+      display: block;
+    }
+
+    .work-logo-text {
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+
+    .work-meta-date,
+    .work-meta-location {
+      display: block;
+    }
+
     .work-main h3 {
       font-size: 24px;
       line-height: 1.32;
@@ -752,6 +787,17 @@
     }
 
     @media (max-width: 980px) {
+      .work-logo {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 12px;
+        border-radius: 16px;
+      }
+
+      .work-logo img {
+        padding: 9px;
+      }
+
       .nav {
         display: none;
       }
@@ -1012,7 +1058,13 @@
 
         <div class="work-list">
           <article class="work-item">
-            <div class="work-meta">Mar 2026 — Present<br />Dongguan</div>
+            <div class="work-meta">
+              <div class="work-logo">
+                <img src="https://www.vivo.com.cn/favicon.ico" alt="vivo logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=&quot;work-logo-text&quot;>vivo</span>';" />
+              </div>
+              <span class="work-meta-date">Mar 2026 — Present</span>
+              <span class="work-meta-location">Dongguan</span>
+            </div>
             <div class="work-main">
               <h3>vivo · <span class="zh">产品营销实习生</span><span class="en">Product Marketing Intern</span></h3>
               <p><span class="zh">参与新品产品营销相关工作，重点覆盖卖点包装、发布会框架、物料评审、竞品发布会跟踪与舆情用户分析。</span><span class="en">Supported product marketing work for new products, covering feature packaging, launch frameworks, material review, competitor launch tracking, and user opinion analysis.</span></p>
@@ -1025,7 +1077,13 @@
           </article>
 
           <article class="work-item">
-            <div class="work-meta">Previous<br />Sanya</div>
+            <div class="work-meta">
+              <div class="work-logo">
+                <img src="https://www.marriott.com/favicon.ico" alt="Marriott logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=&quot;work-logo-text&quot;>M</span>';" />
+              </div>
+              <span class="work-meta-date">Previous</span>
+              <span class="work-meta-location">Sanya</span>
+            </div>
             <div class="work-main">
               <h3>Marriott · <span class="zh">宾客关系实习</span><span class="en">Guest Relations Internship</span></h3>
               <p><span class="zh">在真实服务场景中理解用户体验、现场沟通和问题处理，也为后续做用户洞察与产品体验分析提供了基础。</span><span class="en">Built a practical understanding of service experience, communication, and issue handling in real user-facing scenarios.</span></p>
@@ -1033,9 +1091,15 @@
           </article>
 
           <article class="work-item">
-            <div class="work-meta">Previous<br />Project Work</div>
+            <div class="work-meta">
+              <div class="work-logo">
+                <img src="https://www.liepin.com/favicon.ico" alt="Liepin logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=&quot;work-logo-text&quot;>LP</span>';" />
+              </div>
+              <span class="work-meta-date">Previous</span>
+              <span class="work-meta-location">Project Work</span>
+            </div>
             <div class="work-main">
-              <h3>RPO / Exhibition / Conference · <span class="zh">项目协同经历</span><span class="en">Project Coordination</span></h3>
+              <h3>Liepin RPO / Exhibition / Conference · <span class="zh">项目协同经历</span><span class="en">Project Coordination</span></h3>
               <p><span class="zh">参与招聘流程协同、会务执行、展览活动支持等工作，积累信息整理、项目推进与多方沟通经验。</span><span class="en">Participated in recruitment process coordination, conference execution, and exhibition support, building skills in information organization and project delivery.</span></p>
             </div>
           </article>
