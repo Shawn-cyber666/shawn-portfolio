@@ -523,6 +523,35 @@
       display: block;
     }
 
+    .logo-cluster {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .mini-work-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.035);
+      flex-shrink: 0;
+    }
+
+    .mini-work-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 8px;
+      display: block;
+    }
+
     .work-logo-text {
       color: var(--ink);
       font-size: 13px;
@@ -1067,7 +1096,7 @@
             </div>
             <div class="work-main">
               <h3>vivo · <span class="zh">产品营销实习生</span><span class="en">Product Marketing Intern</span></h3>
-              <p><span class="zh">参与新品产品营销相关工作，重点覆盖卖点包装、发布会框架、物料评审、竞品发布会跟踪与舆情用户分析。</span><span class="en">Supported product marketing work for new products, covering feature packaging, launch frameworks, material review, competitor launch tracking, and user opinion analysis.</span></p>
+              <p><span class="zh">作为当前最核心的产品相关经历，参与新品产品营销工作，覆盖卖点包装、发布会框架、物料评审、竞品发布会跟踪与舆情用户分析。</span><span class="en">My current core product-related experience. I support new product marketing work across feature packaging, launch frameworks, material review, competitor launch tracking, and user opinion analysis.</span></p>
               <ul class="bullet-list">
                 <li><span class="zh">协助梳理新品核心价值、用户场景与发布会表达逻辑。</span><span class="en">Clarified core product value, user scenarios, and launch communication logic.</span></li>
                 <li><span class="zh">参与相关物料评审，围绕信息准确性、卖点表达与用户感知进行反馈。</span><span class="en">Reviewed materials through the lens of message accuracy, selling point clarity, and user perception.</span></li>
@@ -1078,29 +1107,28 @@
 
           <article class="work-item">
             <div class="work-meta">
-              <div class="work-logo">
-                <img src="assets/jw-marriott-logo.png" alt="JW Marriott logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=&quot;work-logo-text&quot;>JW</span>';" />
+              <div class="logo-cluster">
+                <div class="mini-work-logo">
+                  <img src="assets/jw-marriott-logo.png" alt="JW Marriott logo" onerror="this.parentElement.style.display='none';" />
+                </div>
+                <div class="mini-work-logo">
+                  <img src="https://pp.myapp.com/ma_icon/0/icon_274629_1777443249/256" alt="Liepin app logo" onerror="this.parentElement.style.display='none';" />
+                </div>
+                <div class="mini-work-logo">
+                  <img src="assets/nanhai-logo.png" alt="Nanhai conference logo" onerror="this.parentElement.style.display='none';" />
+                </div>
               </div>
               <span class="work-meta-date">Previous</span>
-              <span class="work-meta-location">Sanya</span>
+              <span class="work-meta-location">Service · RPO · Events</span>
             </div>
             <div class="work-main">
-              <h3>JW Marriott · <span class="zh">宾客关系实习</span><span class="en">Guest Relations Internship</span></h3>
-              <p><span class="zh">在真实服务场景中理解用户体验、现场沟通和问题处理，也为后续做用户洞察与产品体验分析提供了基础。</span><span class="en">Built a practical understanding of service experience, communication, and issue handling in real user-facing scenarios.</span></p>
-            </div>
-          </article>
-
-          <article class="work-item">
-            <div class="work-meta">
-              <div class="work-logo">
-                <img src="https://pp.myapp.com/ma_icon/0/icon_274629_1777443249/256" alt="Liepin app logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=&quot;work-logo-text&quot;>LP</span>';" />
-              </div>
-              <span class="work-meta-date">Previous</span>
-              <span class="work-meta-location">Project Work</span>
-            </div>
-            <div class="work-main">
-              <h3>Liepin RPO / Exhibition / Conference · <span class="zh">项目协同经历</span><span class="en">Project Coordination</span></h3>
-              <p><span class="zh">参与招聘流程协同、会务执行、展览活动支持等工作，积累信息整理、项目推进与多方沟通经验。</span><span class="en">Participated in recruitment process coordination, conference execution, and exhibition support, building skills in information organization and project delivery.</span></p>
+              <h3><span class="zh">早期综合经历 · 服务体验、招聘协同与会务项目</span><span class="en">Early Experience · Service, RPO and Event Projects</span></h3>
+              <p><span class="zh">将 JW 万豪、猎聘 RPO、海南南海会务等早期经历整合为一组，作为用户理解、现场沟通、信息整理与项目执行能力的补充支撑，不与 vivo 核心产品经历平级展开。</span><span class="en">I group my earlier experience at JW Marriott, Liepin RPO, and Hainan Nanhai conference projects as supporting evidence of user understanding, communication, information organization, and project execution.</span></p>
+              <ul class="bullet-list">
+                <li><span class="zh">在 JW 万豪宾客关系场景中理解服务体验、用户沟通与现场问题处理。</span><span class="en">Built service experience awareness through guest-facing work at JW Marriott.</span></li>
+                <li><span class="zh">在猎聘 RPO 与会务项目中参与流程协同、信息整理、活动支持与多方沟通。</span><span class="en">Supported process coordination, information organization, event operations, and multi-party communication through RPO and conference projects.</span></li>
+                <li><span class="zh">这些经历共同沉淀为后续做用户洞察、产品表达和项目推进的基础能力。</span><span class="en">These experiences form a foundation for later work in user insight, product communication, and project delivery.</span></li>
+              </ul>
             </div>
           </article>
         </div>
