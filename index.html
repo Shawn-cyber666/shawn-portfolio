@@ -1,45 +1,275 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shawn Lee -- Eighth Orbit</title>
-<meta name="description" content="Eighth Orbit: Shawn Lee 的消费科技产品策略、AI 工作流、摄影观察与发布会叙事个人品牌站。">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700;800;900&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}html{background:#050607;scroll-behavior:smooth}body{background:#050607;color:#e8f0f6;font-family:Geist,-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}body.lang-zh .en{display:none!important}body.lang-en .zh{display:none!important}a{text-decoration:none;color:inherit}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}.noise{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.09;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}.scroll-progress{position:fixed;left:0;top:0;height:2px;width:0;background:#e8f0f6;z-index:95}.nav{position:fixed;top:0;left:0;right:0;z-index:70;display:flex;justify-content:space-between;align-items:center;padding:22px 34px;color:rgba(232,240,246,.82);mix-blend-mode:difference}.brand{font-size:13px;line-height:1.05;text-transform:uppercase;letter-spacing:.13em}.brand span{display:block;margin-top:5px;color:rgba(232,240,246,.45)}.nav-right{display:flex;align-items:center;gap:22px}.nav-links{display:flex;gap:22px}.nav-links a{font-size:12px;text-transform:uppercase;letter-spacing:.13em;color:rgba(232,240,246,.62);transition:.2s}.nav-links a.active,.nav-links a:hover{color:#fff}.lang-toggle{border:1px solid rgba(232,240,246,.35);border-radius:999px;padding:8px 12px;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:rgba(232,240,246,.82);backdrop-filter:blur(12px)}.hero{position:relative;height:100svh;min-height:720px;overflow:hidden;background:#000;display:flex;flex-direction:column;justify-content:flex-end;padding:110px 34px 36px}.hero-video{position:absolute;inset:-2%;width:104%;height:104%;object-fit:cover;object-position:center;z-index:0;opacity:.96;filter:saturate(1.08) contrast(1.05);transform:scale(var(--video-scale,1));transition:transform .2s linear}.hero:after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(circle at 68% 48%,rgba(55,121,220,.08),transparent 28%),linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.08) 50%,rgba(0,0,0,.42)),linear-gradient(180deg,rgba(0,0,0,.48),rgba(0,0,0,.04) 45%,rgba(0,0,0,.82))}.hero-grid{position:relative;z-index:8;display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:40px;align-items:end;animation:rise .9s cubic-bezier(.16,1,.3,1) both}.kicker{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:rgba(232,240,246,.62);margin-bottom:18px}.hero h1{font-family:Kanit,sans-serif;max-width:1180px;font-size:clamp(78px,15.5vw,246px);font-weight:900;line-height:.72;letter-spacing:-.09em;text-transform:uppercase;background:linear-gradient(180deg,#6b737f,#dcecf7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.hero h1 span{display:block;color:transparent;background:linear-gradient(180deg,rgba(232,240,246,.78),rgba(232,240,246,.18));-webkit-background-clip:text}.hero-copy{font-size:17px;line-height:1.72;color:rgba(232,240,246,.72);max-width:390px}.player{position:absolute;z-index:8;left:34px;right:34px;bottom:28px;display:grid;grid-template-columns:auto 1fr auto auto auto;gap:18px;align-items:center;color:rgba(232,240,246,.62);font-size:11px;text-transform:uppercase;letter-spacing:.16em}.progress{height:1px;background:rgba(232,240,246,.22);position:relative}.progress:before{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--video-progress,0%);background:#e8f0f6}.player button{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:rgba(232,240,246,.78)}.chapter{position:relative;min-height:108svh;padding:112px 34px;border-top:1px solid rgba(232,240,246,.08);display:grid;grid-template-columns:300px minmax(0,1fr);gap:60px;align-items:center;background:#050607;overflow:hidden}.chapter:nth-child(even){background:#07090c}.chapter:before{content:"";position:absolute;right:-20vw;top:18%;width:58vw;height:58vw;border-radius:50%;border:1px solid rgba(168,211,255,.12);box-shadow:inset 0 0 90px rgba(75,139,255,.06);transform:rotate(-18deg) scale(var(--ring-scale,1));opacity:.65}.chapter-label{position:sticky;top:110px;align-self:start;font-size:13px;text-transform:uppercase;letter-spacing:.16em;color:rgba(232,240,246,.42);z-index:2}.chapter-label b{display:block;font-family:Kanit,sans-serif;font-size:72px;line-height:.75;font-weight:900;letter-spacing:-.08em;margin-bottom:16px;background:linear-gradient(180deg,#7f8793,#d9ecff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.chapter-content{position:relative;z-index:8;transform:translateY(58px);opacity:.2;transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}.chapter.active .chapter-content{opacity:1;transform:translateY(0)}.chapter-content h2{font-size:clamp(48px,8vw,132px);font-weight:620;line-height:.86;letter-spacing:-.085em;max-width:1080px}.chapter-content h2 span{display:block;color:rgba(232,240,246,.38)}.chapter-content p{max-width:820px;margin-top:28px;font-size:20px;line-height:1.85;color:rgba(232,240,246,.62)}.quote{margin-top:44px;max-width:980px;border-left:1px solid rgba(232,240,246,.34);padding-left:24px;color:#e8f0f6;font-size:clamp(26px,3.2vw,48px);line-height:1.18;letter-spacing:-.045em}.signal-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:48px;max-width:980px}.signal-card{min-height:210px;border:1px solid rgba(232,240,246,.12);border-radius:28px;background:radial-gradient(circle at 70% 25%,rgba(87,155,255,.18),transparent 28%),rgba(255,255,255,.035);padding:24px;display:flex;flex-direction:column;justify-content:space-between;transform:translateY(28px);opacity:.45;transition:.6s cubic-bezier(.16,1,.3,1);backdrop-filter:blur(12px)}.chapter.active .signal-card{transform:translateY(0);opacity:1}.chapter.active .signal-card:nth-child(2){transition-delay:.08s}.chapter.active .signal-card:nth-child(3){transition-delay:.16s}.signal-card b{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(232,240,246,.42)}.signal-card strong{font-size:26px;font-weight:520;line-height:1.05;letter-spacing:-.045em}.lens{display:block;min-height:116svh;padding:112px 0 118px;background:#08090b;overflow:hidden}.lens:before{display:none}.lens-head{position:relative;z-index:8;display:grid;grid-template-columns:300px minmax(0,1fr) 260px;gap:60px;align-items:end;padding:0 34px 54px}.lens-head .chapter-label{position:relative;top:auto}.lens-title h2{font-size:clamp(54px,9vw,148px);font-weight:620;line-height:.82;letter-spacing:-.09em;max-width:1100px}.lens-title h2 span{display:block;color:rgba(232,240,246,.38)}.lens-title p{max-width:760px;margin-top:26px;font-size:20px;line-height:1.75;color:rgba(232,240,246,.6)}.lens-meta{align-self:end;font-size:12px;text-transform:uppercase;letter-spacing:.16em;line-height:1.75;color:rgba(232,240,246,.46)}.film-stage{position:relative;z-index:8;width:100vw;overflow:hidden;padding:0 0 18px}.film-stage:before,.film-stage:after{content:"";position:absolute;top:0;bottom:18px;width:12vw;z-index:5;pointer-events:none}.film-stage:before{left:0;background:linear-gradient(90deg,#08090b,transparent)}.film-stage:after{right:0;background:linear-gradient(-90deg,#08090b,transparent)}.film-track{display:flex;gap:22px;width:max-content;padding:0 34px;animation:filmLoop 68s linear infinite;will-change:transform}.film-stage:hover .film-track{animation-play-state:paused}.film-card{position:relative;flex:0 0 clamp(340px,58vw,860px);aspect-ratio:16/9;border-radius:32px;overflow:hidden;background:#15171a;border:1px solid rgba(232,240,246,.16);box-shadow:0 28px 90px rgba(0,0,0,.34)}.film-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;filter:saturate(1.02) contrast(1.02);display:block}.film-card:after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.16) 56%,rgba(0,0,0,.78));pointer-events:none}.film-caption{position:absolute;left:26px;right:26px;bottom:22px;z-index:3;display:flex;justify-content:space-between;gap:22px;align-items:end}.film-caption strong{font-size:clamp(22px,3vw,42px);line-height:.9;letter-spacing:-.055em;font-weight:560}.film-caption span{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:rgba(232,240,246,.62);white-space:nowrap}.film-controls{position:relative;z-index:8;display:flex;justify-content:space-between;align-items:center;padding:22px 34px 0;font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:rgba(232,240,246,.48)}.film-controls b{font-weight:500;color:rgba(232,240,246,.76)}.timeline{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:65;display:grid;gap:10px}.dot{width:8px;height:8px;border-radius:99px;background:rgba(232,240,246,.28);transition:.25s}.dot.active{height:34px;background:#e8f0f6}.proof{min-height:100svh;background:#e8f0f6;color:#050607;border-radius:52px 52px 0 0;margin-top:-42px;padding:108px 34px;position:relative;z-index:10}.proof-head{display:grid;grid-template-columns:300px 1fr;gap:60px;margin-bottom:62px}.proof h2{font-family:Kanit,sans-serif;font-size:clamp(72px,14vw,210px);font-weight:900;letter-spacing:-.09em;line-height:.72;text-transform:uppercase}.proof p{max-width:800px;font-size:20px;line-height:1.75;color:rgba(5,6,7,.62);align-self:end}.proof-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.proof-card{min-height:480px;border:1px solid rgba(5,6,7,.16);border-radius:36px;background:#f6f8fb;padding:26px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s}.proof-card:hover{transform:translateY(-10px) rotate(-.4deg);box-shadow:0 30px 80px rgba(5,6,7,.16)}.proof-card .num{font-family:Kanit,sans-serif;font-size:88px;font-weight:900;letter-spacing:-.08em;line-height:.75;color:rgba(5,6,7,.18)}.proof-card h3{font-size:36px;line-height:.98;letter-spacing:-.06em;font-weight:560}.proof-card p{font-size:16px;line-height:1.7;color:rgba(5,6,7,.58);margin-top:18px}.proof-card a{margin-top:26px;display:inline-flex;width:max-content;border:1px solid rgba(5,6,7,.24);border-radius:999px;padding:12px 18px;font-size:12px;text-transform:uppercase;letter-spacing:.13em}.ending{position:relative;min-height:88svh;padding:112px 34px;background:#050607;overflow:hidden;display:flex;flex-direction:column;justify-content:center}.ending:before{content:"";position:absolute;right:-18vw;top:8vh;width:64vw;height:64vw;border:1px solid rgba(168,211,255,.16);border-radius:50%;box-shadow:inset 0 0 80px rgba(75,139,255,.08);transform:rotate(-18deg)}.ending h2{position:relative;z-index:8;max-width:1120px;font-size:clamp(58px,10vw,168px);font-weight:650;line-height:.86;letter-spacing:-.085em}.ending h2 span{color:rgba(232,240,246,.38)}.ending-actions{position:relative;z-index:8;margin-top:44px;display:flex;gap:14px;flex-wrap:wrap}.btn{display:inline-flex;border:1px solid rgba(232,240,246,.32);border-radius:999px;padding:14px 22px;font-size:12px;text-transform:uppercase;letter-spacing:.13em;color:#e8f0f6;background:rgba(255,255,255,.035);backdrop-filter:blur(20px);transition:.2s}.btn.primary{background:#e8f0f6;color:#050607}.btn:hover{transform:translateY(-2px)}footer{padding:28px 34px 42px;color:rgba(232,240,246,.38);display:flex;justify-content:space-between;border-top:1px solid rgba(232,240,246,.08);font-size:13px}body.lang-zh .chapter-content h2,body.lang-zh .lens-title h2,body.lang-zh .ending h2{line-height:1.12;letter-spacing:-.045em;font-weight:560}body.lang-zh .chapter-content h2>.zh,body.lang-zh .lens-title h2>.zh,body.lang-zh .ending h2>.zh{display:block;color:#e8f0f6}body.lang-zh .chapter-content p,body.lang-zh .lens-title p,body.lang-zh .hero-copy{line-height:1.82;letter-spacing:0}body.lang-zh .quote{line-height:1.34;letter-spacing:-.02em}body.lang-zh .film-caption strong{line-height:1.12;letter-spacing:-.025em}body.lang-zh .film-controls,body.lang-zh .lens-meta{line-height:1.85}body.lang-zh .proof-card h3{line-height:1.12;letter-spacing:-.035em}@keyframes rise{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}@keyframes filmLoop{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 11px))}}@media(max-width:900px){.nav{padding:20px}.nav-links{display:none}.hero{min-height:680px;padding:96px 20px 32px}.hero-grid,.chapter,.proof-head{grid-template-columns:1fr;gap:34px}.hero h1{font-size:21vw}.hero-copy{max-width:520px}.player{left:20px;right:20px;grid-template-columns:auto 1fr auto;gap:12px}.player .hide-mobile{display:none}.chapter{padding:86px 20px;min-height:100svh}.chapter-label{position:relative;top:0}.signal-grid,.proof-grid{grid-template-columns:1fr}.lens{padding:86px 0 96px}.lens-head{grid-template-columns:1fr;gap:28px;padding:0 20px 42px}.film-track{gap:14px;padding:0 20px;animation-duration:56s}.film-card{flex-basis:82vw;border-radius:24px}.film-caption{left:18px;right:18px;bottom:16px}.film-controls{padding:18px 20px 0}.timeline{display:none}.proof{border-radius:34px 34px 0 0;padding:86px 20px}.proof-card{min-height:360px}.ending{padding:86px 20px}footer{padding:24px 20px 36px;display:block}footer div+div{margin-top:10px}body.lang-zh .chapter-content h2,body.lang-zh .lens-title h2,body.lang-zh .ending h2{line-height:1.16;letter-spacing:-.035em;font-size:clamp(42px,14vw,86px)}body.lang-zh .quote{font-size:clamp(24px,7vw,38px);line-height:1.38}}
-</style>
-<style>
-.hero-proof{display:grid;gap:9px;margin-top:18px}
-.hero-proof span{display:block;border-left:1px solid rgba(232,240,246,.32);padding-left:12px;font-size:13px;line-height:1.55;color:rgba(232,240,246,.62)}
-.proof-shot{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:22px;border:1px solid rgba(5,6,7,.1);margin:18px 0 4px;background:#dfe5ea}
-.proof-note{display:block;margin-top:10px;font-size:12px;line-height:1.55;color:rgba(5,6,7,.46)}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shawn Lee - Eighth Orbit</title>
+  <meta name="description" content="Shawn Lee 的 Neptune 个人作品集：产品策略、AI 工作流、终端产品研究、发布会内容与数字体验观察。">
+  <meta name="theme-color" content="#050816">
+  <meta property="og:title" content="Shawn Lee - Eighth Orbit">
+  <meta property="og:description" content="Product thinking, AI workflows, and digital systems inside a Neptune-inspired portfolio.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shawn-portfolio/neptune-system.css?v=20260705-redesign">
 </head>
-<body class="lang-zh">
-<div class="noise"></div><div class="scroll-progress" id="scrollProgress"></div>
-<nav class="nav"><a class="brand" href="#top">Shawn Lee<span>Eighth Orbit</span></a><div class="nav-right"><div class="nav-links"><a href="#manifesto"><span class="zh">宣言</span><span class="en">Manifesto</span></a><a href="#signal"><span class="zh">信号</span><span class="en">Signal</span></a><a href="#workflow"><span class="zh">工作流</span><span class="en">Workflow</span></a><a href="#lens"><span class="zh">镜头</span><span class="en">Lens</span></a><a href="#orbit"><span class="zh">轨道</span><span class="en">Orbit</span></a><a href="#proof"><span class="zh">作品</span><span class="en">Works</span></a></div><button class="lang-toggle" id="langBtn">EN</button></div></nav>
-<div class="timeline"><a class="dot" href="#manifesto"></a><a class="dot" href="#signal"></a><a class="dot" href="#workflow"></a><a class="dot" href="#lens"></a><a class="dot" href="#launch"></a><a class="dot" href="#orbit"></a><a class="dot" href="#proof"></a></div>
-<main id="top">
-<section class="hero" id="hero"><video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="auto"><source src="/shawn-portfolio/assets/neptune-hero-cleaner-1080p.mp4?v=media20260704" type="video/mp4"></video><div class="hero-grid"><div><div class="kicker">Eighth Orbit / Product Marketing / AI Workflow / Lens</div><h1>Hi, i'm <span>Shawn</span></h1></div><div class="hero-copy"><p><span class="zh">这个网站不只是简历，也是我观察世界的方式：产品策略、AI 工作流、消费科技叙事，以及一些摄影里的生活切片。</span><span class="en">This site is not just a resume. It is a way to understand how I observe the world: product strategy, AI workflows, consumer-tech narratives, and fragments of life through photography.</span></p><div class="hero-proof"><span><span class="zh">vivo 产品营销实习｜折叠屏新品上市表达与发布会叙事</span><span class="en">vivo product marketing intern｜foldable launch messaging and keynote narrative</span></span><span><span class="zh">AI 工作流实践｜从搜索取证到竞品研判和汇报材料</span><span class="en">AI workflow practice｜from research evidence to competitor briefs</span></span><span><span class="zh">服务体验与旅游研究背景｜更在意真实的人和场景</span><span class="en">Service and tourism background｜grounded in real people and contexts</span></span></div></div></div><div class="player"><span id="timeText">00:00:00</span><div class="progress"></div><button id="playBtn">Pause</button><button class="hide-mobile" id="soundBtn">Sound off</button><button class="hide-mobile" id="fullBtn">Fullscreen</button></div></section>
-<section class="chapter" id="manifesto"><aside class="chapter-label"><b>//01</b><span class="zh">宣言</span><span class="en">Manifesto</span></aside><div class="chapter-content"><h2><span class="zh">产品感，先于产品黑话。</span><span class="en">Product sense <span>before product jargon.</span></span></h2><p><span class="zh">我不是典型科班产品人，这反而让我更在意真实用户，而不是术语本身。好的产品表达不是把功能说满，而是把用户为什么需要它讲清楚。</span><span class="en">I am not a typical product person from a conventional technical background. That makes me care less about jargon and more about real users. Good product storytelling does not overload people with features; it clarifies why the product matters.</span></p><div class="quote"><span class="zh">复杂产品，清晰表达。不是降低技术含量，而是提高被理解的概率。</span><span class="en">Make complex products legible. The goal is not to simplify the technology, but to increase its chance of being understood.</span></div></div></section>
-<section class="chapter" id="signal"><aside class="chapter-label"><b>//02</b><span class="zh">信号</span><span class="en">Signal</span></aside><div class="chapter-content"><h2><span class="zh">从噪音里提炼判断。</span><span class="en">From noise to <span>decision-grade signals.</span></span></h2><p><span class="zh">我关注消费科技、竞品舆论、用户反馈和发布会表达之间的关系。信息不是越多越好，关键是把噪音压缩成判断。</span><span class="en">I study the relationship between consumer technology, competitor narratives, user feedback, and launch communication. More information is not always better; the real work is compressing noise into judgment.</span></p><div class="signal-grid"><div class="signal-card"><b>UGC</b><strong><span class="zh">用户真实痛点</span><span class="en">Real user pain points</span></strong></div><div class="signal-card"><b>Competitor</b><strong><span class="zh">竞品攻防信号</span><span class="en">Competitive signals</span></strong></div><div class="signal-card"><b>Launch</b><strong><span class="zh">发布会表达框架</span><span class="en">Launch narrative frame</span></strong></div></div></div></section>
-<section class="chapter" id="workflow"><aside class="chapter-label"><b>//03</b><span class="zh">工作流</span><span class="en">Workflow</span></aside><div class="chapter-content"><h2><span class="zh">AI 不是捷径，是思考放大器。</span><span class="en">AI is not a shortcut. <span>It is a thinking amplifier.</span></span></h2><p><span class="zh">我更关心 AI 如何进入真实工作流：资料分析、讲稿优化、周报表达、会议纪要、Deck 大纲、舆情复盘。工具本身不重要，重要的是它有没有提高判断密度。</span><span class="en">I care about how AI enters real workflows: research synthesis, keynote polishing, weekly reporting, meeting minutes, deck outlines, and product intelligence. The tool itself is not the point; the point is whether it increases judgment density.</span></p><div class="quote"><span class="zh">学得越慢，反而越快。真正上手，才能知道 AI 适合在哪些环节放大人。</span><span class="en">Learning slower can be the faster path. Only hands-on use reveals where AI actually amplifies human work.</span></div></div></section>
-<section class="chapter lens" id="lens"><div class="lens-head"><aside class="chapter-label"><b>//04</b><span class="zh">镜头</span><span class="en">Lens</span></aside><div class="lens-title"><h2><span class="zh">摄影是我看世界的低速模式。</span><span class="en">Photography is my slower way of seeing.</span></h2><p><span class="zh">这部分不是兴趣爱好贴纸，而是一条视觉胶片。所有照片保持同一尺寸，自动横向播放，让别人看到我的审美、生活感和观察方式。</span><span class="en">This is not a hobby sticker. It is a visual film reel. Every image keeps the same size and moves horizontally, showing my taste, sense of life, and way of observing.</span></p></div><div class="lens-meta"><span class="zh">Auto horizontal reel<br>Hover to pause<br>11 selected frames</span><span class="en">Auto horizontal reel<br>Hover to pause<br>11 selected frames</span></div></div><div class="film-stage"><div class="film-track" id="filmTrack"></div></div><div class="film-controls"><span><b>Hover to pause</b> / Continuous horizontal reel</span><span>Same size · 16:9 · 11 frames</span></div></section>
-<section class="chapter" id="launch"><aside class="chapter-label"><b>//05</b><span class="zh">发布</span><span class="en">Launch</span></aside><div class="chapter-content"><h2><span class="zh">发布会叙事，是结构化的信任。</span><span class="en">Launch narrative is <span>structured belief.</span></span></h2><p><span class="zh">在 vivo 产品营销实习中，我开始更系统地理解发布会、权益、KOL 场景和功能卖点如何共同构成一套信任机制。参数是基础，叙事决定它能不能被记住。</span><span class="en">During my product marketing internship at vivo, I learned how keynote messaging, user scenarios, benefits, and KOL perspectives form a trust-building system. Specs are the foundation; narrative decides whether people remember them.</span></p><div class="signal-grid"><div class="signal-card"><b>Foldable</b><strong><span class="zh">X Fold6 项目思考</span><span class="en">X Fold6 launch thinking</span></strong></div><div class="signal-card"><b>Keynote</b><strong><span class="zh">讲稿语言与节奏</span><span class="en">Keynote language rhythm</span></strong></div><div class="signal-card"><b>Scenario</b><strong><span class="zh">场景化价值翻译</span><span class="en">Scenario value translation</span></strong></div></div></div></section>
-<section class="chapter" id="orbit"><aside class="chapter-label"><b>//06</b><span class="zh">轨道</span><span class="en">Orbit</span></aside><div class="chapter-content"><h2><span class="zh">我不是从一条直线长出来的。</span><span class="en">I did not grow from a straight line.</span></h2><p><span class="zh">酒店宾客关系让我直接听见人的需求，会展执行让我理解现场秩序，旅游研究让我训练证据意识，vivo 产品营销让我进入消费科技叙事，AI 工作流则把这些能力放大成更快的判断和表达。</span><span class="en">Guest relations taught me to hear real needs. Exhibition work taught me on-site order. Tourism research trained evidence. Product marketing brought me into consumer-tech narratives. AI workflows amplify all of that into faster judgment and clearer expression.</span></p><div class="quote"><span class="zh">第八轨道不是逃离现实，而是把不同经历拉进同一个引力场。</span><span class="en">The Eighth Orbit is not an escape from reality. It is a gravity field that pulls different experiences into one system.</span></div></div></section>
-<section class="proof" id="proof"><div class="proof-head"><h2>Works</h2><p><span class="zh">这里不是把经历堆成简历，而是留下几件可以继续展开的作品：工具、系统、表达、观察。它们共同组成一个更立体的我。</span><span class="en">This is not just a list of experiences. These are works that can keep unfolding: tools, systems, communication, and observation. Together, they make a more dimensional picture of who I am.</span></p></div><div class="proof-grid"><article class="proof-card"><div><div class="num">01</div><h3>Strategy Signal Deck</h3><img class="proof-shot" src="/shawn-portfolio/assets/strategy-hub.png" alt="Strategy Signal Deck interface"><p><span class="zh">消费科技产品舆论与竞品研判工具，把外部 UGC、竞品口碑和平台反馈整理成产品判断线索。</span><span class="en">A consumer-tech intelligence tool that turns UGC, competitor reputation, and platform feedback into product judgment signals.</span></p><span class="proof-note"><span class="zh">关键词检索 / 单品深度研判 / 竞品对比攻防</span><span class="en">Keyword search / single-product deep dive / competitive comparison</span></span></div><a href="https://sentiment-analysis-tool-crmjjevyehgry45eh9wq37.streamlit.app" target="_blank" rel="noopener">Live Project</a></article><article class="proof-card"><div><div class="num">02</div><h3>Trainee Lab</h3><img class="proof-shot" src="/shawn-portfolio/assets/trainee-lab.png" alt="Trainee Lab interface"><p><span class="zh">面向实习生和职场新人的 AI 工作流小程序，覆盖周报、会议、Deck、表格等高频任务。</span><span class="en">An AI workflow mini-program for interns and early-career workers, covering reports, meetings, decks, and tables.</span></p><span class="proof-note"><span class="zh">把“不会开始”变成可执行的第一步。</span><span class="en">Turning the blank-start problem into an executable first step.</span></span></div><a href="resume.html#projects">Workflow System</a></article><article class="proof-card"><div><div class="num">03</div><h3>Photography Notes</h3><p><span class="zh">摄影作为观察方式，记录城市、旅行、光线和人的状态，让网站不只呈现能力，也呈现审美和生活感。</span><span class="en">Photography as a way of observing cities, travel, light, and people — making this site not only about capability, but also taste and life.</span></p><span class="proof-note"><span class="zh">11 张横向胶片，让作品集保留一点生活里的呼吸。</span><span class="en">An 11-frame horizontal reel that keeps a little breathing room in the portfolio.</span></span></div><a href="#lens">View Lens</a></article></div></section>
-<section class="ending" id="contact"><h2><span class="zh">欢迎来到 <span>第八轨道。</span></span><span class="en">Welcome to <span>the Eighth Orbit.</span></span></h2><div class="ending-actions"><a class="btn primary" href="resume.html"><span class="zh">查看简历</span><span class="en">View Resume</span></a><a class="btn" href="mailto:x_222324@163.com"><span class="zh">联系我</span><span class="en">Reach Me</span></a><a class="btn" href="#top">Replay</a></div></section>
-</main>
-<footer><div>© 2026 Shawn Lee</div><div>Eighth Orbit / 第八轨道 · Portfolio as a fuller portrait</div></footer>
-<script>
-const photos=[['01','山谷草场','Mountain Meadow'],['02','江上漂流','River Drift'],['03','城市街景','Midtown Rush'],['04','海水折光','Blue Water'],['05','静水小舟','Quiet Boat'],['06','深蓝水族馆','Blue Aquarium'],['07','沙滩留言','Beach Note'],['08','赛道光影','Track Lines'],['09','檐下春树','Temple Spring'],['10','机甲现场','White Gundam'],['11','湖与远山','Lake Horizon']];
-const version='v=photos-20260704-3';const repoRaw='https://raw.githubusercontent.com/Shawn-cyber666/shawn-portfolio/main/assets/';const filmTrack=document.getElementById('filmTrack');function card([n,zh,en]){const src=`/shawn-portfolio/assets/photo-${n}.jpg?${version}`;return `<figure class="film-card"><img src="${src}" data-n="${n}" alt="${en}" decoding="async" loading="eager"><figcaption class="film-caption"><strong><span class="zh">${zh}</span><span class="en">${en}</span></strong><span>${n} / Lens</span></figcaption></figure>`}filmTrack.innerHTML=photos.concat(photos).map(card).join('');document.querySelectorAll('.film-card img').forEach(img=>{img.onerror=()=>{if(!img.dataset.raw){img.dataset.raw='1';img.src=`${repoRaw}photo-${img.dataset.n}.jpg?${version}`}}});
-const body=document.body;const langBtn=document.getElementById('langBtn');const saved=localStorage.getItem('lang')||'zh';setLang(saved);function setLang(lang){body.classList.toggle('lang-en',lang==='en');body.classList.toggle('lang-zh',lang!=='en');langBtn.textContent=lang==='en'?'中文':'EN';document.documentElement.lang=lang==='en'?'en':'zh-CN';localStorage.setItem('lang',lang)}langBtn.addEventListener('click',()=>setLang(body.classList.contains('lang-en')?'zh':'en'));
-const video=document.getElementById('heroVideo');const playBtn=document.getElementById('playBtn');const soundBtn=document.getElementById('soundBtn');const fullBtn=document.getElementById('fullBtn');const timeText=document.getElementById('timeText');const scrollProgress=document.getElementById('scrollProgress');const chapters=[...document.querySelectorAll('.chapter')];const dots=[...document.querySelectorAll('.dot')];const navLinks=[...document.querySelectorAll('.nav-links a')];function pad(n){return String(Math.floor(n)).padStart(2,'0')}function fmt(t){return pad(t/3600)+':'+pad((t%3600)/60)+':'+pad(t%60)}function updateVideo(){if(video.duration){document.documentElement.style.setProperty('--video-progress',(video.currentTime/video.duration*100)+'%');timeText.textContent=fmt(video.currentTime)}}video.addEventListener('timeupdate',updateVideo);video.play().catch(()=>{});playBtn.addEventListener('click',()=>{if(video.paused){video.play();playBtn.textContent='Pause'}else{video.pause();playBtn.textContent='Play'}});soundBtn.addEventListener('click',()=>{video.muted=!video.muted;soundBtn.textContent=video.muted?'Sound off':'Sound on'});fullBtn.addEventListener('click',()=>{if(document.fullscreenElement){document.exitFullscreen()}else{document.querySelector('.hero').requestFullscreen?.()}});const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){chapters.forEach(c=>c.classList.remove('active'));entry.target.classList.add('active');const id=entry.target.id;dots.forEach(d=>d.classList.toggle('active',d.getAttribute('href')==='#'+id));navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+id))}})},{threshold:.4});chapters.forEach(c=>observer.observe(c));function onScroll(){const h=document.documentElement;const p=h.scrollTop/(h.scrollHeight-h.clientHeight);scrollProgress.style.width=(p*100)+'%';const hero=document.querySelector('.hero');const heroRect=hero.getBoundingClientRect();if(heroRect.bottom>0){const hp=Math.min(1,Math.max(0,-heroRect.top/window.innerHeight));document.documentElement.style.setProperty('--video-scale',1+hp*.08)}chapters.forEach(c=>{const r=c.getBoundingClientRect();const local=Math.min(1,Math.max(0,(window.innerHeight-r.top)/(window.innerHeight+r.height)));c.style.setProperty('--ring-scale',.9+local*.28)})}addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);onScroll();setTimeout(()=>chapters[0]?.classList.add('active'),300);
-</script>
-<script src="/shawn-portfolio/ambient-effects.js?v=hubtown-interaction-20260705"></script>
+<body>
+  <div class="site-loader" aria-hidden="true">
+    <div class="loader-frame">
+      <span class="loader-kicker">Eighth Orbit</span>
+      <strong data-loader-word>NEPTUNE</strong>
+      <span class="loader-status"><i data-loader-count>000</i>% / entering personal orbit</span>
+      <span class="loader-line"><b></b></span>
+    </div>
+  </div>
+
+  <a class="skip-link" href="#work">Skip to selected work</a>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="stellar-dust" aria-hidden="true"></div>
+  <div class="progress-line" aria-hidden="true"><span></span></div>
+  <div class="orbit-cursor" aria-hidden="true"></div>
+
+  <header class="site-nav" data-nav>
+    <a class="brand" href="#top" aria-label="Back to top">
+      <span>Shawn Lee</span>
+      <small>Eighth Orbit / 第八轨道</small>
+    </a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#thinking">Thinking</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="resume-link" href="resume.html">Resume</a>
+      <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false" data-menu-button>
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+    <a href="#work">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#thinking">Thinking</a>
+    <a href="#contact">Contact</a>
+    <a href="resume.html">Resume</a>
+  </div>
+
+  <main id="top">
+    <section class="hero section-shell" aria-label="Entry Orbit">
+      <div class="neptune-stage" aria-hidden="true">
+        <div class="neptune-glow"></div>
+        <div class="neptune-planet"></div>
+        <div class="orbit-ring ring-one"></div>
+        <div class="orbit-ring ring-two"></div>
+        <div class="orbit-ring ring-three"></div>
+      </div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Neptune / Product strategy / AI workflow</p>
+        <h1>Product thinking, AI workflows, and digital systems.</h1>
+        <p class="hero-statement">
+          I build clearer product narratives and practical AI workflows for consumer technology, launch communication, research, and inclusive digital experiences.
+        </p>
+        <div class="hero-actions">
+          <a class="glow-button primary" href="#work">View Work</a>
+          <a class="glow-button" href="#manifesto">Read Thinking</a>
+          <a class="text-link" href="resume.html">Open Resume</a>
+        </div>
+      </div>
+      <div class="hero-meta reveal">
+        <span>Shawn Lee</span>
+        <span>Eighth Orbit / 第八轨道</span>
+        <span>Macau - Guangdong - Hong Kong</span>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">
+        <span>Scroll to enter orbit</span>
+      </div>
+    </section>
+
+    <section class="manifesto section-shell" id="manifesto" data-section="Manifesto">
+      <div class="section-label reveal">
+        <span>//01</span>
+        <strong>Manifesto</strong>
+      </div>
+      <div class="manifesto-grid">
+        <p class="manifesto-line reveal">I am not building a resume page. I am building a field of evidence.</p>
+        <p class="manifesto-line reveal">Product judgment comes from real scenes: launches, users, operations, tools, and the pressure of making things legible.</p>
+        <p class="manifesto-line reveal">AI is not a shortcut. It becomes useful only after it enters a workflow, meets constraints, and survives review.</p>
+        <p class="manifesto-line reveal">Learning slower can be the faster path: use it, break it down, iterate, and then decide where it belongs.</p>
+      </div>
+      <div class="coordinate-map" aria-hidden="true">
+        <span>PRODUCT SENSE</span>
+        <span>WORKFLOW DENSITY</span>
+        <span>SCENARIO JUDGMENT</span>
+      </div>
+    </section>
+
+    <section class="work section-shell" id="work" data-section="Selected Work">
+      <div class="section-heading reveal">
+        <div class="section-label">
+          <span>//02</span>
+          <strong>Selected Work</strong>
+        </div>
+        <h2>Systems, narratives, and tools that can be opened.</h2>
+      </div>
+
+      <div class="project-orbit" data-project-orbit>
+        <article class="project-card is-featured reveal" data-tilt>
+          <div class="project-visual">
+            <img src="/shawn-portfolio/assets/trainee-lab.png" alt="Trainee Lab interface preview" loading="lazy" decoding="async">
+          </div>
+          <div class="project-body">
+            <span class="project-index">01 / Workflow System</span>
+            <h3>Trainee Lab</h3>
+            <p>AI workflow mini-program for interns and early-career operators: weekly reports, meeting notes, deck outlines, and structured first steps.</p>
+            <dl>
+              <div><dt>Role</dt><dd>Product concept, workflow design, prototype build</dd></div>
+              <div><dt>Output</dt><dd>Mini-program prototype and task templates</dd></div>
+            </dl>
+            <div class="tags"><span>AI Workflow</span><span>Mini Program</span><span>Productivity</span></div>
+            <a class="card-link" href="resume.html#projects">Open system</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tilt>
+          <div class="project-visual">
+            <img src="/shawn-portfolio/assets/strategy-hub.png" alt="Strategy Hub interface preview" loading="lazy" decoding="async">
+          </div>
+          <div class="project-body">
+            <span class="project-index">02 / Product Intelligence</span>
+            <h3>Strategy Hub</h3>
+            <p>A terminal-product intelligence workspace that turns UGC, competitor reputation, and product feedback into decision-grade signals.</p>
+            <dl>
+              <div><dt>Role</dt><dd>Research flow, product framing, Streamlit build</dd></div>
+              <div><dt>Output</dt><dd>Search dock, deep dive, comparison brief</dd></div>
+            </dl>
+            <div class="tags"><span>UGC Analysis</span><span>Competitive Signal</span><span>Streamlit</span></div>
+            <a class="card-link" href="https://sentiment-analysis-tool-crmjjevyehgry45eh9wq37.streamlit.app" target="_blank" rel="noopener">Live project</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tilt>
+          <div class="project-body full">
+            <span class="project-index">03 / Launch Narrative</span>
+            <h3>vivo Product Marketing</h3>
+            <p>Foldable-device launch work across scenario packaging, keynote language, KOL perspective, and AI-assisted narrative refinement.</p>
+            <dl>
+              <div><dt>Role</dt><dd>Product marketing intern</dd></div>
+              <div><dt>Output</dt><dd>Launch messaging, material selection, AI workflow sharing</dd></div>
+            </dl>
+            <div class="tags"><span>Launch</span><span>Consumer Tech</span><span>Keynote</span></div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tilt>
+          <div class="project-body full">
+            <span class="project-index">04 / Personal System</span>
+            <h3>Shawn Portfolio</h3>
+            <p>This website is also a project: a personal brand universe for product thinking, AI workflow practice, and visual observation.</p>
+            <dl>
+              <div><dt>Role</dt><dd>Information architecture, visual system, front-end build</dd></div>
+              <div><dt>Output</dt><dd>Neptune design system and interaction layer</dd></div>
+            </dl>
+            <div class="tags"><span>Portfolio</span><span>Creative Dev</span><span>Design System</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="experience section-shell" id="experience" data-section="Orbit Timeline">
+      <div class="section-heading reveal">
+        <div class="section-label">
+          <span>//03</span>
+          <strong>Orbit Timeline</strong>
+        </div>
+        <h2>A path shaped by product scenes, service pressure, and research discipline.</h2>
+      </div>
+
+      <div class="timeline-orbit">
+        <div class="timeline-rail" aria-hidden="true"></div>
+        <button class="timeline-node reveal is-active" type="button" data-timeline="vivo">
+          <span>2026</span><strong>vivo Product Marketing</strong>
+        </button>
+        <button class="timeline-node reveal" type="button" data-timeline="cuhk">
+          <span>2026</span><strong>CUHK Sustainable Tourism</strong>
+        </button>
+        <button class="timeline-node reveal" type="button" data-timeline="nanhai">
+          <span>2024</span><strong>Nanhai Conference</strong>
+        </button>
+        <button class="timeline-node reveal" type="button" data-timeline="jw">
+          <span>2023</span><strong>JW Marriott</strong>
+        </button>
+        <button class="timeline-node reveal" type="button" data-timeline="cityu">
+          <span>2022</span><strong>City University of Macau</strong>
+        </button>
+
+        <aside class="timeline-detail reveal" data-timeline-detail>
+          <span>Current Orbit</span>
+          <h3>vivo Product Marketing</h3>
+          <p>Working with launch communication, product scenarios, AI workflow practice, and consumer-tech narratives.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="thinking section-shell" id="thinking" data-section="Thinking">
+      <div class="section-heading reveal">
+        <div class="section-label">
+          <span>//04</span>
+          <strong>Thinking</strong>
+        </div>
+        <h2>Notes from the slower side of fast tools.</h2>
+      </div>
+
+      <div class="writing-archive">
+        <a class="writing-item reveal" href="resume.html#projects">
+          <span>AI Workflow</span>
+          <h3>When AI enters a real workstream, it stops being a demo.</h3>
+          <p>Prompting is only the surface. The harder part is deciding where a model should sit inside research, writing, review, and delivery.</p>
+        </a>
+        <a class="writing-item reveal" href="#work">
+          <span>Product Judgment</span>
+          <h3>More information is not better. Better compression is better.</h3>
+          <p>UGC, competitor language, and launch materials only matter when they become a clearer decision.</p>
+        </a>
+        <a class="writing-item reveal" href="#experience">
+          <span>Digital Experience</span>
+          <h3>Inclusive digital products begin with scenes, not slogans.</h3>
+          <p>Hospitality, tourism, and product work all point to the same question: what does the user actually need in the moment?</p>
+        </a>
+      </div>
+
+      <div class="lens-strip reveal" aria-label="Photography notes">
+        <img src="/shawn-portfolio/assets/photo-04.jpg" alt="Blue water photography" loading="lazy" decoding="async">
+        <img src="/shawn-portfolio/assets/photo-08.jpg" alt="Track lines photography" loading="lazy" decoding="async">
+        <img src="/shawn-portfolio/assets/photo-11.jpg" alt="Lake horizon photography" loading="lazy" decoding="async">
+      </div>
+    </section>
+
+    <section class="contact section-shell" id="contact" data-section="Final Orbit">
+      <div class="mini-neptune" aria-hidden="true"></div>
+      <div class="contact-copy reveal">
+        <div class="section-label">
+          <span>//05</span>
+          <strong>Final Orbit</strong>
+        </div>
+        <h2>Start with a real problem. Then build the system around it.</h2>
+        <p>If you are working on product narratives, AI workflow, consumer-tech research, or digital experience, I would like to hear where the signal is unclear.</p>
+        <div class="contact-actions">
+          <a class="glow-button primary" href="mailto:x_222324@163.com">Start a conversation</a>
+          <a class="glow-button" href="resume.html">Open Resume</a>
+          <a class="text-link" href="https://github.com/Shawn-cyber666" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 Shawn Lee</span>
+    <span>Eighth Orbit / Neptune personal universe</span>
+  </footer>
+
+  <script src="/shawn-portfolio/neptune-portfolio.js?v=20260705-redesign" defer></script>
 </body>
 </html>
