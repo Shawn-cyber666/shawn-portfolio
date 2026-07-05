@@ -299,6 +299,90 @@
     addEventListener('pagehide', () => cancelAnimationFrame(raf), { once: true });
   }
 
+  function initOceanField() {
+    const canvas = document.querySelector('[data-ocean-field]');
+    if (!canvas || prefersReduced) return;
+    const ctx = canvas.getContext('2d', { alpha: true });
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let ripple = { x: 0.5, y: 0.42, power: 0 };
+
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect();
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      width = Math.max(1, Math.floor(rect.width));
+      height = Math.max(1, Math.floor(rect.height));
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+
+    const draw = (time) => {
+      ctx.clearRect(0, 0, width, height);
+      const scroll = Number(getComputedStyle(root).getPropertyValue('--scroll')) || 0;
+      const horizon = height * 0.18;
+
+      const gradient = ctx.createLinearGradient(0, 0, 0, height);
+      gradient.addColorStop(0, 'rgba(0,180,255,0.02)');
+      gradient.addColorStop(0.24, 'rgba(0,180,255,0.18)');
+      gradient.addColorStop(0.58, 'rgba(30,91,255,0.18)');
+      gradient.addColorStop(1, 'rgba(0,0,0,0.18)');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, width, height);
+
+      ctx.globalCompositeOperation = 'lighter';
+      for (let i = 0; i < 44; i += 1) {
+        const depth = i / 44;
+        const y = horizon + depth * depth * height * 0.92;
+        const amp = 6 + depth * 28 + ripple.power * 18;
+        const speed = time * (0.00045 + depth * 0.00028);
+        ctx.beginPath();
+        for (let x = -40; x <= width + 40; x += 18) {
+          const pull = Math.exp(-Math.abs(x - ripple.x * width) / 260) * ripple.power * 18;
+          const wave = Math.sin(x * 0.012 + speed + i * 0.6) * amp * depth;
+          const wave2 = Math.cos(x * 0.026 - speed * 1.6) * amp * 0.24;
+          const yy = y + wave + wave2 + pull * Math.sin(time * 0.004 + i);
+          if (x === -40) ctx.moveTo(x, yy);
+          else ctx.lineTo(x, yy);
+        }
+        ctx.strokeStyle = `rgba(117,215,255,${0.03 + depth * 0.16})`;
+        ctx.lineWidth = 0.7 + depth * 1.1;
+        ctx.stroke();
+      }
+
+      for (let i = 0; i < 70; i += 1) {
+        const seed = Math.sin(i * 145.43) * 10000;
+        const x = (seed - Math.floor(seed)) * width;
+        const y = horizon + ((Math.sin(i * 78.91) * 10000) % 1 + 1) % 1 * height * 0.8;
+        const drift = Math.sin(time * 0.001 + i) * 18;
+        const alpha = 0.08 + ((i % 5) / 5) * 0.18;
+        ctx.fillStyle = `rgba(190,230,255,${alpha})`;
+        ctx.fillRect(x + drift, y, 1.6, 1.6);
+      }
+
+      ctx.globalCompositeOperation = 'source-over';
+      ripple.power *= 0.94;
+      requestAnimationFrame(draw);
+    };
+
+    addEventListener('pointermove', (event) => {
+      ripple.x = event.clientX / innerWidth;
+      ripple.y = event.clientY / innerHeight;
+      ripple.power = Math.min(1, ripple.power + 0.035);
+    }, { passive: true });
+    addEventListener('click', (event) => {
+      ripple.x = event.clientX / innerWidth;
+      ripple.y = event.clientY / innerHeight;
+      ripple.power = 1;
+    });
+    addEventListener('resize', resize, { passive: true });
+    resize();
+    requestAnimationFrame(draw);
+  }
+
   function initKeyboardFocus() {
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
@@ -312,12 +396,35 @@
     });
   }
 
+  function initSectionTransitions() {
+    if (prefersReduced) return;
+    const wipe = document.querySelector('.page-wipe');
+    if (!wipe) return;
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest('a[href^="#"]');
+      if (!link) return;
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      event.preventDefault();
+      wipe.classList.remove('is-leaving');
+      wipe.classList.add('is-active');
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'auto', block: 'start' });
+        wipe.classList.add('is-leaving');
+        wipe.classList.remove('is-active');
+      }, 240);
+      setTimeout(() => wipe.classList.remove('is-leaving'), 620);
+    });
+  }
+
   initLoader();
   initNavigation();
   initReveal();
   initGravityField();
+  initOceanField();
   initPointerField();
   initTilt();
   initTimeline();
+  initSectionTransitions();
   initKeyboardFocus();
 })();
