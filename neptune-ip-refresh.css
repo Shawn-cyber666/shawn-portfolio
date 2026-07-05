@@ -4,6 +4,10 @@ body.neptune-ip{
   -webkit-font-smoothing:antialiased;
 }
 
+body.neptune-lock{
+  overflow:hidden;
+}
+
 .neptune-ip .noise{
   opacity:.055;
 }
@@ -37,10 +41,148 @@ body.neptune-ip{
   display:none;
 }
 
+.neptune-loader{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:grid;
+  place-items:center;
+  background:#020711;
+  color:#dcecff;
+  transition:opacity .7s cubic-bezier(.16,1,.3,1),visibility .7s cubic-bezier(.16,1,.3,1);
+}
+
+.neptune-loader.is-hidden{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.neptune-loader:before{
+  content:"";
+  position:absolute;
+  inset:30px;
+  border:1px solid rgba(178,221,255,.18);
+  border-radius:26px;
+}
+
+.neptune-loader-title{
+  position:relative;
+  font-family:Kanit,Geist,sans-serif;
+  font-size:clamp(48px,9vw,116px);
+  line-height:.78;
+  font-weight:900;
+  letter-spacing:-.08em;
+  text-transform:uppercase;
+  color:#dcecff;
+  text-align:center;
+}
+
+.neptune-loader-title span{
+  display:block;
+  margin-top:16px;
+  font-family:Geist,sans-serif;
+  font-size:11px;
+  line-height:1.6;
+  font-weight:700;
+  letter-spacing:.22em;
+  color:rgba(220,236,255,.54);
+}
+
+.neptune-loader-bar{
+  position:absolute;
+  left:50%;
+  bottom:92px;
+  width:min(420px,62vw);
+  height:1px;
+  transform:translateX(-50%);
+  background:rgba(220,236,255,.16);
+  overflow:hidden;
+}
+
+.neptune-loader-fill{
+  display:block;
+  width:0;
+  height:100%;
+  background:#dcecff;
+  transition:width .16s linear;
+}
+
+.neptune-frame{
+  position:fixed;
+  inset:30px;
+  z-index:94;
+  pointer-events:none;
+  border:1px solid rgba(174,219,255,.16);
+  border-radius:28px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.025);
+  mix-blend-mode:screen;
+}
+
+.neptune-cursor{
+  position:fixed;
+  left:0;
+  top:0;
+  z-index:999;
+  width:86px;
+  height:86px;
+  margin:-43px 0 0 -43px;
+  border:1px solid rgba(230,246,255,.46);
+  border-radius:50%;
+  pointer-events:none;
+  mix-blend-mode:difference;
+  opacity:.72;
+  transform:translate3d(-120px,-120px,0) scale(.72);
+  transition:width .2s ease,height .2s ease,margin .2s ease,opacity .2s ease;
+}
+
+.neptune-cursor:after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:4px;
+  height:4px;
+  margin:-2px 0 0 -2px;
+  border-radius:50%;
+  background:#fff;
+}
+
+.neptune-cursor.is-hover{
+  width:118px;
+  height:118px;
+  margin:-59px 0 0 -59px;
+  opacity:1;
+}
+
+.neptune-audio-prompt{
+  position:fixed;
+  z-index:998;
+  pointer-events:none;
+  display:none;
+  transform:translate(18px,18px);
+  color:#eaf5ff;
+  font-size:10px;
+  line-height:1.15;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  mix-blend-mode:difference;
+}
+
+.neptune-audio-prompt.is-visible{
+  display:block;
+}
+
 .neptune-ip .hero{
   min-height:100svh;
+  padding-bottom:136px;
   background:#02040a;
   isolation:isolate;
+}
+
+.neptune-ip .player{
+  display:none;
 }
 
 .neptune-ip .hero-video{
@@ -83,6 +225,8 @@ body.neptune-ip{
 
 .neptune-ip .hero h1{
   max-width:1180px;
+  font-size:clamp(78px,12.4vw,188px);
+  line-height:.76;
   background:linear-gradient(180deg,#f8fcff 0,#9fcfff 48%,#324365 100%);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
@@ -159,6 +303,51 @@ body.neptune-ip{
   transform:rotate(-18deg) scaleX(1.18);
 }
 
+.neptune-keywords{
+  position:fixed;
+  left:26px;
+  top:50%;
+  z-index:96;
+  transform:translateY(-50%);
+  display:grid;
+  gap:18px;
+  color:rgba(234,245,255,.26);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.18em;
+  line-height:1;
+  text-transform:uppercase;
+  mix-blend-mode:difference;
+  pointer-events:none;
+}
+
+.neptune-keywords span{
+  position:relative;
+  display:block;
+  transition:color .28s ease,transform .28s ease;
+}
+
+.neptune-keywords span:before{
+  content:"";
+  position:absolute;
+  left:-13px;
+  top:50%;
+  width:5px;
+  height:5px;
+  margin-top:-2px;
+  background:currentColor;
+  opacity:0;
+}
+
+.neptune-keywords span.is-active{
+  color:#fff;
+  transform:translateX(4px);
+}
+
+.neptune-keywords span.is-active:before{
+  opacity:1;
+}
+
 .neptune-orbit-radar:after{
   inset:25%;
   border-color:rgba(95,160,255,.22);
@@ -169,7 +358,7 @@ body.neptune-ip{
 .neptune-ip-mark{
   position:fixed;
   left:34px;
-  bottom:34px;
+  bottom:92px;
   z-index:96;
   color:rgba(234,245,255,.44);
   font-size:11px;
@@ -193,7 +382,7 @@ body.neptune-ip{
 .neptune-controller{
   position:fixed;
   right:34px;
-  bottom:34px;
+  bottom:88px;
   z-index:96;
   display:flex;
   gap:8px;
@@ -232,6 +421,49 @@ body.neptune-ip{
   letter-spacing:.18em;
   text-transform:uppercase;
   mix-blend-mode:difference;
+}
+
+.neptune-bottom-hud{
+  position:fixed;
+  left:30px;
+  right:30px;
+  bottom:30px;
+  z-index:95;
+  display:grid;
+  grid-template-columns:160px 1fr 160px;
+  border-top:1px solid rgba(174,219,255,.16);
+  color:rgba(234,245,255,.64);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  mix-blend-mode:difference;
+  pointer-events:none;
+}
+
+.neptune-bottom-hud > span,
+.neptune-bottom-hud > button{
+  min-height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-right:1px solid rgba(174,219,255,.14);
+}
+
+.neptune-bottom-hud > span:first-child{
+  justify-content:flex-start;
+  padding-left:22px;
+}
+
+.neptune-bottom-hud > span:last-child{
+  justify-content:flex-end;
+  padding-right:22px;
+  border-right:0;
+}
+
+.neptune-bottom-hud button{
+  pointer-events:auto;
+  color:rgba(234,245,255,.72);
 }
 
 .neptune-sound button{
@@ -305,6 +537,90 @@ body.neptune-ip{
 
 .neptune-ip .proof-card{
   border-radius:26px;
+  cursor:pointer;
+  transform-style:preserve-3d;
+}
+
+.neptune-ip .proof-card.is-tilting{
+  will-change:transform;
+}
+
+.neptune-work-modal{
+  position:fixed;
+  inset:0;
+  z-index:990;
+  display:grid;
+  place-items:center;
+  padding:24px;
+  background:rgba(2,7,17,.72);
+  backdrop-filter:blur(18px);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .25s ease,visibility .25s ease;
+}
+
+.neptune-work-modal.is-open{
+  opacity:1;
+  visibility:visible;
+}
+
+.neptune-work-panel{
+  width:min(820px,100%);
+  border:1px solid rgba(180,224,255,.22);
+  background:linear-gradient(180deg,rgba(8,20,38,.94),rgba(3,8,16,.96));
+  color:#eaf5ff;
+  padding:28px;
+  box-shadow:0 40px 120px rgba(0,0,0,.5);
+}
+
+.neptune-work-panel small{
+  display:block;
+  margin-bottom:18px;
+  color:rgba(234,245,255,.46);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.neptune-work-panel h3{
+  margin:0;
+  font-size:clamp(38px,6vw,82px);
+  line-height:.88;
+  font-weight:650;
+  letter-spacing:-.06em;
+}
+
+.neptune-work-panel p{
+  max-width:680px;
+  margin-top:22px;
+  color:rgba(234,245,255,.66);
+  font-size:18px;
+  line-height:1.72;
+}
+
+.neptune-work-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+
+.neptune-work-actions a,
+.neptune-work-actions button{
+  border:1px solid rgba(234,245,255,.28);
+  padding:12px 16px;
+  color:#eaf5ff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.neptune-work-actions a:hover,
+.neptune-work-actions button:hover{
+  background:#eaf5ff;
+  color:#03050a;
 }
 
 @keyframes neptuneDrift{
@@ -319,6 +635,15 @@ body.neptune-ip{
 
   .neptune-ip .hero-grid{
     grid-template-columns:1fr;
+  }
+
+  .neptune-ip .hero{
+    padding-bottom:68px;
+  }
+
+  .neptune-ip .hero h1{
+    font-size:clamp(70px,18vw,118px);
+    line-height:.82;
   }
 
   .neptune-id-card{
@@ -347,7 +672,12 @@ body.neptune-ip{
   }
 
   .neptune-ip-mark,
-  .neptune-sound{
+  .neptune-sound,
+  .neptune-keywords,
+  .neptune-frame,
+  .neptune-cursor,
+  .neptune-audio-prompt,
+  .neptune-bottom-hud{
     display:none;
   }
 
@@ -358,7 +688,8 @@ body.neptune-ip{
 
 @media(prefers-reduced-motion:reduce){
   .neptune-orbit-radar,
-  .neptune-ip .film-track{
+  .neptune-ip .film-track,
+  .neptune-cursor{
     animation:none;
   }
 }
