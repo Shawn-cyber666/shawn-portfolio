@@ -1,0 +1,446 @@
+@import url("https://fonts.googleapis.com/css2?family=Fustat:wght@700;800&family=Inter:wght@400;500;600;700&display=swap");
+
+:root{
+  --lg-blue:#0084ff;
+  --lg-blue-soft:#60b1ff;
+  --lg-text:#07111f;
+  --lg-muted:rgba(7,17,31,.62);
+  --lg-glass:rgba(255,255,255,.3);
+}
+
+html{
+  background:#fff!important;
+}
+
+body.liquid-glass{
+  background:#fff!important;
+  color:var(--lg-text)!important;
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif!important;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:geometricPrecision;
+}
+
+.liquid-glass .noise,
+.liquid-glass .timeline,
+.liquid-glass .player,
+.liquid-glass .hero-video,
+.liquid-glass #crystalLayer,
+.liquid-glass #neptuneField,
+.liquid-glass #lensRipple,
+.liquid-glass .neptune-orbit-label,
+.liquid-glass .eo-loader,
+.liquid-glass .eo-cursor,
+.liquid-glass .eo-controller,
+.liquid-glass .eo-chapter-readout,
+.liquid-glass .ht-sound,
+.liquid-glass .ambient-vignette{
+  display:none!important;
+}
+
+.liquid-glass .scroll-progress{
+  background:linear-gradient(90deg,var(--lg-blue),#62c4ff)!important;
+  height:3px!important;
+  z-index:120!important;
+}
+
+.liquid-glass .nav{
+  position:sticky!important;
+  top:30px!important;
+  left:auto!important;
+  right:auto!important;
+  transform:none!important;
+  z-index:110!important;
+  width:fit-content!important;
+  max-width:calc(100vw - 32px)!important;
+  margin:30px auto 0!important;
+  padding:10px 10px 10px 18px!important;
+  display:flex!important;
+  gap:22px!important;
+  align-items:center!important;
+  justify-content:center!important;
+  color:var(--lg-text)!important;
+  mix-blend-mode:normal!important;
+  border:1px solid rgba(0,0,0,.1)!important;
+  border-radius:16px!important;
+  background:rgba(255,255,255,.3)!important;
+  backdrop-filter:blur(50px)!important;
+  -webkit-backdrop-filter:blur(50px)!important;
+  box-shadow:inset 0 4px 4px rgba(255,255,255,.25),0 18px 50px rgba(31,119,255,.1)!important;
+}
+
+.liquid-glass .brand{
+  font-family:Fustat,Inter,sans-serif!important;
+  font-size:18px!important;
+  font-weight:800!important;
+  line-height:1!important;
+  letter-spacing:-.02em!important;
+  text-transform:none!important;
+  color:var(--lg-text)!important;
+  white-space:nowrap!important;
+}
+
+.liquid-glass .brand span{
+  display:none!important;
+}
+
+.liquid-glass .nav-right{
+  gap:14px!important;
+}
+
+.liquid-glass .nav-links{
+  display:flex!important;
+  gap:4px!important;
+}
+
+.liquid-glass .nav-links a{
+  color:rgba(7,17,31,.66)!important;
+  border-radius:12px!important;
+  padding:10px 13px!important;
+  font-size:14px!important;
+  font-weight:500!important;
+  letter-spacing:-.01em!important;
+  text-transform:none!important;
+  transition:background .2s ease,color .2s ease,transform .2s ease!important;
+}
+
+.liquid-glass .nav-links a:hover,
+.liquid-glass .nav-links a.active{
+  color:var(--lg-text)!important;
+  background:rgba(255,255,255,.48)!important;
+}
+
+.liquid-glass .lang-toggle{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  min-height:42px!important;
+  padding:10px 14px!important;
+  border:1px solid rgba(0,132,255,.22)!important;
+  border-radius:14px!important;
+  background:rgba(255,255,255,.4)!important;
+  color:var(--lg-text)!important;
+  font-size:14px!important;
+  font-weight:600!important;
+  letter-spacing:-.01em!important;
+  text-transform:none!important;
+  backdrop-filter:blur(24px)!important;
+  box-shadow:inset 0 4px 4px rgba(255,255,255,.35)!important;
+}
+
+.liquid-glass .hero{
+  width:min(1600px,100%)!important;
+  height:auto!important;
+  min-height:calc(100svh - 78px)!important;
+  margin:-72px auto 0!important;
+  padding:170px clamp(22px,5vw,82px) 54px!important;
+  display:grid!important;
+  align-items:center!important;
+  overflow:hidden!important;
+  background:#fff!important;
+  color:var(--lg-text)!important;
+  isolation:isolate!important;
+}
+
+.liquid-glass .hero:before{
+  content:""!important;
+  position:absolute!important;
+  left:-120px!important;
+  top:-130px!important;
+  width:610px!important;
+  height:420px!important;
+  border-radius:999px!important;
+  background:radial-gradient(ellipse at center,rgba(96,177,255,.28),rgba(49,154,255,.16) 42%,rgba(255,255,255,0) 72%)!important;
+  filter:blur(44px)!important;
+  opacity:.9!important;
+  pointer-events:none!important;
+  z-index:0!important;
+}
+
+.liquid-glass .hero:after{
+  content:""!important;
+  position:absolute!important;
+  left:70px!important;
+  top:70px!important;
+  width:380px!important;
+  height:250px!important;
+  border-radius:999px!important;
+  background:radial-gradient(ellipse at center,rgba(96,177,255,.18),rgba(255,255,255,0) 72%)!important;
+  filter:blur(58px)!important;
+  pointer-events:none!important;
+  z-index:0!important;
+}
+
+.liquid-glass .hero-grid{
+  position:relative!important;
+  z-index:10!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(420px,.78fr)!important;
+  gap:clamp(34px,5vw,88px)!important;
+  align-items:center!important;
+  width:100%!important;
+  min-height:620px!important;
+  animation:none!important;
+}
+
+.liquid-glass .hero-grid > div:first-child{
+  max-width:760px!important;
+}
+
+.liquid-glass .kicker{
+  margin:0 0 20px!important;
+  color:rgba(7,17,31,.52)!important;
+  font-size:13px!important;
+  font-weight:600!important;
+  letter-spacing:.02em!important;
+  text-transform:none!important;
+}
+
+.liquid-glass .hero h1{
+  max-width:720px!important;
+  margin:0!important;
+  font-family:Fustat,Inter,sans-serif!important;
+  font-size:clamp(48px,5.2vw,75px)!important;
+  font-weight:800!important;
+  line-height:1.05!important;
+  letter-spacing:-2px!important;
+  text-transform:none!important;
+  color:var(--lg-text)!important;
+  background:none!important;
+  -webkit-text-fill-color:currentColor!important;
+  text-shadow:none!important;
+}
+
+.liquid-glass .hero h1 span{
+  display:inline!important;
+  color:inherit!important;
+  background:none!important;
+  -webkit-text-fill-color:currentColor!important;
+}
+
+.liquid-glass .hero-copy{
+  max-width:520px!important;
+  color:var(--lg-muted)!important;
+  font-size:18px!important;
+  line-height:1.68!important;
+  letter-spacing:-1px!important;
+}
+
+.liquid-glass .hero-copy p{
+  margin:0!important;
+}
+
+.liquid-glass .hero-proof{
+  display:none!important;
+}
+
+.lg-social-proof{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:18px;
+  padding:9px 12px;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:999px;
+  background:rgba(255,255,255,.46);
+  color:rgba(7,17,31,.72);
+  font-size:14px;
+  font-weight:500;
+  letter-spacing:-.02em;
+  box-shadow:inset 0 4px 4px rgba(255,255,255,.3),0 12px 35px rgba(31,119,255,.08);
+  backdrop-filter:blur(24px);
+}
+
+.lg-stars{
+  color:#ff801e;
+  font-size:13px;
+  letter-spacing:1px;
+  white-space:nowrap;
+}
+
+.lg-actions{
+  display:flex;
+  gap:13px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+
+.lg-primary-cta,
+.lg-secondary-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  min-height:56px;
+  border-radius:16px;
+  padding:15px 18px 15px 22px;
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:-.03em;
+  transition:transform .22s ease,box-shadow .22s ease,background .22s ease;
+}
+
+.lg-primary-cta{
+  color:#fff!important;
+  background:rgba(0,132,255,.8);
+  backdrop-filter:blur(2px);
+  box-shadow:inset 0 4px 4px rgba(255,255,255,.35),0 18px 46px rgba(0,132,255,.24);
+}
+
+.lg-primary-cta:hover{
+  transform:scale(1.02);
+}
+
+.lg-secondary-cta{
+  color:var(--lg-text)!important;
+  border:1px solid rgba(0,0,0,.09);
+  background:rgba(255,255,255,.54);
+  box-shadow:inset 0 4px 4px rgba(255,255,255,.25);
+}
+
+.lg-arrow{
+  display:grid;
+  place-items:center;
+  width:30px;
+  height:30px;
+  border-radius:999px;
+  background:#fff;
+  color:var(--lg-blue);
+  font-size:18px;
+  line-height:1;
+}
+
+.lg-orb-wrap{
+  position:absolute;
+  z-index:4;
+  right:clamp(-160px,-8vw,-60px);
+  top:50%;
+  width:min(58vw,850px);
+  aspect-ratio:1;
+  transform:translateY(-48%) scale(1.25);
+  pointer-events:none;
+  opacity:.98;
+}
+
+.lg-orb-wrap:before{
+  content:"";
+  position:absolute;
+  inset:13%;
+  border-radius:999px;
+  background:radial-gradient(circle at 45% 45%,rgba(96,177,255,.28),rgba(49,154,255,.16) 38%,rgba(255,255,255,0) 66%);
+  filter:blur(30px);
+}
+
+.lg-orb-video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  mix-blend-mode:screen;
+  filter:hue-rotate(-55deg) saturate(250%) brightness(1.2) contrast(1.1);
+  opacity:.9;
+}
+
+.lg-logo-strip{
+  position:relative;
+  z-index:12;
+  display:flex;
+  align-items:center;
+  gap:clamp(24px,6vw,100px);
+  flex-wrap:wrap;
+  width:100%;
+  margin-top:20px;
+  color:rgba(7,17,31,.44);
+}
+
+.lg-logo-title{
+  width:100%;
+  color:rgba(7,17,31,.52);
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:-.01em;
+}
+
+.lg-logo-strip svg{
+  width:118px;
+  height:34px;
+  filter:grayscale(1);
+  opacity:.44;
+}
+
+.liquid-glass .chapter,
+.liquid-glass .lens,
+.liquid-glass .proof,
+.liquid-glass .ending{
+  content-visibility:auto;
+  contain-intrinsic-size:900px;
+}
+
+.liquid-glass .film-track{
+  animation-duration:108s!important;
+}
+
+.liquid-glass .film-card,
+.liquid-glass .proof-card,
+.liquid-glass .signal-card{
+  border-radius:24px!important;
+}
+
+@media(max-width:980px){
+  .liquid-glass .nav{
+    top:16px!important;
+    margin-top:16px!important;
+    width:calc(100vw - 28px)!important;
+    justify-content:space-between!important;
+  }
+
+  .liquid-glass .nav-links{
+    display:none!important;
+  }
+
+  .liquid-glass .hero{
+    margin:-64px auto 0!important;
+    padding:136px 22px 44px!important;
+  }
+
+  .liquid-glass .hero-grid{
+    grid-template-columns:1fr!important;
+    min-height:680px!important;
+    align-content:center!important;
+  }
+
+  .liquid-glass .hero h1{
+    max-width:620px!important;
+    letter-spacing:-1.4px!important;
+  }
+
+  .liquid-glass .hero-copy{
+    max-width:620px!important;
+  }
+
+  .lg-orb-wrap{
+    right:-190px;
+    top:58%;
+    width:760px;
+    opacity:.34;
+  }
+
+  .lg-logo-strip{
+    gap:22px;
+  }
+
+  .lg-logo-strip svg{
+    width:94px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .liquid-glass .film-track{
+    animation:none!important;
+  }
+
+  .lg-primary-cta,
+  .lg-secondary-cta,
+  .liquid-glass .nav-links a{
+    transition:none!important;
+  }
+}
