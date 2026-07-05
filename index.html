@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/shawn-portfolio/neptune-system.css?v=20260705-signal">
+  <link rel="stylesheet" href="/shawn-portfolio/neptune-system.css?v=20260705-shiny">
 </head>
 <body>
   <div class="site-loader" role="dialog" aria-label="Enter Shawn Lee portfolio">
@@ -39,14 +39,18 @@
 
   <header class="site-nav" data-nav>
     <a class="brand" href="#top" aria-label="Back to top">
-      <span>Shawn Lee</span>
-      <small>Eighth Orbit / &#31532;&#20843;&#36712;&#36947;</small>
+      <span class="brand-mark"><i></i></span>
+      <span class="brand-copy">
+        <span>Shawn Lee</span>
+        <small>Eighth Orbit / &#31532;&#20843;&#36712;&#36947;</small>
+      </span>
     </a>
     <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#top">Home</a>
       <a href="#work">Work</a>
       <a href="#experience">Experience</a>
       <a href="#thinking">Thinking</a>
-      <a href="#contact">Contact</a>
+      <a href="#contact">Contact <span aria-hidden="true">↗</span></a>
     </nav>
     <div class="nav-actions">
       <a class="resume-link" href="resume.html">Resume</a>
@@ -67,6 +71,9 @@
   <main id="top">
     <section class="hero section-shell" aria-label="Entry Orbit">
       <div class="neptune-stage" aria-hidden="true">
+        <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata">
+          <source src="/shawn-portfolio/assets/neptune-hero-cleaner-1080p.mp4?v=neptune-bg-20260705" type="video/mp4">
+        </video>
         <canvas class="ocean-field" data-ocean-field></canvas>
         <canvas class="gravity-field" data-gravity-field></canvas>
         <div class="ice-ridge ridge-left"></div>
@@ -87,14 +94,21 @@
         <div class="neptune-video-scrim"></div>
         <div class="neptune-glow"></div>
       </div>
+      <div class="hero-top-grid reveal">
+        <p>I build practical product narratives and AI workflows for launch communication, research, and digital experience.</p>
+        <p><strong>08</strong> orbit signals mapped across tools, stories, and real scenes.</p>
+      </div>
       <div class="hero-copy reveal">
-        <p class="eyebrow">Shawn Lee / Neptune interface</p>
-        <h1>Building the eighth orbit of product work.</h1>
+        <p class="eyebrow">Next orbit opening now</p>
+        <h1>
+          <span>Build</span>
+          <span class="shiny-text">Neptune Systems.</span>
+        </h1>
         <p class="hero-statement">
           Product judgment, AI workflows, launch narratives, and digital systems shaped by real scenes.
         </p>
         <div class="hero-actions">
-          <a class="glow-button primary" href="#work">Explore the work</a>
+          <a class="glow-button primary" href="#work">Explore the work <span aria-hidden="true">→</span></a>
           <a class="glow-button" href="#manifesto">Enter manifesto</a>
           <a class="text-link" href="resume.html">Open Resume</a>
         </div>
@@ -291,6 +305,6 @@
     <span>Eighth Orbit / Neptune personal universe</span>
   </footer>
 
-  <script src="/shawn-portfolio/neptune-portfolio.js?v=20260705-signal" defer></script>
+  <script src="/shawn-portfolio/neptune-portfolio.js?v=20260705-shiny" defer></script>
 </body>
 </html>
