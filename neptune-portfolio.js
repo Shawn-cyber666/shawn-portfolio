@@ -186,6 +186,101 @@
     });
   }
 
+  function initGravityField() {
+    const canvas = document.querySelector('[data-gravity-field]');
+    if (!canvas || prefersReduced) return;
+    const ctx = canvas.getContext('2d', { alpha: true });
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let raf = 0;
+    let pointerX = 0.72;
+    let pointerY = 0.42;
+    let particles = [];
+
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect();
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      width = Math.max(1, Math.floor(rect.width));
+      height = Math.max(1, Math.floor(rect.height));
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const count = innerWidth < 760 ? 76 : 150;
+      particles = Array.from({ length: count }, (_, index) => {
+        const ring = index % 4;
+        return {
+          angle: (index / count) * Math.PI * 2 + ring * 0.38,
+          radius: 0.16 + ring * 0.105 + Math.random() * 0.06,
+          speed: 0.00045 + Math.random() * 0.00075,
+          size: 0.7 + Math.random() * 1.4,
+          drift: Math.random() * Math.PI * 2
+        };
+      });
+    };
+
+    const drawOrbit = (cx, cy, rx, ry, rotate, alpha) => {
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(rotate);
+      ctx.scale(rx, ry);
+      ctx.beginPath();
+      ctx.arc(0, 0, 1, 0, Math.PI * 2);
+      ctx.restore();
+      ctx.strokeStyle = `rgba(117,215,255,${alpha})`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    };
+
+    const render = (time) => {
+      ctx.clearRect(0, 0, width, height);
+      const scroll = Number(getComputedStyle(root).getPropertyValue('--scroll')) || 0;
+      const cx = width * (innerWidth < 760 ? 0.64 : 0.72);
+      const cy = height * (innerWidth < 760 ? 0.36 : 0.48);
+      const pullX = (pointerX - 0.5) * 34;
+      const pullY = (pointerY - 0.5) * 26;
+
+      ctx.globalCompositeOperation = 'lighter';
+      const glow = ctx.createRadialGradient(cx + pullX, cy + pullY, 0, cx + pullX, cy + pullY, Math.max(width, height) * 0.48);
+      glow.addColorStop(0, 'rgba(117,215,255,0.12)');
+      glow.addColorStop(0.42, 'rgba(30,91,255,0.04)');
+      glow.addColorStop(1, 'rgba(30,91,255,0)');
+      ctx.fillStyle = glow;
+      ctx.fillRect(0, 0, width, height);
+
+      drawOrbit(cx + pullX * 0.35, cy + pullY * 0.2, width * 0.38, height * 0.18, -0.28 + scroll * 0.9, 0.13);
+      drawOrbit(cx - 20, cy + 12, width * 0.48, height * 0.21, 0.18 - scroll * 0.7, 0.08);
+
+      particles.forEach((p, index) => {
+        const angle = p.angle + time * p.speed + scroll * (index % 2 ? 1.6 : -1.15);
+        const rx = width * (p.radius + 0.04 * Math.sin(p.drift + time * 0.0003));
+        const ry = height * (p.radius * 0.42);
+        const x = cx + Math.cos(angle) * rx + pullX * (0.2 + p.radius);
+        const y = cy + Math.sin(angle) * ry + pullY * (0.2 + p.radius);
+        const distance = Math.hypot(x - pointerX * width, y - pointerY * height);
+        const alpha = Math.max(0.08, 0.42 - distance / Math.max(width, height));
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(170,226,255,${alpha})`;
+        ctx.arc(x, y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      ctx.globalCompositeOperation = 'source-over';
+      raf = requestAnimationFrame(render);
+    };
+
+    addEventListener('pointermove', (event) => {
+      pointerX = event.clientX / innerWidth;
+      pointerY = event.clientY / innerHeight;
+    }, { passive: true });
+    addEventListener('resize', resize, { passive: true });
+    resize();
+    raf = requestAnimationFrame(render);
+    addEventListener('pagehide', () => cancelAnimationFrame(raf), { once: true });
+  }
+
   function initKeyboardFocus() {
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
@@ -202,6 +297,7 @@
   initLoader();
   initNavigation();
   initReveal();
+  initGravityField();
   initPointerField();
   initTilt();
   initTimeline();
