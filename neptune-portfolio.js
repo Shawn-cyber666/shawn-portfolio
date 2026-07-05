@@ -10,9 +10,19 @@
     const word = loader.querySelector('[data-loader-word]');
     const count = loader.querySelector('[data-loader-count]');
     const line = loader.querySelector('.loader-line b');
-    const target = 'NEPTUNE';
+    const actions = loader.querySelector('[data-loader-actions]');
+    const enterButtons = [...loader.querySelectorAll('[data-enter-site]')];
+    const target = 'EIGHTH ORBIT';
     const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ0123456789';
     let progress = 0;
+    let ready = false;
+
+    const closeLoader = () => {
+      if (!ready) return;
+      loader.classList.add('is-hidden');
+      body.classList.remove('is-locked');
+      setTimeout(() => loader.remove(), prefersReduced ? 80 : 900);
+    };
 
     const tick = () => {
       progress = Math.min(100, progress + (100 - progress) * 0.18 + 2.1);
@@ -26,14 +36,22 @@
       } else {
         word.textContent = target;
         count.textContent = '100';
-        setTimeout(() => loader.classList.add('is-hidden'), prefersReduced ? 30 : 420);
-        setTimeout(() => {
-          loader.remove();
-          body.classList.remove('is-locked');
-        }, prefersReduced ? 80 : 1150);
+        ready = true;
+        loader.classList.add('is-ready');
+        actions?.removeAttribute('aria-hidden');
+        enterButtons[0]?.focus({ preventScroll: true });
+        if (prefersReduced) closeLoader();
       }
     };
 
+    enterButtons.forEach((button) => button.addEventListener('click', closeLoader));
+    loader.addEventListener('click', (event) => {
+      if (event.target.closest('button')) return;
+      closeLoader();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') closeLoader();
+    }, { once: true });
     tick();
   }
 
