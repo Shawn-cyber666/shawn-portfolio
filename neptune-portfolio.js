@@ -392,8 +392,9 @@
     let width = 0;
     let height = 0;
     let dpr = 1;
-    let points = [];
+    let atmosphere = [];
     let ringDots = [];
+    let glints = [];
     let raf = 0;
     const pointer = {
       x: 0.54,
@@ -402,13 +403,6 @@
       ty: 0.42,
       power: 0
     };
-    const colors = [
-      [82, 211, 255],
-      [117, 215, 255],
-      [47, 107, 255],
-      [122, 92, 255],
-      [221, 247, 255]
-    ];
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
@@ -421,76 +415,49 @@
       canvas.style.height = `${height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      const count = innerWidth < 760 ? 760 : 1480;
-      const golden = Math.PI * (3 - Math.sqrt(5));
-      points = Array.from({ length: count }, (_, index) => {
-        const y = 1 - (index / (count - 1)) * 2;
-        const radius = Math.sqrt(1 - y * y);
-        const theta = index * golden;
-        const x = Math.cos(theta) * radius;
-        const z = Math.sin(theta) * radius;
-        const band = Math.sin(y * 18 + Math.sin(theta * 2.4) * 1.35);
-        const storm = Math.sin(theta * 5.2 + y * 10);
-        const colorIndex = band > 0.58 ? 4 : band > 0.08 ? 0 : storm > 0.45 ? 3 : 2;
-        return {
-          x,
-          y: y * 0.86,
-          z,
-          size: 0.7 + Math.random() * 1.45 + Math.abs(band) * 0.3,
-          alpha: 0.32 + Math.random() * 0.44,
-          color: colors[colorIndex],
-          band: Math.abs(band)
-        };
-      });
+      const atmosphereCount = innerWidth < 760 ? 130 : 220;
+      atmosphere = Array.from({ length: atmosphereCount }, (_, index) => ({
+        angle: (index / atmosphereCount) * Math.PI * 2 + Math.random() * 0.08,
+        radius: 0.86 + Math.random() * 0.23,
+        speed: 0.00004 + Math.random() * 0.00014,
+        size: 0.7 + Math.random() * 1.9,
+        alpha: 0.08 + Math.random() * 0.28,
+        tint: Math.random() > 0.72 ? '221,247,255' : Math.random() > 0.42 ? '117,215,255' : '47,107,255'
+      }));
 
-      const ringCount = innerWidth < 760 ? 150 : 260;
+      const ringCount = innerWidth < 760 ? 120 : 220;
       ringDots = Array.from({ length: ringCount }, (_, index) => ({
         angle: (index / ringCount) * Math.PI * 2,
-        offset: (Math.random() - 0.5) * 0.12,
-        speed: 0.00022 + Math.random() * 0.00034,
-        size: 0.7 + Math.random() * 1.5,
-        alpha: 0.18 + Math.random() * 0.42
+        offset: (Math.random() - 0.5) * 0.16,
+        speed: 0.00018 + Math.random() * 0.00026,
+        size: 0.55 + Math.random() * 1.2,
+        alpha: 0.12 + Math.random() * 0.32
+      }));
+
+      const glintCount = innerWidth < 760 ? 22 : 34;
+      glints = Array.from({ length: glintCount }, () => ({
+        x: -0.74 + Math.random() * 1.48,
+        y: -0.66 + Math.random() * 1.32,
+        speed: 0.00008 + Math.random() * 0.00018,
+        phase: Math.random() * Math.PI * 2,
+        size: 0.45 + Math.random() * 1.15,
+        alpha: 0.07 + Math.random() * 0.16
       }));
     };
 
     const sphereFrame = () => {
       const mobile = innerWidth < 760;
       const cx = width * (mobile ? 0.5 : 0.52);
-      const cy = height * (mobile ? 0.42 : 0.38);
-      const radius = Math.min(width, height) * (mobile ? 0.31 : 0.255);
+      const cy = height * (mobile ? 0.39 : 0.35);
+      const radius = Math.min(width, height) * (mobile ? 0.285 : 0.29);
       return { cx, cy, radius };
-    };
-
-    const rotatePoint = (point, yaw, pitch) => {
-      const cosY = Math.cos(yaw);
-      const sinY = Math.sin(yaw);
-      const cosX = Math.cos(pitch);
-      const sinX = Math.sin(pitch);
-      const x1 = point.x * cosY + point.z * sinY;
-      const z1 = -point.x * sinY + point.z * cosY;
-      const y1 = point.y * cosX - z1 * sinX;
-      const z2 = point.y * sinX + z1 * cosX;
-      return { x: x1, y: y1, z: z2 };
-    };
-
-    const project = (point, yaw, pitch, frame) => {
-      const rotated = rotatePoint(point, yaw, pitch);
-      const depth = (rotated.z + 1) * 0.5;
-      const scale = 1 / (1 - rotated.z * 0.24);
-      return {
-        x: frame.cx + rotated.x * frame.radius * scale,
-        y: frame.cy + rotated.y * frame.radius * 0.92 * scale,
-        z: rotated.z,
-        depth,
-        scale
-      };
     };
 
     const drawOrbit = (frame, time, front) => {
       const scroll = Number(getComputedStyle(root).getPropertyValue('--scroll')) || 0;
-      const rotation = -0.22 + scroll * 0.42;
-      const rx = frame.radius * 1.72;
-      const ry = frame.radius * 0.34;
+      const rotation = -0.18 + scroll * 0.34 + (pointer.x - 0.5) * 0.08;
+      const rx = frame.radius * 1.82;
+      const ry = frame.radius * 0.3;
       const start = front ? 0 : Math.PI;
       const end = front ? Math.PI : Math.PI * 2;
 
@@ -500,8 +467,8 @@
       ctx.scale(1, 0.98);
       ctx.beginPath();
       ctx.ellipse(0, 0, rx, ry, 0, start, end);
-      ctx.strokeStyle = front ? 'rgba(180,244,255,0.34)' : 'rgba(117,215,255,0.12)';
-      ctx.lineWidth = front ? 1.2 : 0.8;
+      ctx.strokeStyle = front ? 'rgba(190,246,255,0.28)' : 'rgba(117,215,255,0.09)';
+      ctx.lineWidth = front ? 1.15 : 0.75;
       ctx.stroke();
       ctx.restore();
 
@@ -519,39 +486,182 @@
         const dy = y - pointer.y * height;
         const distance = Math.hypot(dx, dy) || 1;
         const influence = Math.exp(-(distance * distance) / (frame.radius * frame.radius * 0.72)) * pointer.power;
-        x += (dx / distance) * influence * 28;
-        y += (dy / distance) * influence * 20;
+        x += (dx / distance) * influence * 24;
+        y += (dy / distance) * influence * 16;
         ctx.beginPath();
-        ctx.fillStyle = `rgba(180,244,255,${dot.alpha + influence * 0.55})`;
+        ctx.fillStyle = `rgba(190,246,255,${dot.alpha + influence * 0.5})`;
         ctx.arc(x, y, dot.size * (front ? 1.1 : 0.8) * (1 + influence), 0, Math.PI * 2);
         ctx.fill();
       });
     };
 
-    const drawBand = (lat, yaw, pitch, frame, alpha, time) => {
-      let drawing = false;
+    const drawCloudBand = (frame, lat, widthScale, alpha, color, time, phase) => {
+      const y = frame.cy + lat * frame.radius;
+      const bandWidth = frame.radius * widthScale;
+      const lineWidth = Math.max(3, frame.radius * (0.018 + alpha * 0.04));
       ctx.beginPath();
-      for (let i = 0; i <= 96; i += 1) {
-        const lon = -Math.PI + (i / 96) * Math.PI * 2;
-        const wave = Math.sin(lon * 3 + time * 0.00032 + lat * 10) * 0.018;
-        const y = lat + wave;
-        const r = Math.sqrt(Math.max(0, 1 - y * y));
-        const p = { x: Math.cos(lon) * r, y: y * 0.86, z: Math.sin(lon) * r };
-        const projected = project(p, yaw, pitch, frame);
-        if (projected.z < -0.18) {
-          drawing = false;
-          continue;
-        }
-        if (!drawing) {
-          ctx.moveTo(projected.x, projected.y);
-          drawing = true;
-        } else {
-          ctx.lineTo(projected.x, projected.y);
-        }
+      for (let i = 0; i <= 150; i += 1) {
+        const t = i / 150;
+        const x = frame.cx - bandWidth + t * bandWidth * 2;
+        const local = (x - frame.cx) / frame.radius;
+        if (Math.abs(local) > 1) continue;
+        const curve = Math.sqrt(Math.max(0, 1 - local * local));
+        const wave =
+          Math.sin(t * Math.PI * 5.2 + time * 0.00042 + phase) * frame.radius * 0.015 +
+          Math.sin(t * Math.PI * 13.5 - time * 0.00028 + phase * 1.7) * frame.radius * 0.007;
+        const yy = y + wave + (1 - curve) * frame.radius * 0.025 * Math.sign(lat || 1);
+        if (i === 0) ctx.moveTo(x, yy);
+        else ctx.lineTo(x, yy);
       }
-      ctx.strokeStyle = `rgba(212,248,255,${alpha})`;
-      ctx.lineWidth = Math.max(0.7, frame.radius * 0.006);
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = `rgba(${color},${alpha})`;
+      ctx.lineWidth = lineWidth;
       ctx.stroke();
+    };
+
+    const drawStorm = (frame, x, y, rx, ry, rotation, alpha, color) => {
+      ctx.save();
+      ctx.translate(frame.cx + x * frame.radius, frame.cy + y * frame.radius);
+      ctx.rotate(rotation);
+      const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, frame.radius * rx);
+      gradient.addColorStop(0, `rgba(${color},${alpha})`);
+      gradient.addColorStop(0.58, `rgba(${color},${alpha * 0.28})`);
+      gradient.addColorStop(1, `rgba(${color},0)`);
+      ctx.fillStyle = gradient;
+      ctx.scale(1, ry / rx);
+      ctx.beginPath();
+      ctx.arc(0, 0, frame.radius * rx, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    };
+
+    const drawPlanet = (frame, time) => {
+      const influenceX = (pointer.x * width - frame.cx) / frame.radius;
+      const influenceY = (pointer.y * height - frame.cy) / frame.radius;
+      const pointerDistance = Math.hypot(influenceX, influenceY);
+      const surfaceInfluence = Math.max(0, 1 - pointerDistance) * pointer.power;
+
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(frame.cx, frame.cy, frame.radius, 0, Math.PI * 2);
+      ctx.clip();
+
+      const body = ctx.createRadialGradient(
+        frame.cx - frame.radius * 0.36,
+        frame.cy - frame.radius * 0.42,
+        frame.radius * 0.08,
+        frame.cx + frame.radius * 0.24,
+        frame.cy + frame.radius * 0.22,
+        frame.radius * 1.12
+      );
+      body.addColorStop(0, 'rgba(226,252,255,0.88)');
+      body.addColorStop(0.1, 'rgba(139,232,255,0.94)');
+      body.addColorStop(0.34, 'rgba(49,154,255,1)');
+      body.addColorStop(0.62, 'rgba(29,82,212,1)');
+      body.addColorStop(0.84, 'rgba(14,42,132,1)');
+      body.addColorStop(1, 'rgba(4,12,42,1)');
+      ctx.fillStyle = body;
+      ctx.fillRect(frame.cx - frame.radius, frame.cy - frame.radius, frame.radius * 2, frame.radius * 2);
+
+      ctx.globalCompositeOperation = 'screen';
+      [
+        [-0.58, 1.5, 0.12, '217,250,255', 0.2],
+        [-0.44, 1.56, 0.1, '117,215,255', 1.1],
+        [-0.29, 1.72, 0.15, '232,253,255', 2.0],
+        [-0.12, 1.68, 0.08, '78,186,255', 3.3],
+        [0.04, 1.76, 0.14, '209,246,255', 4.4],
+        [0.18, 1.62, 0.1, '80,181,255', 5.2],
+        [0.34, 1.5, 0.12, '224,250,255', 6.3],
+        [0.5, 1.36, 0.08, '117,215,255', 7.1]
+      ].forEach(([lat, scale, alpha, color, phase]) => drawCloudBand(frame, lat, scale, alpha, color, time, phase));
+
+      ctx.globalCompositeOperation = 'multiply';
+      [
+        [-0.1, -0.18, 0.28, 0.1, -0.18, 0.18, '3,10,42'],
+        [0.36, 0.24, 0.22, 0.08, 0.32, 0.18, '5,12,52'],
+        [-0.42, 0.36, 0.18, 0.07, -0.1, 0.16, '6,16,70']
+      ].forEach(([x, y, rx, ry, rotation, alpha, color]) => drawStorm(frame, x, y, rx, ry, rotation, alpha, color));
+
+      ctx.globalCompositeOperation = 'screen';
+      drawStorm(frame, -0.42, -0.34, 0.23, 0.14, -0.45, 0.12, '255,255,255');
+      drawStorm(frame, 0.18, 0.05, 0.2, 0.1, 0.1, 0.1, '117,215,255');
+
+      if (surfaceInfluence > 0.02) {
+        const lens = ctx.createRadialGradient(
+          pointer.x * width,
+          pointer.y * height,
+          0,
+          pointer.x * width,
+          pointer.y * height,
+          frame.radius * 0.55
+        );
+        lens.addColorStop(0, `rgba(221,247,255,${0.22 * surfaceInfluence})`);
+        lens.addColorStop(0.38, `rgba(117,215,255,${0.13 * surfaceInfluence})`);
+        lens.addColorStop(1, 'rgba(117,215,255,0)');
+        ctx.fillStyle = lens;
+        ctx.fillRect(frame.cx - frame.radius, frame.cy - frame.radius, frame.radius * 2, frame.radius * 2);
+      }
+
+      ctx.globalCompositeOperation = 'source-over';
+      const shadow = ctx.createRadialGradient(
+        frame.cx - frame.radius * 0.16,
+        frame.cy - frame.radius * 0.28,
+        frame.radius * 0.24,
+        frame.cx + frame.radius * 0.36,
+        frame.cy + frame.radius * 0.32,
+        frame.radius * 1.24
+      );
+      shadow.addColorStop(0, 'rgba(0,0,0,0)');
+      shadow.addColorStop(0.62, 'rgba(3,6,20,0.04)');
+      shadow.addColorStop(0.88, 'rgba(1,3,12,0.34)');
+      shadow.addColorStop(1, 'rgba(0,0,0,0.62)');
+      ctx.fillStyle = shadow;
+      ctx.fillRect(frame.cx - frame.radius, frame.cy - frame.radius, frame.radius * 2, frame.radius * 2);
+
+      glints.forEach((glint) => {
+        const wobble = Math.sin(time * glint.speed + glint.phase) * 0.018;
+        const x = frame.cx + (glint.x + wobble) * frame.radius;
+        const y = frame.cy + glint.y * frame.radius * 0.9;
+        if (Math.hypot(x - frame.cx, (y - frame.cy) / 0.94) > frame.radius * 0.95) return;
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(221,247,255,${glint.alpha})`;
+        ctx.arc(x, y, glint.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      ctx.restore();
+
+      ctx.globalCompositeOperation = 'lighter';
+      const rim = ctx.createRadialGradient(frame.cx, frame.cy, frame.radius * 0.78, frame.cx, frame.cy, frame.radius * 1.16);
+      rim.addColorStop(0, 'rgba(117,215,255,0)');
+      rim.addColorStop(0.78, 'rgba(117,215,255,0.045)');
+      rim.addColorStop(0.92, 'rgba(180,244,255,0.2)');
+      rim.addColorStop(1, 'rgba(180,244,255,0)');
+      ctx.beginPath();
+      ctx.arc(frame.cx, frame.cy, frame.radius * 1.12, 0, Math.PI * 2);
+      ctx.fillStyle = rim;
+      ctx.fill();
+      ctx.globalCompositeOperation = 'source-over';
+    };
+
+    const drawAtmosphere = (frame, time) => {
+      ctx.globalCompositeOperation = 'lighter';
+      atmosphere.forEach((dot) => {
+        const angle = dot.angle + time * dot.speed;
+        const x = frame.cx + Math.cos(angle) * frame.radius * dot.radius;
+        const y = frame.cy + Math.sin(angle) * frame.radius * dot.radius * 0.86;
+        const dx = x - pointer.x * width;
+        const dy = y - pointer.y * height;
+        const distance = Math.hypot(dx, dy) || 1;
+        const influence = Math.exp(-(distance * distance) / (frame.radius * frame.radius * 0.8)) * pointer.power;
+        const push = influence * 24;
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(${dot.tint},${dot.alpha + influence * 0.34})`;
+        ctx.arc(x + (dx / distance) * push, y + (dy / distance) * push, dot.size * (1 + influence * 1.1), 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.globalCompositeOperation = 'source-over';
     };
 
     const render = (time = 0) => {
@@ -561,78 +671,20 @@
       pointer.power *= 0.94;
 
       const frame = sphereFrame();
-      const scroll = Number(getComputedStyle(root).getPropertyValue('--scroll')) || 0;
-      const yaw = time * 0.00008 + scroll * 0.6 + (pointer.x - 0.5) * 0.2;
-      const pitch = -0.12 + (pointer.y - 0.42) * 0.18;
 
       ctx.globalCompositeOperation = 'lighter';
       const aura = ctx.createRadialGradient(frame.cx, frame.cy, frame.radius * 0.15, frame.cx, frame.cy, frame.radius * 2.15);
-      aura.addColorStop(0, 'rgba(117,215,255,0.18)');
-      aura.addColorStop(0.32, 'rgba(30,91,255,0.08)');
-      aura.addColorStop(0.72, 'rgba(122,92,255,0.035)');
+      aura.addColorStop(0, 'rgba(117,215,255,0.16)');
+      aura.addColorStop(0.36, 'rgba(30,91,255,0.08)');
+      aura.addColorStop(0.72, 'rgba(122,92,255,0.04)');
       aura.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = aura;
       ctx.fillRect(frame.cx - frame.radius * 2.2, frame.cy - frame.radius * 2.2, frame.radius * 4.4, frame.radius * 4.4);
 
       drawOrbit(frame, time, false);
-
-      ctx.globalCompositeOperation = 'source-over';
-      const bodyGradient = ctx.createRadialGradient(
-        frame.cx - frame.radius * 0.36,
-        frame.cy - frame.radius * 0.38,
-        frame.radius * 0.08,
-        frame.cx,
-        frame.cy,
-        frame.radius * 1.06
-      );
-      bodyGradient.addColorStop(0, 'rgba(205,250,255,0.32)');
-      bodyGradient.addColorStop(0.22, 'rgba(64,199,255,0.18)');
-      bodyGradient.addColorStop(0.56, 'rgba(30,91,255,0.12)');
-      bodyGradient.addColorStop(1, 'rgba(1,4,13,0.02)');
-      ctx.beginPath();
-      ctx.arc(frame.cx, frame.cy, frame.radius * 1.02, 0, Math.PI * 2);
-      ctx.fillStyle = bodyGradient;
-      ctx.fill();
-
-      ctx.globalCompositeOperation = 'lighter';
-      [-0.52, -0.34, -0.16, 0.04, 0.22, 0.42].forEach((lat, index) => {
-        drawBand(lat, yaw, pitch, frame, 0.08 + index * 0.018, time);
-      });
-
-      const projected = points.map((point) => {
-        const p = project(point, yaw, pitch, frame);
-        const dx = p.x - pointer.x * width;
-        const dy = p.y - pointer.y * height;
-        const distance = Math.hypot(dx, dy) || 1;
-        const influence = Math.exp(-(distance * distance) / (frame.radius * frame.radius * 0.5)) * pointer.power;
-        return { point, p, dx, dy, distance, influence };
-      }).sort((a, b) => a.p.z - b.p.z);
-
-      projected.forEach(({ point, p, dx, dy, distance, influence }) => {
-        const color = point.color;
-        const nx = dx / distance;
-        const ny = dy / distance;
-        const x = p.x + nx * influence * 34;
-        const y = p.y + ny * influence * 28;
-        const rim = Math.pow(1 - Math.abs(p.px || 0), 0.5);
-        const alpha = Math.min(0.98, point.alpha * (0.26 + p.depth * 0.82) + influence * 0.55 + point.band * 0.08);
-        const size = point.size * (0.62 + p.depth * 0.9) * p.scale * (1 + influence * 1.1);
-        ctx.beginPath();
-        ctx.fillStyle = `rgba(${color[0]},${color[1]},${color[2]},${alpha})`;
-        ctx.arc(x, y, size + rim * 0.05, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
+      drawPlanet(frame, time);
+      drawAtmosphere(frame, time);
       drawOrbit(frame, time, true);
-
-      const edge = ctx.createRadialGradient(frame.cx, frame.cy, frame.radius * 0.78, frame.cx, frame.cy, frame.radius * 1.2);
-      edge.addColorStop(0, 'rgba(255,255,255,0)');
-      edge.addColorStop(0.78, 'rgba(117,215,255,0.05)');
-      edge.addColorStop(1, 'rgba(174,238,255,0.26)');
-      ctx.beginPath();
-      ctx.arc(frame.cx, frame.cy, frame.radius * 1.08, 0, Math.PI * 2);
-      ctx.fillStyle = edge;
-      ctx.fill();
 
       ctx.globalCompositeOperation = 'source-over';
       if (!prefersReduced) raf = requestAnimationFrame(render);
