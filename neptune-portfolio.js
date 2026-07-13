@@ -232,23 +232,28 @@
     const data = {
       vivo: {
         title: 'vivo Product Marketing',
-        body: '在真实消费科技团队里参与发布传播、场景包装、发布会节奏、KOL 视角和 AI 工作流实践。'
+        body: '在真实消费科技团队里参与发布传播、场景包装、发布会节奏、KOL 视角和 AI 工作流实践。',
+        logo: '/shawn-portfolio/assets/vivo-logo.png'
       },
       cuhk: {
         title: 'CUHK Sustainable Tourism',
-        body: '进入可持续旅游和地理相关数字体验研究，关注人、地点和系统之间的关系。'
+        body: '进入可持续旅游和地理相关数字体验研究，关注人、地点和系统之间的关系。',
+        logo: '/shawn-portfolio/assets/cuhk-logo.png'
       },
       nanhai: {
         title: 'Nanhai Conference',
-        body: '参与深海科技论坛执行：展览规划、参观动线、双语材料和现场协调。'
+        body: '参与深海科技论坛执行：展览规划、参观动线、双语材料和现场协调。',
+        logo: '/shawn-portfolio/assets/nanhai-logo.png'
       },
       jw: {
         title: 'JW Marriott Hospitality',
-        body: '宾客关系工作训练了直接倾听：真实需求、服务断点，以及体验如何在细节里失效。'
+        body: '宾客关系工作训练了直接倾听：真实需求、服务断点，以及体验如何在细节里失效。',
+        logo: '/shawn-portfolio/assets/jw-marriott-logo.png'
       },
       cityu: {
         title: 'City University of Macau',
-        body: '国际旅游与酒店管理基础，来自英文课程、研究训练和跨文化环境。'
+        body: '国际旅游与酒店管理基础，来自英文课程、研究训练和跨文化环境。',
+        logo: '/shawn-portfolio/assets/cityu-macau-logo.png'
       }
     };
     const detail = document.querySelector('[data-timeline-detail]');
@@ -261,6 +266,8 @@
       nodes.forEach((n) => n.classList.toggle('is-active', n === node));
       detail.querySelector('h3').textContent = item.title;
       detail.querySelector('p').textContent = item.body;
+      const logo = detail.querySelector('[data-timeline-logo]');
+      if (logo) logo.src = item.logo;
     };
 
     nodes.forEach((node) => {

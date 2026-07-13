@@ -7,6 +7,8 @@
 - Final desktop capture: `.codex-audit/11-final-hero-desktop.png`
 - Final mobile capture: `.codex-audit/08-new-hero-mobile.png`
 - Combined comparison: `.codex-audit/12-reference-vs-final.png`
+- Experience logos desktop: `.codex-audit/14-experience-logos-desktop.png`
+- Experience logos mobile: `.codex-audit/16-experience-logos-mobile.png`
 - Desktop viewport: 2560 x 1257
 - Mobile viewport: 390 x 844
 - State: loader complete, hero idle, navigation visible
@@ -17,12 +19,13 @@
 2. The sphere was replaced with an image-led Neptune horizon, using the reference's large-scale central object, deep blue light, and lower-third editorial composition.
 3. The cursor ring was removed after the first comparison. Dot particles were reduced to sparse directional light trails that bend near the pointer.
 4. Project cards were changed into editorial rows, and the mobile hero, menu, project entry, and timeline states were checked in the browser.
+5. Real organization marks were added to the experience nodes, interactive detail state, and vivo project. White-background marks use a shared monochrome screen treatment instead of edited approximations.
 
 ## Findings
 
 - P0: none.
 - P1: none.
-- P2: none. No text overlap, horizontal overflow, blocked CTA, broken mobile menu, or failed timeline state was found.
+- P2: none. No text overlap, horizontal overflow, blocked CTA, broken mobile menu, failed timeline state, or missing logo asset was found.
 - P3: a future WebGL material pass could add live cloud rotation, but it is not required for the current visual or interaction quality.
 
 ## Final result
