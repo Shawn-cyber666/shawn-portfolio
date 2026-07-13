@@ -3,6 +3,92 @@
   const root = document.documentElement;
   const body = document.body;
 
+  function initLoaderGalaxy() {
+    const canvas = document.querySelector('[data-loader-galaxy]');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d', { alpha: true });
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let stars = [];
+    let raf = 0;
+
+    const resize = () => {
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      width = innerWidth;
+      height = innerHeight;
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const count = innerWidth < 760 ? 170 : 340;
+      stars = Array.from({ length: count }, (_, index) => {
+        const arm = index % 5;
+        const radius = Math.pow(Math.random(), 0.58) * 0.48;
+        const angle = radius * 10 + arm * Math.PI * 0.4 + (Math.random() - 0.5) * 0.45;
+        return {
+          radius,
+          angle,
+          speed: 0.00009 + Math.random() * 0.00028,
+          size: 0.55 + Math.random() * 1.7,
+          alpha: 0.2 + Math.random() * 0.68,
+          drift: Math.random() * Math.PI * 2
+        };
+      });
+    };
+
+    const draw = (time = 0) => {
+      if (!canvas.isConnected) return;
+      ctx.clearRect(0, 0, width, height);
+      const cx = width * 0.5;
+      const cy = height * 0.5;
+      const scale = Math.min(width, height);
+
+      ctx.globalCompositeOperation = 'lighter';
+      const core = ctx.createRadialGradient(cx, cy, 0, cx, cy, scale * 0.52);
+      core.addColorStop(0, 'rgba(220,250,255,0.36)');
+      core.addColorStop(0.14, 'rgba(117,215,255,0.18)');
+      core.addColorStop(0.42, 'rgba(30,91,255,0.08)');
+      core.addColorStop(1, 'rgba(30,91,255,0)');
+      ctx.fillStyle = core;
+      ctx.fillRect(0, 0, width, height);
+
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(-0.34 + Math.sin(time * 0.00018) * 0.04);
+      ctx.scale(1.55, 0.48);
+      for (let ring = 0; ring < 4; ring += 1) {
+        ctx.beginPath();
+        ctx.arc(0, 0, scale * (0.15 + ring * 0.09), 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(117,215,255,${0.13 - ring * 0.02})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+      ctx.restore();
+
+      stars.forEach((star) => {
+        const radius = star.radius * scale;
+        const angle = star.angle + time * star.speed;
+        const wobble = Math.sin(time * 0.00045 + star.drift) * 8;
+        const x = cx + Math.cos(angle) * radius * 1.5 + wobble;
+        const y = cy + Math.sin(angle) * radius * 0.48 + Math.cos(star.drift + time * 0.0003) * 5;
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(190,242,255,${star.alpha})`;
+        ctx.arc(x, y, star.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      ctx.globalCompositeOperation = 'source-over';
+      if (!prefersReduced) raf = requestAnimationFrame(draw);
+    };
+
+    addEventListener('resize', resize, { passive: true });
+    resize();
+    draw();
+    addEventListener('pagehide', () => cancelAnimationFrame(raf), { once: true });
+  }
+
   function initLoader() {
     const loader = document.querySelector('.site-loader');
     if (!loader) return;
@@ -12,8 +98,8 @@
     const line = loader.querySelector('.loader-line b');
     const actions = loader.querySelector('[data-loader-actions]');
     const enterButtons = [...loader.querySelectorAll('[data-enter-site]')];
-    const target = 'EIGHTH ORBIT';
-    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ0123456789';
+    const target = '校准第八轨道';
+    const chars = '海王星轨道NEPTUNE0123456789';
     let progress = 0;
     let ready = false;
 
@@ -166,23 +252,23 @@
     const data = {
       vivo: {
         title: 'vivo Product Marketing',
-        body: 'Launch communication, scenario packaging, keynote rhythm, KOL perspective, and AI workflow practice inside a real consumer-tech team.'
+        body: '在真实消费科技团队里参与发布传播、场景包装、发布会节奏、KOL 视角和 AI 工作流实践。'
       },
       cuhk: {
         title: 'CUHK Sustainable Tourism',
-        body: 'A master path into sustainable tourism and geography-related digital experience research, with attention to people, places, and systems.'
+        body: '进入可持续旅游和地理相关数字体验研究，关注人、地点和系统之间的关系。'
       },
       nanhai: {
         title: 'Nanhai Conference',
-        body: 'Deep-sea technology forum execution: exhibition planning, visitor flow, bilingual materials, and on-site coordination.'
+        body: '参与深海科技论坛执行：展览规划、参观动线、双语材料和现场协调。'
       },
       jw: {
         title: 'JW Marriott Hospitality',
-        body: 'Guest relations work that trained direct listening: real needs, service gaps, and how experience breaks down in small moments.'
+        body: '宾客关系工作训练了直接倾听：真实需求、服务断点，以及体验如何在细节里失效。'
       },
       cityu: {
         title: 'City University of Macau',
-        body: 'International tourism and hotel management foundation, shaped by English coursework, research practice, and cross-cultural contexts.'
+        body: '国际旅游与酒店管理基础，来自英文课程、研究训练和跨文化环境。'
       }
     };
     const detail = document.querySelector('[data-timeline-detail]');
@@ -296,6 +382,275 @@
     addEventListener('resize', resize, { passive: true });
     resize();
     raf = requestAnimationFrame(render);
+    addEventListener('pagehide', () => cancelAnimationFrame(raf), { once: true });
+  }
+
+  function initNeptuneParticles() {
+    const canvas = document.querySelector('[data-neptune-particles]');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d', { alpha: true });
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let points = [];
+    let ringDots = [];
+    let raf = 0;
+    const pointer = {
+      x: 0.54,
+      y: 0.42,
+      tx: 0.54,
+      ty: 0.42,
+      power: 0
+    };
+    const colors = [
+      [82, 211, 255],
+      [117, 215, 255],
+      [47, 107, 255],
+      [122, 92, 255],
+      [221, 247, 255]
+    ];
+
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect();
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      width = Math.max(1, Math.floor(rect.width));
+      height = Math.max(1, Math.floor(rect.height));
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const count = innerWidth < 760 ? 760 : 1480;
+      const golden = Math.PI * (3 - Math.sqrt(5));
+      points = Array.from({ length: count }, (_, index) => {
+        const y = 1 - (index / (count - 1)) * 2;
+        const radius = Math.sqrt(1 - y * y);
+        const theta = index * golden;
+        const x = Math.cos(theta) * radius;
+        const z = Math.sin(theta) * radius;
+        const band = Math.sin(y * 18 + Math.sin(theta * 2.4) * 1.35);
+        const storm = Math.sin(theta * 5.2 + y * 10);
+        const colorIndex = band > 0.58 ? 4 : band > 0.08 ? 0 : storm > 0.45 ? 3 : 2;
+        return {
+          x,
+          y: y * 0.86,
+          z,
+          size: 0.7 + Math.random() * 1.45 + Math.abs(band) * 0.3,
+          alpha: 0.32 + Math.random() * 0.44,
+          color: colors[colorIndex],
+          band: Math.abs(band)
+        };
+      });
+
+      const ringCount = innerWidth < 760 ? 150 : 260;
+      ringDots = Array.from({ length: ringCount }, (_, index) => ({
+        angle: (index / ringCount) * Math.PI * 2,
+        offset: (Math.random() - 0.5) * 0.12,
+        speed: 0.00022 + Math.random() * 0.00034,
+        size: 0.7 + Math.random() * 1.5,
+        alpha: 0.18 + Math.random() * 0.42
+      }));
+    };
+
+    const sphereFrame = () => {
+      const mobile = innerWidth < 760;
+      const cx = width * (mobile ? 0.5 : 0.52);
+      const cy = height * (mobile ? 0.42 : 0.38);
+      const radius = Math.min(width, height) * (mobile ? 0.31 : 0.255);
+      return { cx, cy, radius };
+    };
+
+    const rotatePoint = (point, yaw, pitch) => {
+      const cosY = Math.cos(yaw);
+      const sinY = Math.sin(yaw);
+      const cosX = Math.cos(pitch);
+      const sinX = Math.sin(pitch);
+      const x1 = point.x * cosY + point.z * sinY;
+      const z1 = -point.x * sinY + point.z * cosY;
+      const y1 = point.y * cosX - z1 * sinX;
+      const z2 = point.y * sinX + z1 * cosX;
+      return { x: x1, y: y1, z: z2 };
+    };
+
+    const project = (point, yaw, pitch, frame) => {
+      const rotated = rotatePoint(point, yaw, pitch);
+      const depth = (rotated.z + 1) * 0.5;
+      const scale = 1 / (1 - rotated.z * 0.24);
+      return {
+        x: frame.cx + rotated.x * frame.radius * scale,
+        y: frame.cy + rotated.y * frame.radius * 0.92 * scale,
+        z: rotated.z,
+        depth,
+        scale
+      };
+    };
+
+    const drawOrbit = (frame, time, front) => {
+      const scroll = Number(getComputedStyle(root).getPropertyValue('--scroll')) || 0;
+      const rotation = -0.22 + scroll * 0.42;
+      const rx = frame.radius * 1.72;
+      const ry = frame.radius * 0.34;
+      const start = front ? 0 : Math.PI;
+      const end = front ? Math.PI : Math.PI * 2;
+
+      ctx.save();
+      ctx.translate(frame.cx, frame.cy + frame.radius * 0.06);
+      ctx.rotate(rotation);
+      ctx.scale(1, 0.98);
+      ctx.beginPath();
+      ctx.ellipse(0, 0, rx, ry, 0, start, end);
+      ctx.strokeStyle = front ? 'rgba(180,244,255,0.34)' : 'rgba(117,215,255,0.12)';
+      ctx.lineWidth = front ? 1.2 : 0.8;
+      ctx.stroke();
+      ctx.restore();
+
+      const cos = Math.cos(rotation);
+      const sin = Math.sin(rotation);
+      ringDots.forEach((dot) => {
+        const angle = dot.angle + time * dot.speed;
+        const isFront = Math.sin(angle) > 0;
+        if (isFront !== front) return;
+        const localX = Math.cos(angle) * rx * (1 + dot.offset);
+        const localY = Math.sin(angle) * ry * (1 + dot.offset);
+        let x = frame.cx + localX * cos - localY * sin;
+        let y = frame.cy + frame.radius * 0.06 + localX * sin + localY * cos;
+        const dx = x - pointer.x * width;
+        const dy = y - pointer.y * height;
+        const distance = Math.hypot(dx, dy) || 1;
+        const influence = Math.exp(-(distance * distance) / (frame.radius * frame.radius * 0.72)) * pointer.power;
+        x += (dx / distance) * influence * 28;
+        y += (dy / distance) * influence * 20;
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(180,244,255,${dot.alpha + influence * 0.55})`;
+        ctx.arc(x, y, dot.size * (front ? 1.1 : 0.8) * (1 + influence), 0, Math.PI * 2);
+        ctx.fill();
+      });
+    };
+
+    const drawBand = (lat, yaw, pitch, frame, alpha, time) => {
+      let drawing = false;
+      ctx.beginPath();
+      for (let i = 0; i <= 96; i += 1) {
+        const lon = -Math.PI + (i / 96) * Math.PI * 2;
+        const wave = Math.sin(lon * 3 + time * 0.00032 + lat * 10) * 0.018;
+        const y = lat + wave;
+        const r = Math.sqrt(Math.max(0, 1 - y * y));
+        const p = { x: Math.cos(lon) * r, y: y * 0.86, z: Math.sin(lon) * r };
+        const projected = project(p, yaw, pitch, frame);
+        if (projected.z < -0.18) {
+          drawing = false;
+          continue;
+        }
+        if (!drawing) {
+          ctx.moveTo(projected.x, projected.y);
+          drawing = true;
+        } else {
+          ctx.lineTo(projected.x, projected.y);
+        }
+      }
+      ctx.strokeStyle = `rgba(212,248,255,${alpha})`;
+      ctx.lineWidth = Math.max(0.7, frame.radius * 0.006);
+      ctx.stroke();
+    };
+
+    const render = (time = 0) => {
+      ctx.clearRect(0, 0, width, height);
+      pointer.x += (pointer.tx - pointer.x) * 0.08;
+      pointer.y += (pointer.ty - pointer.y) * 0.08;
+      pointer.power *= 0.94;
+
+      const frame = sphereFrame();
+      const scroll = Number(getComputedStyle(root).getPropertyValue('--scroll')) || 0;
+      const yaw = time * 0.00008 + scroll * 0.6 + (pointer.x - 0.5) * 0.2;
+      const pitch = -0.12 + (pointer.y - 0.42) * 0.18;
+
+      ctx.globalCompositeOperation = 'lighter';
+      const aura = ctx.createRadialGradient(frame.cx, frame.cy, frame.radius * 0.15, frame.cx, frame.cy, frame.radius * 2.15);
+      aura.addColorStop(0, 'rgba(117,215,255,0.18)');
+      aura.addColorStop(0.32, 'rgba(30,91,255,0.08)');
+      aura.addColorStop(0.72, 'rgba(122,92,255,0.035)');
+      aura.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = aura;
+      ctx.fillRect(frame.cx - frame.radius * 2.2, frame.cy - frame.radius * 2.2, frame.radius * 4.4, frame.radius * 4.4);
+
+      drawOrbit(frame, time, false);
+
+      ctx.globalCompositeOperation = 'source-over';
+      const bodyGradient = ctx.createRadialGradient(
+        frame.cx - frame.radius * 0.36,
+        frame.cy - frame.radius * 0.38,
+        frame.radius * 0.08,
+        frame.cx,
+        frame.cy,
+        frame.radius * 1.06
+      );
+      bodyGradient.addColorStop(0, 'rgba(205,250,255,0.32)');
+      bodyGradient.addColorStop(0.22, 'rgba(64,199,255,0.18)');
+      bodyGradient.addColorStop(0.56, 'rgba(30,91,255,0.12)');
+      bodyGradient.addColorStop(1, 'rgba(1,4,13,0.02)');
+      ctx.beginPath();
+      ctx.arc(frame.cx, frame.cy, frame.radius * 1.02, 0, Math.PI * 2);
+      ctx.fillStyle = bodyGradient;
+      ctx.fill();
+
+      ctx.globalCompositeOperation = 'lighter';
+      [-0.52, -0.34, -0.16, 0.04, 0.22, 0.42].forEach((lat, index) => {
+        drawBand(lat, yaw, pitch, frame, 0.08 + index * 0.018, time);
+      });
+
+      const projected = points.map((point) => {
+        const p = project(point, yaw, pitch, frame);
+        const dx = p.x - pointer.x * width;
+        const dy = p.y - pointer.y * height;
+        const distance = Math.hypot(dx, dy) || 1;
+        const influence = Math.exp(-(distance * distance) / (frame.radius * frame.radius * 0.5)) * pointer.power;
+        return { point, p, dx, dy, distance, influence };
+      }).sort((a, b) => a.p.z - b.p.z);
+
+      projected.forEach(({ point, p, dx, dy, distance, influence }) => {
+        const color = point.color;
+        const nx = dx / distance;
+        const ny = dy / distance;
+        const x = p.x + nx * influence * 34;
+        const y = p.y + ny * influence * 28;
+        const rim = Math.pow(1 - Math.abs(p.px || 0), 0.5);
+        const alpha = Math.min(0.98, point.alpha * (0.26 + p.depth * 0.82) + influence * 0.55 + point.band * 0.08);
+        const size = point.size * (0.62 + p.depth * 0.9) * p.scale * (1 + influence * 1.1);
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(${color[0]},${color[1]},${color[2]},${alpha})`;
+        ctx.arc(x, y, size + rim * 0.05, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      drawOrbit(frame, time, true);
+
+      const edge = ctx.createRadialGradient(frame.cx, frame.cy, frame.radius * 0.78, frame.cx, frame.cy, frame.radius * 1.2);
+      edge.addColorStop(0, 'rgba(255,255,255,0)');
+      edge.addColorStop(0.78, 'rgba(117,215,255,0.05)');
+      edge.addColorStop(1, 'rgba(174,238,255,0.26)');
+      ctx.beginPath();
+      ctx.arc(frame.cx, frame.cy, frame.radius * 1.08, 0, Math.PI * 2);
+      ctx.fillStyle = edge;
+      ctx.fill();
+
+      ctx.globalCompositeOperation = 'source-over';
+      if (!prefersReduced) raf = requestAnimationFrame(render);
+    };
+
+    addEventListener('pointermove', (event) => {
+      pointer.tx = event.clientX / innerWidth;
+      pointer.ty = event.clientY / innerHeight;
+      pointer.power = Math.min(1.4, pointer.power + 0.08);
+    }, { passive: true });
+    addEventListener('click', (event) => {
+      pointer.tx = event.clientX / innerWidth;
+      pointer.ty = event.clientY / innerHeight;
+      pointer.power = 1.5;
+    });
+    addEventListener('resize', resize, { passive: true });
+    resize();
+    render();
     addEventListener('pagehide', () => cancelAnimationFrame(raf), { once: true });
   }
 
@@ -417,10 +772,12 @@
     });
   }
 
+  initLoaderGalaxy();
   initLoader();
   initNavigation();
   initReveal();
   initGravityField();
+  initNeptuneParticles();
   initOceanField();
   initPointerField();
   initTilt();
