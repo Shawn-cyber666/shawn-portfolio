@@ -93,52 +93,32 @@
     const loader = document.querySelector('.site-loader');
     if (!loader) return;
     body.classList.add('is-locked');
-    const word = loader.querySelector('[data-loader-word]');
     const count = loader.querySelector('[data-loader-count]');
     const line = loader.querySelector('.loader-line b');
-    const actions = loader.querySelector('[data-loader-actions]');
-    const enterButtons = [...loader.querySelectorAll('[data-enter-site]')];
-    const target = '校准第八轨道';
-    const chars = '海王星轨道NEPTUNE0123456789';
-    let progress = 0;
-    let ready = false;
+    const duration = prefersReduced ? 80 : 1380;
+    let start = 0;
 
     const closeLoader = () => {
-      if (!ready) return;
       loader.classList.add('is-hidden');
       body.classList.remove('is-locked');
-      setTimeout(() => loader.remove(), prefersReduced ? 80 : 900);
+      setTimeout(() => loader.remove(), prefersReduced ? 80 : 760);
     };
 
-    const tick = () => {
-      progress = Math.min(100, progress + (100 - progress) * 0.18 + 2.1);
-      const locked = Math.floor(target.length * (progress / 100));
-      const scrambled = Array.from({ length: target.length - locked }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
-      word.textContent = target.slice(0, locked) + scrambled;
-      count.textContent = String(Math.floor(progress)).padStart(3, '0');
+    const tick = (time) => {
+      if (!start) start = time;
+      const raw = Math.min(1, (time - start) / duration);
+      const eased = 1 - Math.pow(1 - raw, 3);
+      const progress = Math.round(eased * 100);
+      count.textContent = String(progress).padStart(3, '0');
       line.style.width = `${progress}%`;
-      if (progress < 99) {
-        setTimeout(tick, prefersReduced ? 1 : 42);
-      } else {
-        word.textContent = target;
-        count.textContent = '100';
-        ready = true;
+      if (raw < 1) requestAnimationFrame(tick);
+      else {
         loader.classList.add('is-ready');
-        actions?.removeAttribute('aria-hidden');
-        enterButtons[0]?.focus({ preventScroll: true });
-        if (prefersReduced) closeLoader();
+        setTimeout(closeLoader, prefersReduced ? 0 : 160);
       }
     };
 
-    enterButtons.forEach((button) => button.addEventListener('click', closeLoader));
-    loader.addEventListener('click', (event) => {
-      if (event.target.closest('button')) return;
-      closeLoader();
-    });
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter' || event.key === ' ') closeLoader();
-    }, { once: true });
-    tick();
+    requestAnimationFrame(tick);
   }
 
   function initNavigation() {
@@ -395,6 +375,7 @@
     let atmosphere = [];
     let ringDots = [];
     let glints = [];
+    let signals = [];
     let raf = 0;
     const pointer = {
       x: 0.54,
@@ -415,7 +396,7 @@
       canvas.style.height = `${height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      const atmosphereCount = innerWidth < 760 ? 130 : 220;
+      const atmosphereCount = 0;
       atmosphere = Array.from({ length: atmosphereCount }, (_, index) => ({
         angle: (index / atmosphereCount) * Math.PI * 2 + Math.random() * 0.08,
         radius: 0.86 + Math.random() * 0.23,
@@ -425,7 +406,7 @@
         tint: Math.random() > 0.72 ? '221,247,255' : Math.random() > 0.42 ? '117,215,255' : '47,107,255'
       }));
 
-      const ringCount = innerWidth < 760 ? 120 : 220;
+      const ringCount = 0;
       ringDots = Array.from({ length: ringCount }, (_, index) => ({
         angle: (index / ringCount) * Math.PI * 2,
         offset: (Math.random() - 0.5) * 0.16,
@@ -434,7 +415,7 @@
         alpha: 0.12 + Math.random() * 0.32
       }));
 
-      const glintCount = innerWidth < 760 ? 22 : 34;
+      const glintCount = 0;
       glints = Array.from({ length: glintCount }, () => ({
         x: -0.74 + Math.random() * 1.48,
         y: -0.66 + Math.random() * 1.32,
@@ -442,6 +423,20 @@
         phase: Math.random() * Math.PI * 2,
         size: 0.45 + Math.random() * 1.15,
         alpha: 0.07 + Math.random() * 0.16
+      }));
+
+      const signalCount = innerWidth < 760 ? 10 : 28;
+      signals = Array.from({ length: signalCount }, (_, index) => ({
+        x: Math.random(),
+        y: 0.08 + Math.random() * 0.66,
+        vx: 0.000018 + Math.random() * 0.000052,
+        drift: 0.5 + Math.random() * 1.6,
+        phase: Math.random() * Math.PI * 2,
+        size: 0.45 + Math.random() * 0.5,
+        alpha: 0.06 + Math.random() * 0.16,
+        length: 12 + Math.random() * 30,
+        bend: (Math.random() - 0.5) * 8,
+        beacon: index % 11 === 0
       }));
     };
 
@@ -664,29 +659,60 @@
       ctx.globalCompositeOperation = 'source-over';
     };
 
+    const drawSignals = (time) => {
+      const pointerX = pointer.x * width;
+      const pointerY = pointer.y * height;
+      const influenceRadius = Math.min(width, height) * 0.2;
+
+      ctx.globalCompositeOperation = 'lighter';
+      signals.forEach((signal) => {
+        const baseX = ((signal.x + time * signal.vx) % 1.14 - 0.07) * width;
+        const baseY = signal.y * height + Math.sin(time * 0.00018 * signal.drift + signal.phase) * 9;
+        const dx = baseX - pointerX;
+        const dy = baseY - pointerY;
+        const distance = Math.hypot(dx, dy) || 1;
+        const influence = Math.max(0, 1 - distance / influenceRadius) * pointer.power;
+        const tangentX = -dy / distance;
+        const tangentY = dx / distance;
+        const x = baseX + tangentX * influence * 30 + (dx / distance) * influence * 12;
+        const y = baseY + tangentY * influence * 22 + (dy / distance) * influence * 8;
+        const pulse = 0.72 + Math.sin(time * 0.0011 + signal.phase) * 0.28;
+        const alpha = signal.alpha * pulse + influence * 0.18;
+        const tailX = x - signal.length - influence * 12;
+        const tailY = y + signal.bend - tangentY * influence * 10;
+        const gradient = ctx.createLinearGradient(tailX, tailY, x, y);
+        gradient.addColorStop(0, 'rgba(117,215,255,0)');
+        gradient.addColorStop(0.72, `rgba(117,215,255,${alpha * 0.34})`);
+        gradient.addColorStop(1, `rgba(221,247,255,${alpha})`);
+        ctx.beginPath();
+        ctx.moveTo(tailX, tailY);
+        ctx.quadraticCurveTo(
+          (tailX + x) * 0.5 + tangentX * influence * 8,
+          (tailY + y) * 0.5 + tangentY * influence * 8,
+          x,
+          y
+        );
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 0.48 + signal.size * 0.42 + influence * 0.34;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+
+        if (signal.beacon) {
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(226,248,255,${alpha * 0.72})`;
+          ctx.arc(x, y, 0.55 + influence * 0.42, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      });
+      ctx.globalCompositeOperation = 'source-over';
+    };
+
     const render = (time = 0) => {
       ctx.clearRect(0, 0, width, height);
       pointer.x += (pointer.tx - pointer.x) * 0.08;
       pointer.y += (pointer.ty - pointer.y) * 0.08;
-      pointer.power *= 0.94;
-
-      const frame = sphereFrame();
-
-      ctx.globalCompositeOperation = 'lighter';
-      const aura = ctx.createRadialGradient(frame.cx, frame.cy, frame.radius * 0.15, frame.cx, frame.cy, frame.radius * 2.15);
-      aura.addColorStop(0, 'rgba(117,215,255,0.16)');
-      aura.addColorStop(0.36, 'rgba(30,91,255,0.08)');
-      aura.addColorStop(0.72, 'rgba(122,92,255,0.04)');
-      aura.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = aura;
-      ctx.fillRect(frame.cx - frame.radius * 2.2, frame.cy - frame.radius * 2.2, frame.radius * 4.4, frame.radius * 4.4);
-
-      drawOrbit(frame, time, false);
-      drawPlanet(frame, time);
-      drawAtmosphere(frame, time);
-      drawOrbit(frame, time, true);
-
-      ctx.globalCompositeOperation = 'source-over';
+      pointer.power *= 0.955;
+      drawSignals(time);
       if (!prefersReduced) raf = requestAnimationFrame(render);
     };
 
@@ -812,11 +838,9 @@
       if (!link) return;
       const target = document.querySelector(link.getAttribute('href'));
       if (!target) return;
-      event.preventDefault();
       wipe.classList.remove('is-leaving');
       wipe.classList.add('is-active');
       setTimeout(() => {
-        target.scrollIntoView({ behavior: 'auto', block: 'start' });
         wipe.classList.add('is-leaving');
         wipe.classList.remove('is-active');
       }, 240);
