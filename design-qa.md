@@ -2,49 +2,63 @@
 
 ## Visual truth
 
-- Selected concept: `.codex-audit/18-selected-neptune-index.png`
-- Desktop implementation: `.codex-audit/19-index-desktop.png`
-- Side-by-side comparison: `.codex-audit/20-source-vs-index-desktop.png`
-- Mobile hero: `.codex-audit/31-mobile-hero-framed.png`
-- Work section: `.codex-audit/22-work-desktop-settled.png`
-- Experience section: `.codex-audit/23-experience-desktop.png`
-- Thinking section: `.codex-audit/25-thinking-desktop-settled.png`
-- Companion work state: `.codex-audit/33-companion-work.png`
-- Companion experience state: `.codex-audit/34-companion-experience.png`
-- Companion thinking state: `.codex-audit/35-companion-thinking.png`
-- Companion contact state: `.codex-audit/36-companion-contact.png`
-- Companion before/after comparison: `.codex-audit/37-before-after-companion.png`
-- Current mobile hero: `.codex-audit/41-mobile-companion-hero.png`
-- Current mobile menu: `.codex-audit/42-mobile-menu.png`
-- Current mobile work state: `.codex-audit/43-mobile-work-companion.png`
-- Desktop viewport: 1440 x 1024; captured page area 1425 x 1013
-- Mobile viewport: 390 x 844
-- State: loader dismissed, hero idle, default experience selected
+- Selected concept: `C:\Users\Administrator\.codex\generated_images\019f2c62-b673-7e11-aa4b-2c5db52e542b\exec-61a40860-a246-4b4f-9cf9-a099214eee21.png`
+- Final desktop implementation: `.codex-audit/71-field-final-intensity.png`
+- Final source/implementation comparison: `.codex-audit/72-source-vs-final.png`
+- Final mobile implementation: `.codex-audit/73-field-final-mobile.png`
+- Loader state: `.codex-audit/54-field-loader-v2.png`
+- Work state: `.codex-audit/57-field-work.png`
+- Experience default state: `.codex-audit/58-field-experience.png`
+- Experience switched state: `.codex-audit/62-field-experience-cuhk.png`
+- Thinking state: `.codex-audit/59-field-thinking.png`
+- Contact state: `.codex-audit/61-field-contact-v2.png`
+- Mobile menu state: `.codex-audit/56-field-mobile-menu.png`
+- Browser viewport override: 1440 x 900 desktop and 390 x 844 mobile
+- Captured desktop page area: 1425 x 891
+- State: loader dismissed, hero active, pointer positioned between title and Neptune
 
-The first viewport is the full hero composition, so the full side-by-side image is also the focused comparison for the rail, headline, Neptune crop, CTA, and selected-work strip.
+The full first viewport is also the focused comparison for the core visual relationship: title, Neptune crop, particle currents, local vortex, left rail, and selected-work strip. Those details are readable at original resolution, so an additional crop was not required.
 
 ## Comparison history
 
-1. First pass matched the selected concept's fixed left index, dark editorial field, lower-left statement, cropped right-side planet, and bottom work strip.
-2. The planet asset was replaced with a purpose-built 1672 x 941 Neptune image so the surface reads as a physical world rather than CSS art, particles, or a video in a box.
-3. Decorative particles, HUD labels, glass cards, cursor chrome, and repeated rounded controls were removed to restore negative space and hierarchy.
-4. Mobile project media initially inherited tall image proportions. It was fixed to stable 260px media height at 390px, reducing the first project from about 1161px to 683px without removing content.
-5. Chapter highlighting initially depended on IntersectionObserver callback order. It now calculates the active section from a stable viewport anchor and passed direct jumps to Work, Experience, and Thinking.
-6. Neptune now persists after the hero as a transparent photographic companion layer. Work, Experience, Thinking, and Contact each use a distinct crop, scale, opacity, and tonal state while preserving the selected editorial layout.
-7. The companion is loaded after the hero becomes usable, animates only transform/opacity/filter, and disables pointer-driven motion under `prefers-reduced-motion`.
+1. The first pass placed the two magnetic currents too close to the viewport edges and made the local vortex nearly invisible (`45-field-desktop.png`).
+2. The flow attachment angles and guide currents were moved into the visible composition, and text-safe particle suppression was narrowed to the actual copy bounds (`46-field-desktop-v2.png`, `48-field-vortex.png`).
+3. A separate microscopic dust pass and directed rim-shedding pass were added so the field reads as matter leaving Neptune rather than decorative dotted lines (`52-field-rim.png`).
+4. The entry state was rebuilt as a restrained galaxy field. Its stacking was separated from the mobile menu state so the canvas cannot cover navigation (`54-field-loader-v2.png`, `56-field-mobile-menu.png`).
+5. Full-page orbit states were checked. The particle color and intensity now adapt to Work, Experience, Thinking, and Contact while the photographic Neptune companion stays behind content (`57-field-work.png` through `61-field-contact-v2.png`).
+6. The Contact section was increased to a full viewport so direct navigation no longer exposes a white strip from the previous section (`61-field-contact-v2.png`).
+7. The hero planet center and radius were calibrated from the rendered image edge. Particle density, field width, and the cursor vortex were then refined against the combined source/implementation comparison (`72-source-vs-final.png`).
 
 ## Findings
 
 - P0: none.
 - P1: none.
-- P2: none after fixes. No text overlap, horizontal overflow, missing logo, broken image, unreadable contrast, or blocked primary action remains.
-- Typography: heading scale, line height, weight, and Chinese wrapping were checked at desktop and 390px mobile.
-- Spacing: left rail width, hero content offset, bottom work strip, project rows, and mobile media dimensions use stable constraints.
-- Assets: hero, project images, photography, and all five organization logos load with non-zero natural dimensions.
-- Interaction: hero pointer parallax, full-page Neptune scroll states, document-level pointer response, project proximity response, mobile menu open/close, mobile Work jump, experience switching with Neptune signal feedback, and chapter highlighting were exercised in the browser.
-- Performance: the companion asset is a 760 x 784 transparent PNG loaded during idle time; no canvas loop, particle engine, WebGL runtime, or new dependency was introduced.
-- Accessibility: semantic headings, labelled regions, keyboard-focus styles, `aria-current`, `aria-pressed`, menu state attributes, and reduced-motion behavior are present.
-- Console: no page warnings or errors in the final local build.
+- P2: none after fixes.
+- P3: the selected concept image uses denser, more cinematic particle ribbons. The implementation intentionally keeps more negative space and preserves the existing title position and current Neptune crop. This is an accepted production trade-off for readability and rendering cost, not a missing behavior.
+
+## Required fidelity surfaces
+
+- Fonts and typography: Geist and the existing Chinese system fallbacks are preserved. Heading weight, line height, letter spacing, wrapping, and antialiasing were checked at desktop and 390px mobile. No text overlap or clipping remains.
+- Spacing and layout rhythm: the fixed rail, hero copy, Neptune crop, bottom project strip, section headers, project rows, and full-height Contact section retain stable dimensions. Desktop and mobile show no horizontal overflow.
+- Colors and visual tokens: the implementation retains the deep navy, ice cyan, silver, and white system. The canvas switches to restrained deep blue over the light Thinking chapter and returns to additive ice light over dark chapters.
+- Image quality and asset fidelity: the supplied photographic Neptune assets remain the visual source. The particle field is layered around the real rim rather than replacing it with CSS art, SVG approximation, or a boxed video. Project imagery, photography, and all organization logos load with valid dimensions.
+- Copy and content: all existing Chinese and English copy, project names, experience entries, links, email, and organization names remain unchanged.
+
+## Interaction and accessibility
+
+- Pointer movement bends nearby particles and relocates the local vortex; pointer press adds a short field pulse.
+- Scroll position updates the Neptune companion and particle field for every major chapter.
+- Experience selection updates title, copy, logo, pressed state, and emits a Neptune signal pulse.
+- Mobile menu open/close, navigation links, and keyboard focus states remain usable.
+- `prefers-reduced-motion` disables the particle canvas and preserves the static content experience.
+- Canvas resolution is capped, desktop rendering is frame-throttled, mobile/low-power particle counts are reduced, animation pauses in hidden tabs, and resize work is debounced.
+- Browser console: no warnings or errors in the final local build.
+- Images: no broken loaded images were found.
+- Overflow: none at 1440 x 900 or 390 x 844.
+
+## Follow-up polish
+
+- If a future version prioritizes spectacle over efficiency, the desktop-only field can gain a fourth broad current or WebGL point sprites. The current Canvas version is the recommended production balance.
 
 final result: passed
 

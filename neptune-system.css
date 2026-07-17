@@ -53,13 +53,13 @@ img{display:block;max-width:100%}
 .entry-loader{
   position:fixed;
   inset:0;
-  z-index:1000;
+  z-index:1002;
   display:grid;
   grid-template-columns:auto auto;
   place-content:center;
   align-items:end;
   gap:8px 14px;
-  background:var(--bg);
+  background:rgba(2,7,17,.56);
   transition:opacity .55s var(--ease),visibility .55s var(--ease);
 }
 .entry-loader.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
@@ -102,6 +102,7 @@ img{display:block;max-width:100%}
   flex-direction:column;
   border-right:1px solid var(--line);
   background:rgba(2,7,17,.92);
+  transition:opacity .6s var(--ease);
 }
 .rail-brand{
   display:grid;
@@ -181,6 +182,21 @@ img{display:block;max-width:100%}
   position:relative;
   margin-left:var(--rail);
 }
+
+.gravity-field{
+  position:fixed;
+  inset:0;
+  z-index:7;
+  width:100vw;
+  height:100vh;
+  pointer-events:none;
+  opacity:1;
+  transition:opacity .65s var(--ease);
+}
+.entry-loader:not(.is-hidden) ~ .site-main .gravity-field{z-index:1001}
+.entry-loader:not(.is-hidden) ~ .orbit-rail{opacity:.06}
+.entry-loader:not(.is-hidden) ~ .site-main .hero-media,
+.entry-loader:not(.is-hidden) ~ .site-main .hero-content{opacity:.07}
 
 .neptune-companion{
   --orbit-x:0vw;
@@ -305,7 +321,7 @@ img{display:block;max-width:100%}
   object-fit:cover;
   object-position:62% center;
   transform:translate3d(calc(var(--pointer-x,0) * -7px),calc(var(--pointer-y,0) * -5px),0) scale(1.018);
-  transition:filter .6s var(--ease);
+  transition:filter .6s var(--ease),opacity .7s var(--ease);
   will-change:transform;
 }
 .hero:after{
@@ -324,8 +340,11 @@ img{display:block;max-width:100%}
   flex-direction:column;
   justify-content:center;
   padding:90px var(--pad) 190px;
+  transition:opacity .7s var(--ease);
 }
 .hero-copy{
+  position:relative;
+  z-index:2;
   width:min(650px,58vw);
   margin-top:18px;
 }
@@ -345,11 +364,15 @@ img{display:block;max-width:100%}
   letter-spacing:0;
 }
 .hero h1 span{
+  width:fit-content;
+  max-width:100%;
   font-size:clamp(64px,7.3vw,108px);
   font-weight:520;
   line-height:.94;
 }
 .hero h1 strong{
+  width:fit-content;
+  max-width:100%;
   color:var(--ice);
   font-size:clamp(36px,4.2vw,62px);
   font-weight:380;
@@ -771,7 +794,7 @@ img{display:block;max-width:100%}
 
 .contact-section{
   position:relative;
-  min-height:88svh;
+  min-height:100svh;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
@@ -845,6 +868,7 @@ img{display:block;max-width:100%}
   :root{--pad:20px}
   .orbit-rail{display:none}
   .site-main{margin-left:0}
+  .gravity-field{opacity:.72}
   .neptune-companion{
     right:-55vw;
     width:min(126vw,720px);
@@ -884,6 +908,10 @@ img{display:block;max-width:100%}
     color:var(--silver);
     font-size:12px;
     cursor:pointer;
+  }
+  .mobile-header button:focus-visible{
+    outline:1px solid var(--ice);
+    outline-offset:2px;
   }
   .mobile-menu{
     position:fixed;
@@ -1022,6 +1050,7 @@ img{display:block;max-width:100%}
     transition-duration:.001ms!important;
   }
   .hero-media{transform:none!important}
+  .gravity-field{display:none}
   .neptune-companion{
     --pointer-x:0px!important;
     --pointer-y:0px!important;
