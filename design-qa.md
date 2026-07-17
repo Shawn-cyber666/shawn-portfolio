@@ -9,6 +9,14 @@
 - Work section: `.codex-audit/22-work-desktop-settled.png`
 - Experience section: `.codex-audit/23-experience-desktop.png`
 - Thinking section: `.codex-audit/25-thinking-desktop-settled.png`
+- Companion work state: `.codex-audit/33-companion-work.png`
+- Companion experience state: `.codex-audit/34-companion-experience.png`
+- Companion thinking state: `.codex-audit/35-companion-thinking.png`
+- Companion contact state: `.codex-audit/36-companion-contact.png`
+- Companion before/after comparison: `.codex-audit/37-before-after-companion.png`
+- Current mobile hero: `.codex-audit/41-mobile-companion-hero.png`
+- Current mobile menu: `.codex-audit/42-mobile-menu.png`
+- Current mobile work state: `.codex-audit/43-mobile-work-companion.png`
 - Desktop viewport: 1440 x 1024; captured page area 1425 x 1013
 - Mobile viewport: 390 x 844
 - State: loader dismissed, hero idle, default experience selected
@@ -22,6 +30,8 @@ The first viewport is the full hero composition, so the full side-by-side image 
 3. Decorative particles, HUD labels, glass cards, cursor chrome, and repeated rounded controls were removed to restore negative space and hierarchy.
 4. Mobile project media initially inherited tall image proportions. It was fixed to stable 260px media height at 390px, reducing the first project from about 1161px to 683px without removing content.
 5. Chapter highlighting initially depended on IntersectionObserver callback order. It now calculates the active section from a stable viewport anchor and passed direct jumps to Work, Experience, and Thinking.
+6. Neptune now persists after the hero as a transparent photographic companion layer. Work, Experience, Thinking, and Contact each use a distinct crop, scale, opacity, and tonal state while preserving the selected editorial layout.
+7. The companion is loaded after the hero becomes usable, animates only transform/opacity/filter, and disables pointer-driven motion under `prefers-reduced-motion`.
 
 ## Findings
 
@@ -31,8 +41,10 @@ The first viewport is the full hero composition, so the full side-by-side image 
 - Typography: heading scale, line height, weight, and Chinese wrapping were checked at desktop and 390px mobile.
 - Spacing: left rail width, hero content offset, bottom work strip, project rows, and mobile media dimensions use stable constraints.
 - Assets: hero, project images, photography, and all five organization logos load with non-zero natural dimensions.
-- Interaction: hero pointer parallax, mobile menu open/close, mobile Work jump, experience switching, and chapter highlighting were exercised in the browser.
+- Interaction: hero pointer parallax, full-page Neptune scroll states, document-level pointer response, project proximity response, mobile menu open/close, mobile Work jump, experience switching with Neptune signal feedback, and chapter highlighting were exercised in the browser.
+- Performance: the companion asset is a 760 x 784 transparent PNG loaded during idle time; no canvas loop, particle engine, WebGL runtime, or new dependency was introduced.
 - Accessibility: semantic headings, labelled regions, keyboard-focus styles, `aria-current`, `aria-pressed`, menu state attributes, and reduced-motion behavior are present.
 - Console: no page warnings or errors in the final local build.
 
 final result: passed
+

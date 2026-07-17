@@ -167,6 +167,7 @@
       });
 
       detail.classList.add('is-changing');
+      document.dispatchEvent(new CustomEvent('neptune:signal'));
       window.setTimeout(() => {
         title.textContent = content.title;
         copy.textContent = content.copy;
@@ -179,6 +180,106 @@
     items.forEach((item) => {
       item.setAttribute('aria-pressed', String(item.classList.contains('is-active')));
       item.addEventListener('click', () => select(item));
+    });
+  }
+
+  function setupNeptuneCompanion() {
+    const companion = document.querySelector('[data-neptune-companion]');
+    const image = companion?.querySelector('[data-neptune-image]');
+    const sections = [...document.querySelectorAll('[data-neptune-section]')];
+
+    if (!companion || !image || !sections.length) return;
+
+    const loadImage = () => {
+      if (image.src || !image.dataset.src) return;
+      image.addEventListener('load', () => companion.classList.add('is-ready'), { once: true });
+      image.addEventListener('error', () => companion.remove(), { once: true });
+      image.src = image.dataset.src;
+    };
+
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(loadImage, { timeout: 1200 });
+    } else {
+      window.setTimeout(loadImage, 360);
+    }
+
+    let scrollFrame = 0;
+
+    const updateOrbit = () => {
+      const anchor = window.innerHeight * 0.46;
+      let current = sections[0];
+
+      sections.forEach((section) => {
+        if (section.getBoundingClientRect().top <= anchor) current = section;
+      });
+
+      const rect = current.getBoundingClientRect();
+      const progress = Math.max(0, Math.min(1, (anchor - rect.top) / Math.max(rect.height, 1)));
+      const orbit = current.id || 'intro';
+
+      companion.dataset.orbit = orbit;
+      companion.style.setProperty('--scroll-y', `${((progress - 0.5) * 46).toFixed(1)}px`);
+      companion.style.setProperty('--scroll-rotation', `${((progress - 0.5) * 0.8).toFixed(2)}deg`);
+      scrollFrame = 0;
+    };
+
+    const requestOrbitUpdate = () => {
+      if (!scrollFrame) scrollFrame = window.requestAnimationFrame(updateOrbit);
+    };
+
+    updateOrbit();
+    window.addEventListener('scroll', requestOrbitUpdate, { passive: true });
+    window.addEventListener('resize', requestOrbitUpdate);
+
+    document.querySelectorAll('.project-row').forEach((row) => {
+      row.addEventListener('mouseenter', () => companion.classList.add('is-engaged'));
+      row.addEventListener('mouseleave', () => companion.classList.remove('is-engaged'));
+    });
+
+    let signalTimer = 0;
+    document.addEventListener('neptune:signal', () => {
+      companion.classList.remove('is-pulsing');
+      window.clearTimeout(signalTimer);
+      window.requestAnimationFrame(() => companion.classList.add('is-pulsing'));
+      signalTimer = window.setTimeout(() => companion.classList.remove('is-pulsing'), 760);
+    });
+
+    if (prefersReducedMotion || !window.matchMedia('(pointer: fine)').matches) return;
+
+    let pointerFrame = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    const renderPointer = () => {
+      currentX += (targetX - currentX) * 0.12;
+      currentY += (targetY - currentY) * 0.12;
+      companion.style.setProperty('--pointer-x', `${(currentX * 14).toFixed(2)}px`);
+      companion.style.setProperty('--pointer-y', `${(currentY * 10).toFixed(2)}px`);
+      companion.style.setProperty('--pointer-rotation', `${(currentX * 0.34).toFixed(3)}deg`);
+
+      if (Math.abs(targetX - currentX) > 0.003 || Math.abs(targetY - currentY) > 0.003) {
+        pointerFrame = window.requestAnimationFrame(renderPointer);
+      } else {
+        pointerFrame = 0;
+      }
+    };
+
+    const requestPointerRender = () => {
+      if (!pointerFrame) pointerFrame = window.requestAnimationFrame(renderPointer);
+    };
+
+    window.addEventListener('pointermove', (event) => {
+      targetX = (event.clientX / window.innerWidth - 0.5) * 2;
+      targetY = (event.clientY / window.innerHeight - 0.5) * 2;
+      requestPointerRender();
+    }, { passive: true });
+
+    window.addEventListener('blur', () => {
+      targetX = 0;
+      targetY = 0;
+      requestPointerRender();
     });
   }
 
@@ -214,6 +315,8 @@
   setupReveal();
   setupNavigation();
   setupMobileMenu();
+  setupNeptuneCompanion();
   setupExperience();
   setupHeroParallax();
 })();
+

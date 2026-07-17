@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="/shawn-portfolio/assets/neptune-index-hero.png">
-  <link rel="stylesheet" href="/shawn-portfolio/neptune-system.css?v=20260716-index">
+  <link rel="stylesheet" href="/shawn-portfolio/neptune-system.css?v=20260717-companion">
 </head>
 <body class="is-loading">
   <div class="entry-loader" data-loader role="status" aria-label="正在进入第八轨道">
@@ -67,7 +67,11 @@
   </nav>
 
   <main class="site-main">
-    <section class="hero" id="intro" data-section="intro" aria-label="第八轨道介绍">
+    <div class="neptune-companion" data-neptune-companion data-orbit="intro" aria-hidden="true">
+      <img data-neptune-image data-src="/shawn-portfolio/assets/neptune-companion.png" alt="" decoding="async">
+    </div>
+
+    <section class="hero" id="intro" data-section="intro" data-neptune-section aria-label="第八轨道介绍">
       <img class="hero-media" src="/shawn-portfolio/assets/neptune-index-hero.png" alt="深空中的海王星边缘" fetchpriority="high" decoding="async">
       <div class="hero-content">
         <div class="hero-copy reveal">
@@ -86,7 +90,7 @@
       </div>
     </section>
 
-    <section class="content-section work-section" id="work" data-section="work">
+    <section class="content-section work-section" id="work" data-section="work" data-neptune-section>
       <header class="section-header reveal">
         <p class="section-index"><span>02</span> Selected Work / 作品</p>
         <h2>真实项目，比标签更能说明我。</h2>
@@ -162,7 +166,7 @@
       </div>
     </section>
 
-    <section class="content-section experience-section" id="experience" data-section="experience">
+    <section class="content-section experience-section" id="experience" data-section="experience" data-neptune-section>
       <header class="section-header reveal">
         <p class="section-index"><span>03</span> Experience / 经历</p>
         <h2>不是一条直线，是同一种判断力的形成。</h2>
@@ -204,7 +208,7 @@
       </div>
     </section>
 
-    <section class="content-section thinking-section" id="thinking" data-section="thinking">
+    <section class="content-section thinking-section" id="thinking" data-section="thinking" data-neptune-section>
       <header class="section-header reveal">
         <p class="section-index"><span>04</span> Thinking / 思考</p>
         <h2>把快工具，慢慢用懂。</h2>
@@ -248,7 +252,7 @@
       </div>
     </section>
 
-    <section class="contact-section" id="contact">
+    <section class="contact-section" id="contact" data-section="contact" data-neptune-section>
       <div class="contact-copy reveal">
         <p class="section-index"><span>06</span> Contact / 联系</p>
         <h2>先找到真实问题，再围绕它建立系统。</h2>
@@ -266,6 +270,7 @@
     </section>
   </main>
 
-  <script src="/shawn-portfolio/neptune-portfolio.js?v=20260716-index" defer></script>
+  <script src="/shawn-portfolio/neptune-portfolio.js?v=20260717-companion" defer></script>
 </body>
 </html>
+
