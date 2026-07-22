@@ -3,321 +3,196 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shawn Lee - 第八轨道</title>
-  <meta name="description" content="Shawn Lee 的个人作品集：产品判断、AI 工作流、消费科技叙事与数字体验。">
+  <title>Shawn Lee — 第八轨道</title>
+  <meta name="description" content="Shawn Lee 的个人主页：产品思维、AI 工作流与造浪局。">
   <meta name="theme-color" content="#020711">
-  <meta property="og:title" content="Shawn Lee - 第八轨道">
-  <meta property="og:description" content="把判断变成系统。关于产品、AI 工作流与真实场景的个人作品集。">
+  <meta property="og:title" content="Shawn Lee — 第八轨道">
+  <meta property="og:description" content="把判断变成系统。产品思维 × AI 工作流 × 真实场景。">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="/shawn-portfolio/assets/neptune-index-hero.png">
-  <link rel="stylesheet" href="/shawn-portfolio/neptune-system.css?v=20260722-wave-bureau">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="preload" as="image" href="/shawn-portfolio/assets/neptune-orbital-core.webp" type="image/webp">
+  <link rel="stylesheet" href="/shawn-portfolio/neptune-system.css?v=20260722-orbital-signal">
 </head>
 <body class="is-loading">
   <div class="entry-loader" data-loader role="status" aria-label="正在进入第八轨道">
-    <span class="entry-number">08</span>
-    <span class="entry-name">Eighth Orbit</span>
-    <span class="entry-line" aria-hidden="true"><i></i></span>
+    <span class="entry-loader__index">08</span>
+    <span class="entry-loader__name">Eighth Orbit</span>
+    <progress class="entry-loader__progress" max="100" value="0" data-loader-progress>0%</progress>
   </div>
 
-  <a class="skip-link" href="#work">跳到作品区</a>
+  <a class="skip-link" href="#wave-bureau">跳到造浪局</a>
 
-  <aside class="orbit-rail" aria-label="章节导航">
-    <a class="rail-brand" href="#intro" aria-label="回到首页">
+  <header class="site-header" data-header>
+    <a class="brand" href="#about" aria-label="回到第八轨道首页">
       <strong>Shawn Lee</strong>
       <span>Eighth Orbit</span>
-      <small>/ 第八轨道</small>
+      <small>第八轨道</small>
     </a>
 
-    <nav class="rail-nav">
-      <a class="rail-link is-active" href="#intro" data-nav-link="intro">
-        <span>01</span><strong>介绍</strong>
-      </a>
-      <a class="rail-link" href="#work" data-nav-link="work">
-        <span>02</span><strong>作品</strong>
-      </a>
-      <a class="rail-link" href="#experience" data-nav-link="experience">
-        <span>03</span><strong>经历</strong>
-      </a>
-      <a class="rail-link" href="#thinking" data-nav-link="thinking">
-        <span>04</span><strong>思考</strong>
-      </a>
+    <nav class="desktop-nav" aria-label="主要导航">
+      <a href="#about" data-nav="about"><span>01</span>关于</a>
+      <a href="#wave-bureau" data-nav="wave-bureau"><span>02</span>造浪局</a>
+      <a href="#experience" data-nav="experience"><span>03</span>经历</a>
+      <a href="#contact" data-nav="contact"><span>04</span>联系</a>
     </nav>
 
-    <div class="rail-footer">
-      <a href="resume.html">简历</a>
-      <a href="mailto:x_222324@163.com">联系</a>
-    </div>
-  </aside>
-
-  <header class="mobile-header">
-    <a href="#intro" class="mobile-brand">Shawn Lee <span>/ 08</span></a>
-    <button type="button" data-menu-button aria-expanded="false" aria-controls="mobileMenu">菜单</button>
+    <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="mobileMenu">
+      <span>Menu</span><i class="ph ph-list" aria-hidden="true"></i>
+    </button>
   </header>
 
-  <nav class="mobile-menu" id="mobileMenu" data-mobile-menu aria-hidden="true" aria-label="移动端章节导航">
-    <a href="#intro"><span>01</span>介绍</a>
-    <a href="#work"><span>02</span>作品</a>
+  <nav class="mobile-menu" id="mobileMenu" data-mobile-menu aria-hidden="true" aria-label="移动端导航">
+    <a href="#about"><span>01</span>关于</a>
+    <a href="#wave-bureau"><span>02</span>造浪局</a>
     <a href="#experience"><span>03</span>经历</a>
-    <a href="#thinking"><span>04</span>思考</a>
-    <a href="#contact"><span>05</span>联系</a>
+    <a href="#contact"><span>04</span>联系</a>
     <a href="resume.html"><span>PDF</span>个人简历</a>
   </nav>
 
-  <main class="site-main">
-    <canvas class="gravity-field" data-gravity-field aria-hidden="true"></canvas>
+  <main>
+    <section class="hero section-observe" id="about" data-section="about" aria-labelledby="hero-title">
+      <div class="hero-star-field" aria-hidden="true"></div>
+      <img
+        class="orbital-core"
+        src="/shawn-portfolio/assets/neptune-orbital-core.webp"
+        alt="海王星与轨道信号"
+        fetchpriority="high"
+        decoding="async"
+        data-orbital-core
+      >
 
-    <div class="neptune-companion" data-neptune-companion data-orbit="intro" aria-hidden="true">
-      <img data-neptune-image data-src="/shawn-portfolio/assets/neptune-companion.png" alt="" decoding="async">
-    </div>
-
-    <section class="hero" id="intro" data-section="intro" data-neptune-section aria-label="第八轨道介绍">
-      <img class="hero-media" src="/shawn-portfolio/assets/neptune-index-hero.png" alt="深空中的海王星边缘" fetchpriority="high" decoding="async">
-      <div class="hero-content">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Product thinking / AI workflows</p>
-          <h1><span>第八轨道</span><strong>把判断变成系统。</strong></h1>
-          <p class="hero-statement">我关注 AI 如何进入真实工作流，也关注产品叙事如何从场景、用户和约束里长出来。</p>
-          <a class="text-action" href="#work">查看作品</a>
+      <div class="hero-copy">
+        <p class="eyebrow">产品思维 × AI 工作流 × 真实场景</p>
+        <h1 id="hero-title">
+          <span>第八轨道</span>
+          <strong>把判断变成系统。</strong>
+        </h1>
+        <p class="hero-intro">我是 Shawn Lee。关注产品如何从真实问题中生长，也持续把 AI 放进可执行、可复盘的工作流。</p>
+        <div class="hero-actions">
+          <a class="signal-button" href="https://shrimp-company.vercel.app/" target="_blank" rel="noopener">
+            <span class="signal-button__pulse" aria-hidden="true"></span>
+            进入造浪局
+            <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="text-link" href="#experience">查看经历</a>
         </div>
+      </div>
 
-        <div class="hero-projects reveal" aria-label="精选作品快捷入口">
-          <p><span>Selected Work</span><strong>/ 作品</strong></p>
-          <a href="#wave-bureau"><span>01</span><strong>造浪局</strong></a>
-          <a href="#trainee-lab"><span>02</span><strong>Trainee Lab</strong></a>
-          <a href="#strategy-hub"><span>03</span><strong>Strategy Hub</strong></a>
-        </div>
+      <a class="product-beacon" href="https://shrimp-company.vercel.app/" target="_blank" rel="noopener" aria-label="打开造浪局">
+        <span class="product-beacon__index">02</span>
+        <small>Featured Product</small>
+        <strong>造浪局</strong>
+        <p>7 AI 员工 · 13 工作流</p>
+        <em><i aria-hidden="true"></i> Live / shrimp-company.vercel.app</em>
+      </a>
+
+      <div class="hero-coordinate" aria-hidden="true">
+        <span>Eighth Orbit Coordinate</span>
+        <progress max="4" value="1">1 / 4</progress>
+        <b>08 / 13</b>
+        <span>System Signal: Stable</span>
       </div>
     </section>
 
-    <section class="content-section work-section" id="work" data-section="work" data-neptune-section>
-      <header class="section-header reveal">
-        <p class="section-index"><span>02</span> Selected Work / 作品</p>
-        <h2>真实项目，比标签更能说明我。</h2>
-        <p>从工作流、产品情报到发布叙事，每个项目都从一个具体问题开始。</p>
-      </header>
+    <section class="product-section section-observe" id="wave-bureau" data-section="wave-bureau" aria-labelledby="product-title">
+      <div class="section-kicker"><span>02</span> Featured Product / 唯一作品</div>
+      <div class="product-heading">
+        <p>AI Marketing Workflow System</p>
+        <h2 id="product-title">造浪局</h2>
+        <span class="live-state"><i aria-hidden="true"></i> Live</span>
+      </div>
 
-      <div class="project-list">
-        <article class="project-row reveal" id="wave-bureau">
-          <span class="project-number">01</span>
-          <div class="project-copy">
-            <p class="project-type">Multi-Agent Workflow / AI Marketing</p>
-            <h3>造浪局</h3>
-            <p>把营销团队拆成 7 位各有专长的 AI 员工，用 13 个工作流串起品牌文案、社媒传播、数据分析与交付，让复杂任务从一次下单开始自动接力。</p>
-            <dl>
-              <div><dt>角色</dt><dd>产品设计、Agent 编排、工作流与体验设计</dd></div>
-              <div><dt>产出</dt><dd>AI 营销协作工作台、Prompt 学堂与舆情研判</dd></div>
-            </dl>
-            <a class="text-action" href="https://shrimp-company.vercel.app/" target="_blank" rel="noopener">打开造浪局</a>
-          </div>
-          <figure class="project-media project-wave-media" aria-label="造浪局 AI 营销协作工作台界面概览">
-            <div class="wave-preview" aria-hidden="true">
-              <div class="wave-preview-top">
-                <span class="wave-mark">浪</span>
-                <span>AI 营销协作工作台</span>
-                <i></i><i></i><i></i>
-              </div>
-              <div class="wave-preview-body">
-                <div class="wave-preview-nav">
-                  <b>工作台</b>
-                  <span>仪表盘</span>
-                  <span class="is-current">工作流</span>
-                  <span>AI 团队</span>
-                  <span>任务</span>
-                  <span>AI 学堂</span>
-                </div>
-                <div class="wave-preview-main">
-                  <p>营销这件事，<br><strong>让 AI 团队帮你做</strong></p>
-                  <div class="wave-preview-stats">
-                    <span><b>7</b>AI 员工</span>
-                    <span><b>13</b>工作流</span>
-                    <span><b>3</b>全链路场景</span>
-                  </div>
-                  <div class="wave-preview-flow">
-                    <span>品牌文案</span><i></i><span>社媒传播</span><i></i><span>数据分析</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </figure>
-        </article>
+      <div class="product-layout">
+        <div class="product-statement">
+          <h3>不是多一个 AI 工具，<br>而是让一支团队开始接力。</h3>
+          <p>把营销团队拆成 7 位各有专长的 AI 员工，用 13 个工作流串起品牌文案、社媒传播、数据分析与交付。从一次下单开始，让复杂任务沿着清晰的轨道自动推进。</p>
+          <a class="signal-button signal-button--light" href="https://shrimp-company.vercel.app/" target="_blank" rel="noopener">
+            访问线上产品
+            <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+        </div>
 
-        <article class="project-row reveal" id="trainee-lab">
-          <span class="project-number">02</span>
-          <div class="project-copy">
-            <p class="project-type">AI Workflow / Mini Program</p>
-            <h3>Trainee Lab</h3>
-            <p>面向实习生和早期职场人的 AI 工作流小程序，把周报、会议纪要和 PPT 大纲变成可执行的第一步。</p>
-            <dl>
-              <div><dt>角色</dt><dd>产品概念、工作流设计、原型搭建</dd></div>
-              <div><dt>产出</dt><dd>小程序原型和任务模板</dd></div>
-            </dl>
-            <a class="text-action" href="resume.html#projects">查看项目</a>
-          </div>
-          <figure class="project-media">
-            <img src="/shawn-portfolio/assets/trainee-lab.png" alt="Trainee Lab 工作流界面" loading="lazy" decoding="async">
-          </figure>
-        </article>
+        <dl class="product-specs">
+          <div><dt>01 / Team</dt><dd><strong>7</strong><span>AI 员工</span></dd></div>
+          <div><dt>02 / Workflow</dt><dd><strong>13</strong><span>自动化工作流</span></dd></div>
+          <div><dt>03 / Scope</dt><dd><strong>3</strong><span>全链路场景</span></dd></div>
+        </dl>
+      </div>
 
-        <article class="project-row reveal" id="strategy-hub">
-          <span class="project-number">03</span>
-          <div class="project-copy">
-            <p class="project-type">Product Intelligence / Streamlit</p>
-            <h3>Strategy Hub</h3>
-            <p>把 UGC、竞品口碑和终端产品反馈压缩成可判断的信号，而不是再制造一份信息堆积。</p>
-            <dl>
-              <div><dt>角色</dt><dd>研究流程、产品框架、工具搭建</dd></div>
-              <div><dt>产出</dt><dd>搜索入口、深度分析、对比简报</dd></div>
-            </dl>
-            <a class="text-action" href="https://sentiment-analysis-tool-crmjjevyehgry45eh9wq37.streamlit.app" target="_blank" rel="noopener">打开工具</a>
-          </div>
-          <figure class="project-media">
-            <img src="/shawn-portfolio/assets/strategy-hub.png" alt="Strategy Hub 产品情报界面" loading="lazy" decoding="async">
-          </figure>
-        </article>
-
-        <article class="project-row reveal" id="vivo-work">
-          <span class="project-number">04</span>
-          <div class="project-copy">
-            <p class="project-type">Launch Narrative / Consumer Tech</p>
-            <h3>vivo Product Marketing</h3>
-            <p>参与折叠屏产品发布相关工作，把参数、场景、KOL 视角和 AI 辅助表达组织成更清晰的发布叙事。</p>
-            <dl>
-              <div><dt>角色</dt><dd>产品营销实习</dd></div>
-              <div><dt>产出</dt><dd>发布表达、素材筛选、工作流分享</dd></div>
-            </dl>
-          </div>
-          <figure class="project-media project-logo-media">
-            <img src="/shawn-portfolio/assets/vivo-logo.png" alt="vivo" loading="lazy" decoding="async">
-          </figure>
-        </article>
-
-        <article class="project-row reveal" id="portfolio-work">
-          <span class="project-number">05</span>
-          <div class="project-copy">
-            <p class="project-type">Personal System / Creative Development</p>
-            <h3>Shawn Portfolio</h3>
-            <p>把产品思考、AI 工作流实践、职业经历和摄影观察组织成一个更完整的个人入口。</p>
-            <dl>
-              <div><dt>角色</dt><dd>信息架构、视觉系统、前端实现</dd></div>
-              <div><dt>产出</dt><dd>第八轨道个人品牌系统</dd></div>
-            </dl>
-          </div>
-          <figure class="project-media project-neptune-media">
-            <img src="/shawn-portfolio/assets/neptune-index-hero.png" alt="第八轨道海王星视觉" loading="lazy" decoding="async">
-          </figure>
-        </article>
+      <div class="workflow-track" aria-label="造浪局主要工作流">
+        <span>品牌文案</span>
+        <i class="ph ph-arrow-right" aria-hidden="true"></i>
+        <span>社媒传播</span>
+        <i class="ph ph-arrow-right" aria-hidden="true"></i>
+        <span>数据分析</span>
+        <i class="ph ph-arrow-right" aria-hidden="true"></i>
+        <span>交付复盘</span>
       </div>
     </section>
 
-    <section class="content-section experience-section" id="experience" data-section="experience" data-neptune-section>
-      <header class="section-header reveal">
-        <p class="section-index"><span>03</span> Experience / 经历</p>
-        <h2>不是一条直线，是同一种判断力的形成。</h2>
-        <p>服务现场让我看见真实需求，研究训练证据意识，产品营销把这些经验带进消费科技。</p>
+    <section class="experience-section section-observe" id="experience" data-section="experience" aria-labelledby="experience-title">
+      <div class="section-kicker"><span>03</span> Experience / 经历</div>
+      <header class="experience-heading">
+        <h2 id="experience-title">不同场景，<br>同一种判断力。</h2>
+        <p>从服务现场到研究训练，再到消费科技与产品实践：每一次切换，都在训练我更快识别真实问题。</p>
       </header>
 
-      <div class="experience-layout">
+      <div class="experience-orbit">
         <div class="experience-list" role="list" aria-label="经历列表">
-          <button class="experience-item reveal is-active" type="button" data-experience="vivo">
-            <img src="/shawn-portfolio/assets/vivo-logo.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
-            <span><small>2026</small><strong>vivo Product Marketing</strong></span>
+          <button class="experience-item is-active" type="button" data-experience="vivo" aria-pressed="true">
+            <span>2026</span><strong>vivo Product Marketing</strong>
           </button>
-          <button class="experience-item reveal" type="button" data-experience="cuhk">
-            <img src="/shawn-portfolio/assets/cuhk-logo.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
-            <span><small>2026</small><strong>CUHK Sustainable Tourism</strong></span>
+          <button class="experience-item" type="button" data-experience="cuhk" aria-pressed="false">
+            <span>2026</span><strong>CUHK Sustainable Tourism</strong>
           </button>
-          <button class="experience-item reveal" type="button" data-experience="nanhai">
-            <img src="/shawn-portfolio/assets/nanhai-logo.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
-            <span><small>2024</small><strong>Nanhai Conference</strong></span>
+          <button class="experience-item" type="button" data-experience="nanhai" aria-pressed="false">
+            <span>2024</span><strong>Nanhai Conference</strong>
           </button>
-          <button class="experience-item reveal" type="button" data-experience="jw">
-            <img src="/shawn-portfolio/assets/jw-marriott-logo.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
-            <span><small>2023</small><strong>JW Marriott</strong></span>
+          <button class="experience-item" type="button" data-experience="jw" aria-pressed="false">
+            <span>2023</span><strong>JW Marriott</strong>
           </button>
-          <button class="experience-item reveal" type="button" data-experience="cityu">
-            <img src="/shawn-portfolio/assets/cityu-macau-logo.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
-            <span><small>2022</small><strong>City University of Macau</strong></span>
+          <button class="experience-item" type="button" data-experience="cityu" aria-pressed="false">
+            <span>2022</span><strong>City University of Macau</strong>
           </button>
         </div>
 
-        <aside class="experience-detail reveal" data-experience-detail aria-live="polite">
-          <div class="experience-detail-top">
-            <p>Current Orbit / 当前轨道</p>
+        <article class="experience-detail" data-experience-detail aria-live="polite">
+          <div class="experience-detail__top">
+            <span>Current Orbit</span>
             <img data-experience-logo src="/shawn-portfolio/assets/vivo-logo.png" alt="vivo">
           </div>
+          <p data-experience-period>2026 · Product Marketing</p>
           <h3 data-experience-title>vivo Product Marketing</h3>
-          <p data-experience-copy>参与发布传播、产品场景、AI 工作流实践和消费科技叙事。</p>
-        </aside>
+          <p data-experience-copy>参与产品发布传播、用户场景梳理、AI 工作流实践与消费科技叙事。</p>
+        </article>
       </div>
     </section>
 
-    <section class="content-section thinking-section" id="thinking" data-section="thinking" data-neptune-section>
-      <header class="section-header reveal">
-        <p class="section-index"><span>04</span> Thinking / 思考</p>
-        <h2>把快工具，慢慢用懂。</h2>
-        <p>我更关心工具进入真实场景之后，如何改变判断、协作和表达。</p>
-      </header>
-
-      <div class="principles reveal" aria-label="个人判断">
-        <p>产品感不是概念堆砌，而是用户、场景和约束共同挤压出来的清晰度。</p>
-        <p>AI 不是捷径。它遇到工作流、限制与复盘之后，才真正有用。</p>
-        <p>学得慢一点，反而可能更快。先上手、拆解、试错，再决定它该放在哪里。</p>
-      </div>
-
-      <div class="writing-list">
-        <a class="writing-row reveal" href="resume.html#projects">
-          <span>AI Workflow</span>
-          <h3>当 AI 进入真实工作流，它就不再只是 demo。</h3>
-          <p>真正困难的，是判断模型应该放在研究、写作、审核和交付的哪个位置。</p>
-        </a>
-        <a class="writing-row reveal" href="#work">
-          <span>Product Judgment</span>
-          <h3>信息更多不一定更好，压缩得更准才更好。</h3>
-          <p>UGC、竞品语言和发布资料，只有变成更清晰的判断时才有意义。</p>
-        </a>
-        <a class="writing-row reveal" href="#experience">
-          <span>Digital Experience</span>
-          <h3>包容性的数字产品，从场景开始。</h3>
-          <p>酒店、旅游和产品工作最后都会回到同一个问题：用户此刻真正需要什么。</p>
-        </a>
-      </div>
-
-      <div class="lens-block reveal" id="lens">
-        <div class="lens-copy">
-          <p class="section-index"><span>05</span> Lens / 观察</p>
-          <h3>摄影是我观察世界的低速模式。</h3>
-        </div>
-        <div class="lens-images" aria-label="摄影作品精选">
-          <figure><img src="/shawn-portfolio/assets/photo-04.jpg" alt="蓝色水面摄影" loading="lazy" decoding="async"></figure>
-          <figure><img src="/shawn-portfolio/assets/photo-08.jpg" alt="赛道光影摄影" loading="lazy" decoding="async"></figure>
-          <figure><img src="/shawn-portfolio/assets/photo-11.jpg" alt="湖与远山摄影" loading="lazy" decoding="async"></figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact-section" id="contact" data-section="contact" data-neptune-section>
-      <div class="contact-copy reveal">
-        <p class="section-index"><span>06</span> Contact / 联系</p>
-        <h2>先找到真实问题，再围绕它建立系统。</h2>
+    <section class="contact-section section-observe" id="contact" data-section="contact" aria-labelledby="contact-title">
+      <img src="/shawn-portfolio/assets/neptune-companion.png" alt="海王星边缘" loading="lazy" decoding="async">
+      <div class="section-kicker"><span>04</span> Contact / 联系</div>
+      <div class="contact-copy">
+        <h2 id="contact-title">先找到真实问题，<br>再围绕它建立系统。</h2>
         <p>产品叙事、AI 工作流、消费科技研究或数字体验，都可以从一次具体的对话开始。</p>
-        <div class="contact-links">
-          <a class="text-action" href="mailto:x_222324@163.com">开始对话</a>
-          <a class="text-action" href="resume.html">个人简历</a>
-          <a class="text-action" href="https://github.com/Shawn-cyber666" target="_blank" rel="noopener">GitHub</a>
+        <div class="contact-actions">
+          <a class="signal-button" href="mailto:x_222324@163.com">
+            开始对话
+            <i class="ph ph-paper-plane-tilt" aria-hidden="true"></i>
+          </a>
+          <a class="text-link" href="resume.html">个人简历</a>
+          <a class="text-link" href="https://github.com/Shawn-cyber666" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
       <footer>
-        <span>(c) 2026 Shawn Lee</span>
+        <span>© 2026 Shawn Lee</span>
         <span>Eighth Orbit / 第八轨道</span>
       </footer>
     </section>
   </main>
 
-  <script src="/shawn-portfolio/neptune-portfolio.js?v=20260717-magnetic" defer></script>
+  <script src="/shawn-portfolio/neptune-portfolio.js?v=20260722-orbital-signal" defer></script>
 </body>
 </html>
-
-
