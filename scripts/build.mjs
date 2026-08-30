@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { site, capabilityChain, experience, toolWorkflow, cases } from "../content/site-data.mjs";
+import { site, capabilityChain, methodInPractice, experience, toolWorkflow, toolExample, cases } from "../content/site-data.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const publicBase = "/shawn-portfolio/";
@@ -186,6 +186,16 @@ function homePage() {
       <ol class="thinking-chain">
         ${capabilityChain.map((item, index) => `<li class="reveal"><span class="step">${String(index + 1).padStart(2, "0")}</span><div><strong>${esc(item.en)}</strong><span>${esc(item.zh)}</span></div><p>${esc(item.detail)}</p></li>`).join("")}
       </ol>
+      <div class="method-proof reveal" aria-labelledby="method-proof-title">
+        <div class="method-proof__heading">
+          <p class="eyebrow">Method in Practice</p>
+          <h3 id="method-proof-title">方法必须回到真实项目。</h3>
+          <p>不是再讲一遍框架，而是指出判断在哪里进入了项目。</p>
+        </div>
+        <div class="method-proof__list">
+          ${methodInPractice.map((item, index) => `<a href="${esc(item.href)}"><span>${String(index + 1).padStart(2, "0")}</span><strong>${esc(item.method)}</strong><p>${esc(item.evidence)}</p><small>${esc(item.caseLabel)}</small>${icon("arrow-up-right")}</a>`).join("")}
+        </div>
+      </div>
     </section>
 
     <section class="section section--experience" id="experience" aria-labelledby="experience-title">
@@ -201,7 +211,7 @@ function homePage() {
     <section class="section section--about" id="about" aria-labelledby="about-title">
       <div class="about-grid">
         <header class="section-heading reveal" data-section-heading>
-          <p class="eyebrow">About / The Eighth Orbit</p>
+          <p class="eyebrow">About / Why Product Marketing</p>
           <h2 id="about-title">${esc(site.hero.statement)}</h2>
         </header>
         <div class="about-copy reveal">
@@ -220,6 +230,20 @@ function homePage() {
       <div class="workflow-table" role="list">
         ${toolWorkflow.map((item, index) => `<div class="workflow-row reveal" role="listitem"><span>${String(index + 1).padStart(2, "0")}</span><strong>${esc(item.stage)}</strong><p>${esc(item.tools)}</p><p>${esc(item.use)}</p></div>`).join("")}
       </div>
+      <article class="tool-example reveal">
+        <div class="tool-example__copy">
+          <p class="eyebrow">${esc(toolExample.eyebrow)}</p>
+          <h3>${esc(toolExample.title)}</h3>
+          <p>${esc(toolExample.body)}</p>
+          <div class="tool-example__actions">
+            <a href="${esc(toolExample.caseHref)}">View Case ${icon("arrow-up-right")}</a>
+            <a href="${esc(toolExample.liveHref)}" target="_blank" rel="noreferrer">View Live Product ${icon("arrow-up-right")}</a>
+          </div>
+        </div>
+        <ol class="tool-example__flow" aria-label="造浪局真实工作流">
+          ${toolExample.flow.map((item, index) => `<li><span>${String(index + 1).padStart(2, "0")}</span><strong>${esc(item)}</strong>${index < toolExample.flow.length - 1 ? icon("arrow-right") : ""}</li>`).join("")}
+        </ol>
+      </article>
     </section>
 
     <section class="contact section" id="contact" aria-labelledby="contact-title">

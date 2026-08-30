@@ -180,7 +180,7 @@ def draw_portfolio():
     new_page(c, 2, "PROFILE")
     label(c, "Profile / Capability Map", M, 6.25 * inch)
     title(c, "用户洞察到市场迭代，\n是一条完整工作链。", M, 5.73 * inch, 5.25 * inch, 31, 35)
-    paragraph(c, "vivo 旗舰新品产品营销经历，覆盖洞察、价值表达、上市交付与复盘；同时独立搭建 AI 营销工作流，并完成全球品牌策略案例。", M, 4.35 * inch, 4.95 * inch, 11.2, 18)
+    paragraph(c, "消费体验、服务、旅游与跨文化研究，让我从真实情境理解用户。\nProduct Marketing 则把这种用户视角，连接到产品价值、上市表达与市场反馈。", M, 4.35 * inch, 4.95 * inch, 11.2, 18)
     steps = [
         ("01", "UNDERSTAND THE USER", "用户与情境"),
         ("02", "UNDERSTAND THE PRODUCT", "产品能力与证据"),
@@ -211,7 +211,7 @@ def draw_portfolio():
     c.setFont("Helvetica", 16)
     c.setFillColor(BODY)
     c.drawString(M, 4.94 * inch, "Turning Product Capabilities into User Value")
-    paragraph(c, "Product Marketing Intern / 2026\n用户与竞品洞察 · 场景研究 · 产品卖点表达 · Keynote · Demo · Launch Feedback", M, 4.43 * inch, 5.05 * inch, 10.5, 18)
+    paragraph(c, "Product Marketing Intern / 2026\n用户与竞品洞察 · 场景研究 · 产品卖点表达\nKeynote · Demo · Launch Feedback", M, 4.43 * inch, 5.05 * inch, 10.5, 18)
     image_crop(c, REPO / "assets/vivo-x-fold6-official-page.jpg", 6.55 * inch, 2.25 * inch, 5.75 * inch, 3.45 * inch, 12)
     c.setFont("Helvetica", 6.2)
     c.setFillColor(QUIET)
@@ -307,7 +307,7 @@ def draw_portfolio():
     paragraph(c, "公开信号可以指向问题，不能自动代表市场。记录来源与时间范围，说明渠道偏差，区分搜索结果与真实 UGC，不虚构样本量。", 6.75 * inch, 1.18 * inch, 5.6 * inch, 9.4, 14.5)
 
     # 07 wave architecture
-    new_page(c, 7, "CASE 03 / 造浪局")
+    new_page(c, 7, "CASE 03 / WAVE BUREAU")
     label(c, "Independent Live Product / AI × Marketing", M, 6.25 * inch)
     title(c, "造浪局", M, 5.72 * inch, 4.4 * inch, 40, 42)
     c.setFont("Helvetica", 17); c.setFillColor(BODY); c.drawString(M, 5.02 * inch, "AI-powered Marketing Workflow")
@@ -393,6 +393,17 @@ def draw_portfolio():
         c.setFont("Helvetica-Bold", 9.2); c.setFillColor(INK); c.drawString(sx + 0.43 * inch, sy, item)
         sy -= 0.58 * inch
     line(c, sx, sy + 10, PW - M)
+    label(c, "Method in Practice", sx, 1.44 * inch)
+    evidence = [
+        ("USER INSIGHT", "vivo 场景判断"),
+        ("DEFINE VALUE", "产品能力 → 用户利益"),
+        ("LAUNCH & LEARN", "Keynote · Launch · Feedback"),
+    ]
+    ey = 1.14 * inch
+    for method, proof in evidence:
+        c.setFont("Helvetica-Bold", 6.7); c.setFillColor(ACCENT); c.drawString(sx, ey, method)
+        c.setFont("ArialUnicode", 8); c.setFillColor(BODY); c.drawString(sx + 1.43 * inch, ey, proof)
+        ey -= 0.27 * inch
 
     # 11 contact
     new_page(c, 11, "AI, TOOLS & CONTACT")
@@ -413,6 +424,11 @@ def draw_portfolio():
         c.setFont("Helvetica-Bold", 6.5); c.setFillColor(ACCENT); c.drawString(x, yy, f"{i+1:02d}")
         c.setFont("Helvetica-Bold", 9.5); c.setFillColor(INK); c.drawString(x + 0.38 * inch, yy, stage)
         c.setFont("Helvetica", 7.5); c.setFillColor(MUTED); c.drawString(x + 0.38 * inch, yy - 15, tool)
+    label(c, "A Real Workflow Example", M, 2.25 * inch)
+    c.setFont("Heiti", 18); c.setFillColor(INK); c.drawString(M, 1.86 * inch, "造浪局：从市场信号到策略输入")
+    paragraph(c, "Market Signals → Classification → Synthesis → Consumer Insight → Strategy Input", M, 1.48 * inch, 6.0 * inch, 8.2, 12.5, BODY, "ArialUnicode")
+    paragraph(c, "AI 加速搜索、分类与归纳；来源核验、优先级与最终判断由人负责。", M, 1.08 * inch, 5.95 * inch, 7.8, 12, MUTED)
+    link_text(c, "View 造浪局  ↗", LIVE, M, 0.70 * inch, 8, ACCENT, "ArialUnicode")
     sx = 7.2 * inch
     label(c, "Contact", sx, 6.25 * inch)
     title(c, "一起把好产品，\n讲成用户在意的价值。", sx, 5.74 * inch, 5.3 * inch, 27, 31)
