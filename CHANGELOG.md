@@ -1,5 +1,20 @@
 # Change Log
 
+## 2026-08-30 — Evidence Chain & Portfolio Refinement
+
+### Changed
+
+- 在 How I Think 后新增 `Method in Practice`，把方法论直接映射到 vivo 场景判断、价值转译与上市复盘证据。
+- 强化 vivo 经历摘要，明确 Keynote、讲稿、演示与上市复盘中的真实参与边界，不增加虚构数据。
+- 重写 About / Why Product Marketing，使消费体验与跨文化背景成为用户理解能力来源，并解释「第八轨道」的品牌逻辑。
+- 在 AI & Tools 后加入造浪局真实工作流示例，说明 AI 与人工判断的职责边界。
+- 网站与 11 页 Portfolio PDF 同步更新，并完成桌面、390px 移动端及 PDF 逐页检查。
+
+### Design Notes
+
+- 延续原有深色编辑式系统、冰蓝强调色和克制动效，没有新增卡片墙、渐变背景或装饰性动效。
+- 在 Figma 建立四项优化标注板，作为本轮内容与界面判断的可追溯依据。
+
 ## 2026-08-30 — Premium Motion & Interaction Pass
 
 ### Changed
