@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://shawn-cyber666.github.io/shawn-portfolio/sitemap.xml

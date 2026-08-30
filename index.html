@@ -1,331 +1,217 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shawn Lee — 第八轨道</title>
-  <meta name="description" content="Shawn Lee 的个人空间：产品判断、AI 工作流与造浪局。">
-  <meta name="theme-color" content="#01040a">
-  <meta property="og:title" content="Shawn Lee — 第八轨道">
-  <meta property="og:description" content="把判断变成系统。让海王星贯穿一段持续发生的数字旅程。">
-  <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>document.documentElement.classList.add("js")</script>
+  
+    <title>Shawn Li — Product Marketing &amp; Strategy</title>
+    <meta name="description" content="Product marketing, consumer insight, GTM and AI-enabled marketing workflows.">
+    <link rel="canonical" href="https://shawn-cyber666.github.io/shawn-portfolio/">
+    <meta name="theme-color" content="#030609">
+    <meta name="color-scheme" content="dark">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Shawn Li — Product Marketing &amp; Strategy">
+    <meta property="og:description" content="Product marketing, consumer insight, GTM and AI-enabled marketing workflows.">
+    <meta property="og:url" content="https://shawn-cyber666.github.io/shawn-portfolio/">
+    <meta property="og:image" content="https://shawn-cyber666.github.io/shawn-portfolio/assets/og-portfolio.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="./assets/avatar.png" type="image/png">
+  <link rel="preconnect" href="https://unpkg.com">
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-  <link rel="stylesheet" href="./neptune-system.css?v=20260723-personal-orbit-v3-11">
+  <link rel="stylesheet" href="./assets/styles/site.css">
 </head>
-<body class="is-loading" data-chapter="about">
-  <div class="entry-loader" data-loader role="status" aria-label="正在进入第八轨道">
-    <div class="entry-loader__brand">
-      <span>08</span>
-      <strong>第八轨道</strong>
-    </div>
-    <div class="entry-loader__line">
-      <span data-loader-copy>Opening the chamber</span>
-      <progress max="100" value="0" data-loader-progress>0%</progress>
-    </div>
-  </div>
-
-  <a class="skip-link" href="#wave-bureau">跳到造浪局</a>
-
+<body class="home-page">
+  <a class="skip-link" href="#main">跳到主要内容</a>
   <header class="site-header" data-header>
-    <a class="brand" href="#about" aria-label="回到第八轨道首页">
-      <strong>Shawn Lee</strong>
-      <span>第八轨道</span>
+    <a class="brand" href="./" aria-label="第八轨道 首页">
+      <span class="brand__mark" aria-hidden="true">08</span>
+      <span class="brand__name">第八轨道</span>
     </a>
-
-    <nav class="desktop-nav" aria-label="主要导航">
-      <a href="#about" data-nav="about"><span>01</span>关于</a>
-      <a href="#wave-bureau" data-nav="wave-bureau"><span>02</span>造浪局</a>
-      <a href="#experience" data-nav="experience"><span>03</span>经历</a>
-      <a href="#contact" data-nav="contact"><span>04</span>联系</a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="./#work">Work</a><a href="./#thinking">Thinking</a><a href="./#experience">Experience</a><a href="./#about">About</a><a href="./resume/">Resume</a><a href="./#contact">Contact</a>
     </nav>
-
-    <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="mobileMenu">
-      <span>菜单</span>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-navigation" data-menu-button>
+      <span class="sr-only">打开导航</span>
       <i class="ph ph-list" aria-hidden="true"></i>
     </button>
+    <nav class="mobile-nav" id="mobile-navigation" aria-label="Mobile navigation" data-mobile-nav>
+      <a href="./#work">Work</a><a href="./#thinking">Thinking</a><a href="./#experience">Experience</a><a href="./#about">About</a><a href="./resume/">Resume</a><a href="./#contact">Contact</a>
+    </nav>
   </header>
-
-  <nav class="mobile-menu" id="mobileMenu" data-mobile-menu aria-hidden="true" aria-label="移动端导航">
-    <a href="#about"><span>01</span>关于</a>
-    <a href="#wave-bureau"><span>02</span>造浪局</a>
-    <a href="#experience"><span>03</span>经历</a>
-    <a href="#contact"><span>04</span>联系</a>
-    <a href="resume.html"><span>PDF</span>个人简历</a>
-  </nav>
-
-  <aside class="chapter-rail" aria-label="章节进度">
-    <span class="chapter-rail__line" aria-hidden="true"><i data-rail-progress></i></span>
-    <a href="#about" data-rail="about"><small>01</small><strong>关于</strong></a>
-    <a href="#wave-bureau" data-rail="wave-bureau"><small>02</small><strong>造浪局</strong></a>
-    <a href="#experience" data-rail="experience"><small>03</small><strong>经历</strong></a>
-    <a href="#contact" data-rail="contact"><small>04</small><strong>联系</strong></a>
-  </aside>
-
-  <div class="spatial-scene" data-spatial-scene aria-hidden="true">
-    <canvas class="particle-field" data-particle-canvas></canvas>
-
-    <div class="portal-frame portal-frame--back">
-      <img src="./assets/portal-titanium.webp" alt="">
-    </div>
-    <div class="portal-frame portal-frame--middle">
-      <img src="./assets/portal-titanium.webp" alt="">
-    </div>
-
-    <div class="planet-stage" data-planet-stage>
-      <div class="planet-media">
-        <img src="./assets/neptune-companion.webp" alt="">
-      </div>
-      <span class="planet-atmosphere"></span>
-    </div>
-
-    <div class="portal-frame portal-frame--front">
-      <img src="./assets/portal-titanium.webp" alt="">
-    </div>
-
-    <div class="spatial-lens" data-spatial-lens>
-      <div class="spatial-lens__surface"></div>
-      <span class="spatial-lens__focus"></span>
-    </div>
-
-    <div class="signal-thread" data-signal-thread>
-      <span></span>
-      <i></i>
-    </div>
-  </div>
-
-  <div class="interaction-hint" data-interaction-hint>
-    <span class="interaction-hint__dot"></span>
-    <span>移动光标 · 改变视角</span>
-  </div>
-
-  <main>
-    <section class="chapter chapter--hero section-observe" id="about" data-section="about" aria-labelledby="hero-title">
-      <div class="hero-index">
-        <span>01</span>
-        <small>Turning judgment into systems.</small>
-      </div>
-
-      <div class="hero-copy">
-        <p class="eyebrow">Product thinking · AI workflow · Real-world signals</p>
-        <h1 id="hero-title">把判断变成系统。</h1>
-        <p>我是 Shawn Lee。关注产品如何从真实问题中生长，也持续把 AI 放进可执行、可复盘的工作流。</p>
-      </div>
-
-      <div class="profile-coordinates" aria-label="个人方向">
-        <span><small>Focus</small>产品 × AI 工作流</span>
-        <span><small>Method</small>观察 → 判断 → 系统</span>
-        <span><small>Now</small>正在构建造浪局</span>
-      </div>
-
-      <a class="product-signal" href="#wave-bureau">
-        <span>Featured product</span>
-        <strong>造浪局</strong>
-        <small>查看预览 <i class="ph ph-arrow-down-right" aria-hidden="true"></i></small>
-      </a>
-
-      <div class="scroll-cue" aria-hidden="true">
-        <span>Scroll to enter</span>
-        <i></i>
-      </div>
-    </section>
-
-    <section class="chapter chapter--product section-observe" id="wave-bureau" data-section="wave-bureau" aria-labelledby="product-title">
-      <div class="section-meta">
-        <span>02</span>
-        <small>Selected work / 唯一作品</small>
-      </div>
-
-      <div class="product-stage">
-        <article class="product-copy">
-          <p class="eyebrow">AI Marketing Workflow System</p>
-          <h2 id="product-title">造浪局</h2>
-          <p class="product-copy__lead">不是多一个 AI 工具，<br>而是让一支团队开始接力。</p>
-          <p>把营销团队拆成 7 位各有专长的 AI 员工，用 13 个工作流串起品牌文案、社媒传播、数据分析与交付复盘。复杂任务从一次下单开始，沿着清晰轨道自动推进。</p>
-          <div class="product-facts" aria-label="造浪局产品信息">
-            <span><b>07</b>AI 员工</span>
-            <span><b>13</b>工作流</span>
-            <span><b>LIVE</b>已上线</span>
-          </div>
-          <a class="primary-link" href="https://shrimp-company.vercel.app/" target="_blank" rel="noopener">
-            <span>进入造浪局</span>
-            <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
-          </a>
-        </article>
-
-        <section class="product-preview" data-product-preview data-tilt aria-label="造浪局交互预览">
-        <header class="product-preview__header">
-          <div>
-            <span class="product-preview__status"><i aria-hidden="true"></i>Live system</span>
-            <strong>造浪局 · 指挥舱</strong>
-          </div>
-          <span>WB / 07—13</span>
-        </header>
-
-        <nav class="product-preview__tabs" role="tablist" aria-label="预览内容">
-          <button class="is-active" id="preview-tab-crew" type="button" role="tab" aria-selected="true" aria-controls="preview-crew" tabindex="0" data-preview-tab="crew">AI 员工</button>
-          <button id="preview-tab-flow" type="button" role="tab" aria-selected="false" aria-controls="preview-flow" tabindex="-1" data-preview-tab="flow">工作流</button>
-          <button id="preview-tab-delivery" type="button" role="tab" aria-selected="false" aria-controls="preview-delivery" tabindex="-1" data-preview-tab="delivery">交付物</button>
-        </nav>
-
-        <div class="product-preview__body">
-          <div class="preview-panel is-active" id="preview-crew" role="tabpanel" aria-labelledby="preview-tab-crew" data-preview-panel="crew">
-            <div class="preview-command">
-              <span>本次任务 / Campaign brief</span>
-              <strong>为新品发布构建一套 14 天传播计划</strong>
-            </div>
-            <div class="preview-crew-grid" aria-label="7 位 AI 员工">
-              <span class="is-active"><i class="ph ph-binoculars" aria-hidden="true"></i><b>洞察</b><small>01</small></span>
-              <span><i class="ph ph-map-trifold" aria-hidden="true"></i><b>策略</b><small>02</small></span>
-              <span><i class="ph ph-lightbulb-filament" aria-hidden="true"></i><b>创意</b><small>03</small></span>
-              <span><i class="ph ph-pencil-line" aria-hidden="true"></i><b>内容</b><small>04</small></span>
-              <span><i class="ph ph-megaphone-simple" aria-hidden="true"></i><b>传播</b><small>05</small></span>
-              <span><i class="ph ph-chart-line-up" aria-hidden="true"></i><b>数据</b><small>06</small></span>
-              <span><i class="ph ph-arrows-clockwise" aria-hidden="true"></i><b>复盘</b><small>07</small></span>
-            </div>
-            <div class="preview-console">
-              <span data-preview-status>等待任务进入轨道</span>
-              <output data-preview-output>洞察员将先拆解人群、场景与核心矛盾。</output>
-            </div>
-          </div>
-
-          <div class="preview-panel" id="preview-flow" role="tabpanel" aria-labelledby="preview-tab-flow" data-preview-panel="flow" hidden>
-            <ol class="preview-flow-list">
-              <li class="is-complete"><span>01</span><div><strong>需求解析</strong><small>识别目标、受众和限制条件</small></div><b>完成</b></li>
-              <li class="is-active"><span>02</span><div><strong>策略编排</strong><small>选择员工并建立任务依赖</small></div><b>运行中</b></li>
-              <li><span>03</span><div><strong>内容协作</strong><small>多角色接力生成并互相校验</small></div><b>待执行</b></li>
-              <li><span>04</span><div><strong>数据复盘</strong><small>把结果沉淀为下一轮输入</small></div><b>待执行</b></li>
-            </ol>
-          </div>
-
-          <div class="preview-panel" id="preview-delivery" role="tabpanel" aria-labelledby="preview-tab-delivery" data-preview-panel="delivery" hidden>
-            <div class="preview-delivery">
-              <span>OUTPUT / 14-DAY LAUNCH SYSTEM</span>
-              <h3>新品传播作战图</h3>
-              <p>从核心主张到渠道节奏，所有内容都标注负责人、输入、依赖和验收标准。</p>
-              <dl>
-                <div><dt>传播主题</dt><dd>03</dd></div>
-                <div><dt>渠道任务</dt><dd>18</dd></div>
-                <div><dt>复盘节点</dt><dd>04</dd></div>
-              </dl>
-            </div>
-          </div>
+  <main id="main">
+    <section class="hero section-pad" aria-labelledby="hero-title">
+      <div class="hero__copy reveal">
+        <p class="eyebrow">SHAWN LI — PRODUCT MARKETING &amp; STRATEGY</p>
+        <h1 id="hero-title">把判断变成<br>系统。</h1>
+        <p class="hero__body">从用户与产品出发，把技术能力转成用户价值，再用 GTM、内容与 AI 工作流推动落地。</p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="#work"><span>View Selected Work</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          <a class="button button--secondary" href="./resume/"><span>Resume</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          <a class="button button--ghost" href="mailto:x_222324@163.com"><span>Contact</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
         </div>
-
-        <footer class="product-preview__footer">
-          <button class="preview-run" type="button" data-preview-run>
-            <i class="ph ph-play" aria-hidden="true"></i>
-            <span>运行一次预览</span>
-          </button>
-          <a href="https://shrimp-company.vercel.app/" target="_blank" rel="noopener">
-            打开完整产品 <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
-          </a>
-        </footer>
-        </section>
+        <ul class="proof-line" aria-label="核心经历"><li>vivo Product Marketing</li><li>X Fold6 Launch</li><li>AI × Marketing Workflow</li></ul>
       </div>
-
-      <div class="product-orbit-note">
-        <span>Interactive preview</span>
-        <p>02 / Product system online</p>
-      </div>
+      <figure class="hero__visual reveal" aria-label="第八轨道品牌视觉">
+        <img src="assets/neptune-orbital-core.webp" alt="深蓝色海王星轨道视觉">
+        <figcaption><span>THE EIGHTH ORBIT</span><span>Product · User · Market</span></figcaption>
+      </figure>
     </section>
 
-    <section class="chapter chapter--experience section-observe" id="experience" data-section="experience" aria-labelledby="experience-title">
-      <div class="section-meta">
-        <span>03</span>
-        <small>Experience / 经历</small>
-      </div>
+    <section class="positioning-strip" aria-label="职业定位">
+      <span>Product Marketing</span><span>User Insight</span><span>Go-to-Market</span><span>Marketing Strategy</span><span>AI-enabled Workflow</span>
+    </section>
 
-      <header class="experience-heading">
-        <p class="eyebrow">Different fields. The same judgment.</p>
-        <h2 id="experience-title">不同场景，<br>同一种判断力。</h2>
-        <p>点击不同轨道节点，让海王星转向一段经历。从服务现场到研究训练，再到消费科技与产品实践，每次切换都在训练我更快识别真实问题。</p>
+    <section class="section section--work" id="work" aria-labelledby="work-title">
+      <header class="section-heading reveal">
+        <p class="eyebrow">Selected Work / Selected Cases</p>
+        <h2 id="work-title">商业判断，需要可以被验证的证据。</h2>
+        <p>从真实新品上市、独立产品，到全球品牌策略与用户洞察方法。</p>
       </header>
+      <div class="work-list"><article class="work-row reveal">
+    <a class="work-row__link" href="cases/vivo-x-fold6/" aria-label="查看 vivo X Fold6 Case Study">
+      <div class="work-row__index">01</div>
+      <div class="work-row__copy">
+        <div class="work-row__meta"><span>Product Marketing / GTM / Launch</span><span>2026</span></div>
+        <h3>vivo X Fold6</h3>
+        <p>围绕旗舰折叠新品，把续航、通信、AI Agent 与多任务能力转译为可感知的用户场景，并参与内容、演示与正式上市交付。</p>
+        <ul class="tag-list" aria-label="能力标签"><li>User Insight</li><li>Value Proposition</li><li>Product Storytelling</li><li>Launch Execution</li></ul>
+      </div>
+      <figure class="work-row__media">
+        <img src="./assets/vivo-x-fold6-official-page.jpg" alt="vivo X Fold6 官方产品页公开画面" loading="eager">
+      </figure>
+      <span class="work-row__arrow"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+    </a>
+  </article><article class="work-row reveal">
+    <a class="work-row__link" href="cases/wave-bureau/" aria-label="查看 造浪局 Case Study">
+      <div class="work-row__index">02</div>
+      <div class="work-row__copy">
+        <div class="work-row__meta"><span>Independent Live Product / AI × Marketing</span><span>2026 — Present</span></div>
+        <h3>造浪局</h3>
+        <p>把市场信号、营销任务与 AI 协作放进一个可运行的工作台，减少重复整理和跨工具切换。</p>
+        <ul class="tag-list" aria-label="能力标签"><li>Problem Definition</li><li>Workflow Design</li><li>AI Application</li><li>Product Thinking</li></ul>
+      </div>
+      <figure class="work-row__media">
+        <img src="./assets/cases/wave-bureau/dashboard.jpg" alt="造浪局真实 Dashboard" loading="eager">
+      </figure>
+      <span class="work-row__arrow"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+    </a>
+  </article><article class="work-row reveal">
+    <a class="work-row__link" href="cases/insta360-ace-pro-brand-strategy/" aria-label="查看 Insta360 Ace Pro Product Line Case Study">
+      <div class="work-row__index">03</div>
+      <div class="work-row__copy">
+        <div class="work-row__meta"><span>Global Brand Strategy</span><span>2026</span></div>
+        <h3>Insta360 Ace Pro Product Line</h3>
+        <p>一份英文品牌策略作业：从传播审计出发，将分散的产品证据收束为可记忆、可验证的品牌平台。</p>
+        <ul class="tag-list" aria-label="能力标签"><li>Communication Audit</li><li>Consumer Insight</li><li>Positioning</li><li>Validation Planning</li></ul>
+      </div>
+      <figure class="work-row__media">
+        <img src="./assets/cases/ace-pro/deck-cover.jpg" alt="Ace Pro Brand Strategy 原始英文策略稿封面" loading="lazy">
+      </figure>
+      <span class="work-row__arrow"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+    </a>
+  </article><article class="work-row reveal">
+    <a class="work-row__link" href="cases/market-consumer-insight/" aria-label="查看 Market &amp; Consumer Insight Case Study">
+      <div class="work-row__index">04</div>
+      <div class="work-row__copy">
+        <div class="work-row__meta"><span>Consumer Insight / Strategy</span><span>2026</span></div>
+        <h3>Market &amp; Consumer Insight</h3>
+        <p>把公开 UGC、媒体评测、竞品发布和产品反馈转成可以核验、归类并用于决策的结构化判断。</p>
+        <ul class="tag-list" aria-label="能力标签"><li>Signal Collection</li><li>Evidence Check</li><li>Pattern Recognition</li><li>Strategy Input</li></ul>
+      </div>
+      <figure class="work-row__media">
+        <img src="./assets/strategy-hub.png" alt="Signal Studio / Strategy Hub 真实工具界面" loading="lazy">
+      </figure>
+      <span class="work-row__arrow"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+    </a>
+  </article></div>
+      <article class="work-row reveal">
+    <a class="work-row__link" href="cases/marketing-experience/" aria-label="查看 Marketing &amp; Experience Projects Case Study">
+      <div class="work-row__index">05</div>
+      <div class="work-row__copy">
+        <div class="work-row__meta"><span>Project Management / Stakeholder Management</span><span>2023 — 2025</span></div>
+        <h3>Marketing &amp; Experience Projects</h3>
+        <p>三个轻量项目，证明在真实节点、物料、现场与多方协同中的执行能力。</p>
+        <ul class="tag-list" aria-label="能力标签"><li>Project Planning</li><li>Stakeholder Management</li><li>On-site Execution</li><li>Experience Improvement</li></ul>
+      </div>
+      <figure class="work-row__media">
+        <img src="./assets/neptune-horizon-v2.jpg" alt="第八轨道品牌视觉" loading="eager">
+      </figure>
+      <span class="work-row__arrow"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+    </a>
+  </article>
+    </section>
 
-      <div class="experience-stage">
-        <div class="experience-orbit-stage" data-experience-orbit data-tilt aria-hidden="true">
-          <div class="experience-orbit-stage__planet">
-            <img src="./assets/neptune-orbital-core.webp" alt="">
-            <span class="experience-orbit-stage__surface"></span>
-          </div>
-          <span class="experience-orbit-stage__axis"></span>
-          <span class="experience-orbit-stage__marker" data-orbit-marker></span>
-          <div class="experience-orbit-stage__readout">
-            <small>Selected orbit</small>
-            <strong data-orbit-index>01 / 05</strong>
-            <span data-orbit-label>vivo · 产品营销</span>
-          </div>
-        </div>
+    <section class="section section--thinking" id="thinking" aria-labelledby="thinking-title">
+      <header class="section-heading reveal">
+        <p class="eyebrow">How I Think About Product Marketing</p>
+        <h2 id="thinking-title">从用户开始，在市场反馈中结束。</h2>
+      </header>
+      <ol class="thinking-chain">
+        <li class="reveal"><span class="step">01</span><div><strong>Understand the User</strong><span>理解用户</span></div><p>谁在什么情境下需要它？</p></li><li class="reveal"><span class="step">02</span><div><strong>Understand the Product</strong><span>理解产品</span></div><p>产品真正能解决什么？</p></li><li class="reveal"><span class="step">03</span><div><strong>Define the Value</strong><span>定义价值</span></div><p>用户为什么应该在意？</p></li><li class="reveal"><span class="step">04</span><div><strong>Build the Story</strong><span>建立表达</span></div><p>如何让价值容易理解和记住？</p></li><li class="reveal"><span class="step">05</span><div><strong>Deliver the Experience</strong><span>推动落地</span></div><p>用户会在哪里遇见它？</p></li><li class="reveal"><span class="step">06</span><div><strong>Learn from the Market</strong><span>读取反馈</span></div><p>上市后发生了什么？</p></li><li class="reveal"><span class="step">07</span><div><strong>Iterate</strong><span>持续迭代</span></div><p>下一轮应该改变什么？</p></li>
+      </ol>
+    </section>
 
-        <div class="experience-system">
-          <div class="experience-list" role="list" aria-label="经历列表">
-            <button class="experience-item is-active" type="button" data-experience="vivo" aria-pressed="true">
-              <span>2026</span><strong>vivo · 产品营销</strong><small>01</small>
-            </button>
-            <button class="experience-item" type="button" data-experience="cuhk" aria-pressed="false">
-              <span>2026</span><strong>香港中文大学 · 可持续旅游研究</strong><small>02</small>
-            </button>
-            <button class="experience-item" type="button" data-experience="nanhai" aria-pressed="false">
-              <span>2024</span><strong>南海会务 · 会务运营</strong><small>03</small>
-            </button>
-            <button class="experience-item" type="button" data-experience="jw" aria-pressed="false">
-              <span>2023</span><strong>JW Marriott · 宾客体验</strong><small>04</small>
-            </button>
-            <button class="experience-item" type="button" data-experience="cityu" aria-pressed="false">
-              <span>2022</span><strong>澳门城市大学 · 工商管理</strong><small>05</small>
-            </button>
-          </div>
+    <section class="section section--experience" id="experience" aria-labelledby="experience-title">
+      <header class="section-heading reveal">
+        <p class="eyebrow">Experience</p>
+        <h2 id="experience-title">真实商业项目，与跨文化体验视角。</h2>
+      </header>
+      <div class="experience-list">
+        <article class="experience-item reveal"><p class="experience-item__period">2026.03 — 2026.08</p><div><h3>vivo</h3><p class="experience-item__role">Product Marketing Intern</p></div><p>X Fold6 / X300U 旗舰新品上市、用户与竞品洞察、产品价值表达、跨团队交付与上市复盘。</p></article><article class="experience-item reveal"><p class="experience-item__period">2026.09 — 2027.07（预计）</p><div><h3>香港中文大学</h3><p class="experience-item__role">社会科学硕士 · 可持续旅游</p></div><p>从地理、资源与可持续视角理解消费、体验与跨文化情境。</p></article><article class="experience-item reveal"><p class="experience-item__period">2022.09 — 2026.06</p><div><h3>澳门城市大学</h3><p class="experience-item__role">国际旅游与酒店管理学士</p></div><p>本科全英文授课；关注消费者体验、服务与跨文化沟通。</p></article><article class="experience-item reveal"><p class="experience-item__period">2023 — 2025</p><div><h3>Selected Experience</h3><p class="experience-item__role">策展企划 / 会展项目 / 宾客体验</p></div><p>真实项目推进、现场交付、利益相关方沟通与一线用户反馈。</p></article>
+      </div>
+    </section>
 
-          <article class="experience-detail" data-experience-detail aria-live="polite">
-            <div class="experience-detail__top">
-              <div>
-                <span>Current orbit</span>
-                <small data-experience-index>01 / 05</small>
-              </div>
-              <figure class="experience-logo-plate" data-experience-logo-plate>
-                <img data-experience-logo src="./assets/vivo-logo.png" alt="vivo">
-              </figure>
-            </div>
-            <p data-experience-period>2026 · Product Marketing</p>
-            <h3 data-experience-title>vivo Product Marketing</h3>
-            <p data-experience-copy>参与产品发布传播、用户场景梳理、AI 工作流实践与消费科技叙事。</p>
-            <div class="experience-tags" data-experience-tags>
-              <span>产品叙事</span><span>用户场景</span><span>AI 工作流</span>
-            </div>
-          </article>
+    <section class="section section--about" id="about" aria-labelledby="about-title">
+      <div class="about-grid">
+        <header class="section-heading reveal">
+          <p class="eyebrow">About / The Eighth Orbit</p>
+          <h2 id="about-title">Turning judgment into systems.</h2>
+        </header>
+        <div class="about-copy reveal">
+          <p>我的背景横跨消费体验、服务、旅游与跨文化研究，但职业主线始终指向产品、用户与市场。</p><p>我关注一个产品为什么对用户重要，也关心这套判断如何进入内容、上市执行、市场反馈与下一轮迭代。</p>
+          <p class="about-signoff">Shawn Li · 李翔</p>
         </div>
       </div>
     </section>
 
-    <section class="chapter chapter--contact section-observe" id="contact" data-section="contact" aria-labelledby="contact-title">
-      <div class="section-meta">
-        <span>04</span>
-        <small>Contact / 联系</small>
+    <section class="section section--tools" aria-labelledby="tools-title">
+      <header class="section-heading reveal">
+        <p class="eyebrow">AI & Tools</p>
+        <h2 id="tools-title">工具跟着任务走。</h2>
+        <p>AI 提高搜索、整理和表达效率；事实核验、优先级与最终判断由人负责。</p>
+      </header>
+      <div class="workflow-table" role="list">
+        <div class="workflow-row reveal" role="listitem"><span>01</span><strong>Research</strong><p>AI Search / Public Sources</p><p>收集市场信号并保留来源。</p></div><div class="workflow-row reveal" role="listitem"><span>02</span><strong>Analysis</strong><p>Excel / SPSS / AI</p><p>分类、对比与发现模式。</p></div><div class="workflow-row reveal" role="listitem"><span>03</span><strong>Strategy</strong><p>Framework / Synthesis</p><p>把信号转成判断与优先级。</p></div><div class="workflow-row reveal" role="listitem"><span>04</span><strong>Content</strong><p>PowerPoint / Keynote / AI</p><p>把价值写成用户能理解的表达。</p></div><div class="workflow-row reveal" role="listitem"><span>05</span><strong>Execution</strong><p>Project Collaboration</p><p>推动内容、演示与节点落地。</p></div><div class="workflow-row reveal" role="listitem"><span>06</span><strong>Review</strong><p>Feedback Analysis</p><p>读取市场反馈并形成迭代输入。</p></div>
       </div>
+    </section>
 
-      <div class="contact-copy">
-        <p class="eyebrow">Signal received</p>
-        <h2 id="contact-title">先找到真实问题，<br>再围绕它建立系统。</h2>
-        <p>产品叙事、AI 工作流、消费科技研究或数字体验，都可以从一次具体的对话开始。</p>
-        <div class="contact-actions">
-          <a class="primary-link" href="mailto:x_222324@163.com">
-            <span>开始对话</span>
-            <i class="ph ph-paper-plane-tilt" aria-hidden="true"></i>
-          </a>
-          <a href="resume.html">个人简历</a>
-          <a href="https://github.com/Shawn-cyber666" target="_blank" rel="noopener">GitHub</a>
+    <section class="contact section" id="contact" aria-labelledby="contact-title">
+      <div class="contact__inner reveal">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">一起把好产品，讲成用户在意的价值。</h2>
+        <p>Product Marketing · GTM · Consumer Insight · Strategy</p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="mailto:x_222324@163.com"><span>Email Shawn</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          <a class="button button--secondary" href="./assets/documents/li-xiang-product-marketing-portfolio.pdf"><span>Portfolio PDF</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          <a class="button button--ghost" href="./resume/"><span>Open Resume</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          <a class="button button--ghost" href="https://github.com/Shawn-cyber666" target="_blank" rel="noreferrer"><span>View GitHub</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
         </div>
       </div>
-
-      <footer>
-        <span>© 2026 Shawn Lee</span>
-        <span>Eighth Orbit / 第八轨道</span>
-      </footer>
-    </section>
-  </main>
-
-  <script src="./neptune-portfolio.js?v=20260723-personal-orbit-v3-10" defer></script>
+    </section></main>
+  <footer class="site-footer">
+    <div>
+      <span class="footer-brand">第八轨道 / Shawn Li</span>
+      <p>Turning judgment into systems.</p>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:x_222324@163.com">Email</a>
+      <a href="https://github.com/Shawn-cyber666" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="./assets/documents/li-xiang-product-marketing-portfolio.pdf">Portfolio PDF</a>
+      <a href="./resume/">Resume</a>
+    </div>
+    <p class="footer-note">© 2026 Shawn Li. Built as a living portfolio system.</p>
+  </footer>
+  <script src="./assets/scripts/site.js" defer></script>
 </body>
 </html>
