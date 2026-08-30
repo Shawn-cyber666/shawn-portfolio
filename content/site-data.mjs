@@ -23,8 +23,9 @@ export const site = {
     "AI-enabled Workflow"
   ],
   about: [
-    "我的背景横跨消费体验、服务、旅游与跨文化研究，但职业主线始终指向产品、用户与市场。",
-    "我关注一个产品为什么对用户重要，也关心这套判断如何进入内容、上市执行、市场反馈与下一轮迭代。"
+    "消费体验、服务、旅游与跨文化研究，让我习惯从真实情境理解用户，而不是从功能清单开始。",
+    "Product Marketing 对我而言，是把用户、产品与市场连接起来：定义价值、建立表达、推动上市，再从反馈中迭代。",
+    "「第八轨道」是一套围绕 Product · User · Market 运行的个人工作系统。"
   ]
 };
 
@@ -38,12 +39,33 @@ export const capabilityChain = [
   { en: "Iterate", zh: "持续迭代", detail: "下一轮应该改变什么？" }
 ];
 
+export const methodInPractice = [
+  {
+    method: "User Insight",
+    evidence: "从商务白领、移动办公与差旅场景判断真实需求。",
+    caseLabel: "vivo X Fold6 / User & Scenario",
+    href: "cases/vivo-x-fold6/#user"
+  },
+  {
+    method: "Define Value",
+    evidence: "把续航、通信与 AI Agent 从产品能力转成用户利益。",
+    caseLabel: "vivo X Fold6 / Framework",
+    href: "cases/vivo-x-fold6/#framework"
+  },
+  {
+    method: "Launch & Learn",
+    evidence: "把判断推进到 Keynote、Demo、正式发布与反馈复盘。",
+    caseLabel: "vivo X Fold6 / Launch Workflow",
+    href: "cases/vivo-x-fold6/#execution"
+  }
+];
+
 export const experience = [
   {
     company: "vivo",
     role: "Product Marketing Intern",
     period: "2026.03 — 2026.08",
-    summary: "X Fold6 / X300U 旗舰新品上市、用户与竞品洞察、产品价值表达、跨团队交付与上市复盘。"
+    summary: "围绕 X Fold6 / X300U，把产品能力转成用户场景与价值表达；部分表达进入正式 Keynote / 讲稿，并参与演示、发布交付与上市复盘。"
   },
   {
     company: "香港中文大学",
@@ -73,6 +95,15 @@ export const toolWorkflow = [
   { stage: "Execution", tools: "Project Collaboration", use: "推动内容、演示与节点落地。" },
   { stage: "Review", tools: "Feedback Analysis", use: "读取市场反馈并形成迭代输入。" }
 ];
+
+export const toolExample = {
+  eyebrow: "A Real Workflow Example",
+  title: "造浪局：从市场信号到策略输入",
+  body: "UGC、媒体评测、竞品信息与用户反馈进入同一工作流。AI 加速搜索、分类与归纳；来源核验、优先级和最终判断由人负责。",
+  flow: ["Market Signals", "Classification", "Synthesis", "Consumer Insight", "Strategy Input"],
+  caseHref: "cases/wave-bureau/",
+  liveHref: "https://shrimp-company.vercel.app/"
+};
 
 export const cases = [
   {
