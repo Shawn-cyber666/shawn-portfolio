@@ -1,52 +1,64 @@
-# Design QA — Product Marketing Portfolio
+# Design QA — Premium Motion Upgrade
 
-## Target and implementation
+## Comparison target
 
-- Visual target: `design/home-final-direction.png`
-- Desktop implementation evidence: `design/implementation-home-desktop.jpg`
-- Combined comparison: `design/qa-home-comparison.jpg`
-- Core implementation: Apple-like hierarchy, restrained near-black palette, icy cyan accent, real project imagery, editorial case rows.
+- Source visual truth: `design/implementation-home-desktop.jpg`
+- Browser-rendered implementation: `design/implementation-home-motion-desktop.png`
+- Full-view comparison: `design/qa-home-motion-comparison.jpg`
+- Source pixels: 1280 × 720
+- Implementation pixels: 1280 × 720
+- CSS viewport: 1280 × 720
+- Device scale normalization: both compared at equal pixel dimensions; no density conversion required.
+- State: homepage initial state after the entrance timeline settled.
 
-## Desktop checks
+The source is the previously verified implementation because this round intentionally preserves the selected visual direction and upgrades motion and interaction rather than replacing the design.
 
-- Homepage checked at 1440px and 1280px-class desktop widths in the in-app browser.
-- vivo X Fold6 Case checked at desktop width, including public-source caption and first Case section.
-- Header navigation, homepage Case link, Case route, anchor structure, reveal behavior and reading progress work.
-- Browser console returned no warnings or errors.
-- Homepage exposes positioning, primary work, Resume and Contact in the first reading path; Selected Work begins immediately after the first viewport.
+## Full-view comparison
 
-## Responsive implementation review
+- **Typography:** system display stack, optical weight, scale, line-height and two-line hero wrapping remain consistent with the verified source. The masked line entrance does not change the settled layout.
+- **Spacing and layout rhythm:** header, two-column hero, CTA grouping, proof line and orbital image retain the same grid. The new one-pixel media boundary is restrained and does not change the composition.
+- **Colors and tokens:** near-black, white, muted gray and icy cyan tokens are unchanged. New hover surfaces use low-opacity existing surface colors; no gradient system was added.
+- **Image quality:** the existing orbital artwork and real Case assets are reused at their intended crops. No placeholder, CSS drawing or generated substitute was introduced.
+- **Copy:** all homepage, Case, disclosure and contact copy remains unchanged.
 
-- Breakpoints cover desktop, tablet, 820px and 560px mobile widths.
-- Mobile navigation uses a semantic button with `aria-expanded`, Escape close and 42px touch target.
-- Case tables convert to labeled vertical rows below 560px.
-- Case side navigation is removed below 820px; content becomes a single readable column.
-- Buttons wrap, images retain aspect ratio, titles use fluid type and long Case names allow wrapping.
-- Reduced-motion mode disables reveal movement.
+No actionable P0, P1 or P2 visual drift is visible in the combined comparison.
 
-## Accessibility
+## Focused interaction evidence
 
-- Skip link, semantic landmarks, logical heading hierarchy, alt text and visible focus-capable controls are present.
-- Links use real destinations; external links use safe target attributes.
-- Color contrast uses white / muted gray on near-black, with cyan reserved for emphasis.
+- Desktop Case list settled state: `design/implementation-work-motion-desktop.png`
+- Desktop Case hover state: `design/implementation-work-hover-desktop.png`
+- vivo Case desktop state: `design/implementation-vivo-motion-desktop.png`
+- Homepage mobile state: `design/implementation-home-motion-mobile.png`
+- Work mobile state: `design/implementation-work-motion-mobile.png`
+- vivo Case mobile state: `design/implementation-vivo-motion-mobile.png`
+- Corrected mobile navigation state: `design/implementation-mobile-menu-fixed.png`
 
-## Content and confidentiality
+Focused evidence was required because hover feedback, mobile navigation and Case media treatment are not judgeable from the homepage comparison alone.
 
-- vivo Case only uses official public imagery, public-safe role description and redrawn frameworks.
-- No sales, GMV, exposure, conversion or invented research metrics appear.
-- Insta360 work is labeled as a recruitment assessment, not employment or a client project.
-- 造浪局 descriptions match the audited live interface and do not claim unverified efficiency results.
+## Primary interactions tested
 
-## Findings and resolution
+- Hero `View Selected Work` scrolls to the evidence section.
+- Work navigation receives an active state at the section.
+- The first Case row responds to pointer hover with a bounded media shift, copy movement and circular arrow state.
+- The vivo X Fold6 Case opens successfully through the real Case link.
+- Same-origin navigation receives a progressive View Transition where supported.
+- The 390 × 844 mobile menu opens, fully covers the reading surface, links to Work, closes after selection and restores document scrolling.
+- Mobile homepage, Work and vivo Case remain free of horizontal overflow at 390px.
+- Reading progress, sticky Case table of contents and reveal fallbacks remain present.
+- Browser console check returned no warnings or errors.
 
-- [Resolved P1] Initial hero height delayed the Selected Work section. Reduced the hero minimum height and first-section padding so recruiters reach evidence sooner.
-- [Resolved P1] The first OG image reflected the design target instead of the implementation. Replaced it with the final homepage capture.
-- [Resolved P1] PDF fallback fonts rendered Chinese and arrow glyphs as squares. Switched those elements to an embedded Unicode font and re-rendered.
-- [P3] The current automated browser surface did not expose a true 390px viewport. Mobile behavior was reviewed through CSS breakpoints and DOM structure; a final physical iPhone Safari smoke test is recommended after deployment.
-- [P3] A connected Chrome automation surface was unavailable in this environment. The implementation uses standards-safe HTML/CSS/JS and was checked in the in-app browser; a deployed Chrome smoke test remains recommended.
+## Findings and iteration history
 
-## Final status
+- [Resolved P2] Mobile navigation content overlapped the page instead of fully masking it.
+  - Evidence: `design/implementation-mobile-menu.png`.
+  - Cause: the header backdrop-filter created a containing context for the fixed child layer.
+  - Fix: moved the menu to an absolute layer below the fixed header, gave it `100dvh`-based height and a solid background.
+  - Post-fix evidence: `design/implementation-mobile-menu-fixed.png`.
 
-No open P0, P1 or P2 findings remain in the verified desktop implementation or rendered PDFs.
+No open P0, P1 or P2 findings remain.
+
+## Follow-up polish
+
+- [P3] A final physical iPhone Safari smoke test remains useful for hardware-specific animation smoothness, although the 390px in-app browser layout and interaction paths passed.
 
 final result: passed

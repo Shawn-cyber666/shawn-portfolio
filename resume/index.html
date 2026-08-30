@@ -18,18 +18,20 @@
     <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../assets/avatar.png" type="image/png">
   <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
   <link rel="stylesheet" href="../assets/styles/site.css">
 </head>
 <body class="resume-page">
   <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="reading-progress" data-progress aria-hidden="true"></div>
   <header class="site-header" data-header>
-    <a class="brand" href="../" aria-label="第八轨道 首页">
+    <a class="brand" href="../" aria-label="第八轨道 首页" data-magnetic>
       <span class="brand__mark" aria-hidden="true">08</span>
       <span class="brand__name">第八轨道</span>
     </a>
     <nav class="desktop-nav" aria-label="Primary navigation">
-      <a href="../#work">Work</a><a href="../#thinking">Thinking</a><a href="../#experience">Experience</a><a href="../#about">About</a><a href="../resume/" aria-current="page">Resume</a><a href="../#contact">Contact</a>
+      <a href="../#work" data-nav-link="work">Work</a><a href="../#thinking" data-nav-link="thinking">Thinking</a><a href="../#experience" data-nav-link="experience">Experience</a><a href="../#about" data-nav-link="about">About</a><a href="../resume/" data-nav-link="resume" aria-current="page">Resume</a><a href="../#contact" data-nav-link="contact">Contact</a>
     </nav>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-navigation" data-menu-button>
       <span class="sr-only">打开导航</span>
@@ -48,9 +50,9 @@
           <p>Product Marketing · GTM · User Insight · Marketing Strategy</p>
         </div>
         <div class="resume-actions">
-          <a class="button button--primary" href="../resume.pdf"><span>Download PDF Resume</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
-          <a class="button button--secondary" href="../assets/documents/li-xiang-product-marketing-portfolio.pdf"><span>Portfolio PDF</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
-          <a class="button button--ghost" href="mailto:x_222324@163.com"><span>Email</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          <a class="button button--primary" href="../resume.pdf" data-magnetic><span>Download PDF Resume</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          <a class="button button--secondary" href="../assets/documents/li-xiang-product-marketing-portfolio.pdf" data-magnetic><span>Portfolio PDF</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          <a class="button button--ghost" href="mailto:x_222324@163.com" data-magnetic><span>Email</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
         </div>
       </header>
 
@@ -92,6 +94,8 @@
     </div>
     <p class="footer-note">© 2026 Shawn Li. Built as a living portfolio system.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" defer></script>
   <script src="../assets/scripts/site.js" defer></script>
 </body>
 </html>

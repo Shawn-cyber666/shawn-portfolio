@@ -1,5 +1,22 @@
 # Change Log
 
+## 2026-08-30 — Premium Motion & Interaction Pass
+
+### Changed
+
+- 为首屏建立分层入场节奏：定位、核心判断、解释、行动、证据与品牌视觉按阅读顺序出现。
+- 为 Selected Work 增加克制的指针响应、媒体位移、文字推进与圆形箭头反馈。
+- Case 首屏和真实项目图片加入轻量 Reveal 与滚动视差，不改变内容顺序。
+- 全站阅读进度、导航当前状态与同源页面转场升级为渐进增强体验。
+- 移动导航升级为完整不透明覆盖层，并修复 Header 模糊上下文导致的层级穿透。
+
+### Accessibility & Performance
+
+- 保留原生滚动，不使用 scroll-jacking。
+- 动画优先使用 transform 与 opacity，并限制在桌面精细指针环境。
+- `prefers-reduced-motion` 下关闭位移和转场；外部动效库加载失败时回退到原有 IntersectionObserver Reveal。
+- GSAP 与 ScrollTrigger 固定为 3.15.0，避免未锁版本造成未来表现漂移。
+
 ## 2026-08-30 — Product Marketing Portfolio System
 
 ### Changed

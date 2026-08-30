@@ -18,18 +18,20 @@
     <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../../assets/avatar.png" type="image/png">
   <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
   <link rel="stylesheet" href="../../assets/styles/site.css">
 </head>
 <body class="case-page">
   <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="reading-progress" data-progress aria-hidden="true"></div>
   <header class="site-header" data-header>
-    <a class="brand" href="../../" aria-label="第八轨道 首页">
+    <a class="brand" href="../../" aria-label="第八轨道 首页" data-magnetic>
       <span class="brand__mark" aria-hidden="true">08</span>
       <span class="brand__name">第八轨道</span>
     </a>
     <nav class="desktop-nav" aria-label="Primary navigation">
-      <a href="../../#work" aria-current="page">Work</a><a href="../../#thinking">Thinking</a><a href="../../#experience">Experience</a><a href="../../#about">About</a><a href="../../resume/">Resume</a><a href="../../#contact">Contact</a>
+      <a href="../../#work" data-nav-link="work" aria-current="page">Work</a><a href="../../#thinking" data-nav-link="thinking">Thinking</a><a href="../../#experience" data-nav-link="experience">Experience</a><a href="../../#about" data-nav-link="about">About</a><a href="../../resume/" data-nav-link="resume">Resume</a><a href="../../#contact" data-nav-link="contact">Contact</a>
     </nav>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-navigation" data-menu-button>
       <span class="sr-only">打开导航</span>
@@ -40,10 +42,9 @@
     </nav>
   </header>
   <main id="main">
-    <div class="reading-progress" data-progress aria-hidden="true"></div>
     <article class="case">
       <header class="case-hero section-pad">
-        <div class="case-hero__copy reveal">
+        <div class="case-hero__copy reveal" data-case-hero-copy>
           <a class="back-link" href="../../#work"><i class="ph ph-arrow-left" aria-hidden="true"></i><span>Selected Work</span></a>
           <p class="eyebrow">03 / Global Brand Strategy</p>
           <h1>Insta360 Ace Pro Product Line</h1>
@@ -54,9 +55,9 @@
             <div><dt>Role</dt><dd>Strategy author</dd></div>
             <div><dt>Year</dt><dd>2026</dd></div>
           </dl>
-          <a class="button button--primary" href="../../assets/documents/li-xiang-ace-pro-brand-strategy.pdf"><span>View Full Strategy Deck</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          <a class="button button--primary" href="../../assets/documents/li-xiang-ace-pro-brand-strategy.pdf" data-magnetic><span>View Full Strategy Deck</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
         </div>
-        <figure class="case-hero__media reveal">
+        <figure class="case-hero__media reveal" data-case-hero-media>
           <img src="../../assets/cases/ace-pro/deck-cover.jpg" alt="Ace Pro Brand Strategy 原始英文策略稿封面">
           <figcaption><a href="../../assets/documents/li-xiang-ace-pro-brand-strategy.pdf">Original candidate deliverable / Aug 2026 <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></figcaption>
         </figure>
@@ -67,7 +68,7 @@
           <p>On this case</p>
           <nav><a href="#context">Context</a><a href="#audit">Communication Audit</a><a href="#insight">Consumer Insight</a><a href="#strategy">Brand Platform</a><a href="#communication">Communication System</a><a href="#validation">90-day Learning Agenda</a><a href="#deliverables">Deliverables</a></nav>
         </aside>
-        <div class="case-content"><section class="case-section reveal" id="context">
+        <div class="case-content"><section class="case-section reveal" id="context" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">01 / Context</p>
       <h2>从传播诊断，找到一个核心品牌机会。</h2>
@@ -82,7 +83,7 @@
       
       
     </div>
-  </section><section class="case-section reveal" id="audit">
+  </section><section class="case-section reveal" id="audit" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">02 / Communication Audit</p>
       <h2>Product proof is strong. Brand memory remains fragmented.</h2>
@@ -95,9 +96,9 @@
       
       
       
-      <div class="case-gallery case-gallery--single"><figure><img src="../../assets/cases/ace-pro/message-hierarchy.jpg" alt="Ace Pro message hierarchy 策略页" loading="lazy"></figure></div>
+      <div class="case-gallery case-gallery--single"><figure data-image-reveal><img src="../../assets/cases/ace-pro/message-hierarchy.jpg" alt="Ace Pro message hierarchy 策略页" loading="lazy"></figure></div>
     </div>
-  </section><section class="case-section reveal" id="insight">
+  </section><section class="case-section reveal" id="insight" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">03 / Consumer Insight</p>
       <h2>The hidden competitor is capture doubt.</h2>
@@ -113,9 +114,9 @@
   </div>
       
       
-      <div class="case-gallery case-gallery--single"><figure><img src="../../assets/cases/ace-pro/capture-doubt.jpg" alt="Capture doubt 消费者洞察页" loading="lazy"></figure></div>
+      <div class="case-gallery case-gallery--single"><figure data-image-reveal><img src="../../assets/cases/ace-pro/capture-doubt.jpg" alt="Capture doubt 消费者洞察页" loading="lazy"></figure></div>
     </div>
-  </section><section class="case-section reveal" id="strategy">
+  </section><section class="case-section reveal" id="strategy" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">04 / Brand Platform</p>
       <h2>Confidence for the unrepeatable.</h2>
@@ -128,9 +129,9 @@
       
       
       
-      <div class="case-gallery case-gallery--single"><figure><img src="../../assets/cases/ace-pro/brand-platform.jpg" alt="ONE TAKE ACED 品牌平台页" loading="lazy"></figure></div>
+      <div class="case-gallery case-gallery--single"><figure data-image-reveal><img src="../../assets/cases/ace-pro/brand-platform.jpg" alt="ONE TAKE ACED 品牌平台页" loading="lazy"></figure></div>
     </div>
-  </section><section class="case-section reveal" id="communication">
+  </section><section class="case-section reveal" id="communication" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">05 / Communication System</p>
       <h2>让记忆沿着同一套系统积累。</h2>
@@ -143,9 +144,9 @@
       
       <div class="triad"><article><span>01</span><h3>Ready Before</h3><ul><li>Remove doubt before the moment arrives</li></ul></article><article><span>02</span><h3>Right Now</h3><ul><li>Stay inside the action, not inside the settings</li></ul></article><article><span>03</span><h3>Ready to Share</h3><ul><li>Finish while the feeling is still alive</li></ul></article></div>
       
-      <div class="case-gallery case-gallery--single"><figure><img src="../../assets/cases/ace-pro/communication-system.jpg" alt="Ace Pro communication system 页" loading="lazy"></figure></div>
+      <div class="case-gallery case-gallery--single"><figure data-image-reveal><img src="../../assets/cases/ace-pro/communication-system.jpg" alt="Ace Pro communication system 页" loading="lazy"></figure></div>
     </div>
-  </section><section class="case-section reveal" id="validation">
+  </section><section class="case-section reveal" id="validation" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">06 / 90-day Learning Agenda</p>
       <h2>策略先接受验证，再决定扩大投入。</h2>
@@ -158,9 +159,9 @@
       
       
       
-      <div class="case-gallery case-gallery--single"><figure><img src="../../assets/cases/ace-pro/validation-plan.jpg" alt="Ace Pro 90-day learning agenda" loading="lazy"></figure></div>
+      <div class="case-gallery case-gallery--single"><figure data-image-reveal><img src="../../assets/cases/ace-pro/validation-plan.jpg" alt="Ace Pro 90-day learning agenda" loading="lazy"></figure></div>
     </div>
-  </section><section class="case-section reveal" id="deliverables">
+  </section><section class="case-section reveal" id="deliverables" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">07 / Deliverables</p>
       <h2>完整英文策略交付，而非商业结果。</h2>
@@ -183,7 +184,7 @@
         <p>这是完成并提交的招聘笔试 / 独立策略案例，不是 Insta360 任职或客户项目。所有策略结论均为作者建议，不声称被采用或产生业务结果。</p>
       </aside>
 
-      <nav class="next-case reveal" aria-label="Next case">
+      <nav class="next-case reveal" aria-label="Next case" data-next-case>
         <a href="../market-consumer-insight/"><span>Next Case · 04</span><strong>Market &amp; Consumer Insight</strong><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
       </nav>
     </article></main>
@@ -200,6 +201,8 @@
     </div>
     <p class="footer-note">© 2026 Shawn Li. Built as a living portfolio system.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" defer></script>
   <script src="../../assets/scripts/site.js" defer></script>
 </body>
 </html>

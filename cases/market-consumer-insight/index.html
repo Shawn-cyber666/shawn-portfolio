@@ -18,18 +18,20 @@
     <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../../assets/avatar.png" type="image/png">
   <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
   <link rel="stylesheet" href="../../assets/styles/site.css">
 </head>
 <body class="case-page">
   <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="reading-progress" data-progress aria-hidden="true"></div>
   <header class="site-header" data-header>
-    <a class="brand" href="../../" aria-label="第八轨道 首页">
+    <a class="brand" href="../../" aria-label="第八轨道 首页" data-magnetic>
       <span class="brand__mark" aria-hidden="true">08</span>
       <span class="brand__name">第八轨道</span>
     </a>
     <nav class="desktop-nav" aria-label="Primary navigation">
-      <a href="../../#work" aria-current="page">Work</a><a href="../../#thinking">Thinking</a><a href="../../#experience">Experience</a><a href="../../#about">About</a><a href="../../resume/">Resume</a><a href="../../#contact">Contact</a>
+      <a href="../../#work" data-nav-link="work" aria-current="page">Work</a><a href="../../#thinking" data-nav-link="thinking">Thinking</a><a href="../../#experience" data-nav-link="experience">Experience</a><a href="../../#about" data-nav-link="about">About</a><a href="../../resume/" data-nav-link="resume">Resume</a><a href="../../#contact" data-nav-link="contact">Contact</a>
     </nav>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-navigation" data-menu-button>
       <span class="sr-only">打开导航</span>
@@ -40,10 +42,9 @@
     </nav>
   </header>
   <main id="main">
-    <div class="reading-progress" data-progress aria-hidden="true"></div>
     <article class="case">
       <header class="case-hero section-pad">
-        <div class="case-hero__copy reveal">
+        <div class="case-hero__copy reveal" data-case-hero-copy>
           <a class="back-link" href="../../#work"><i class="ph ph-arrow-left" aria-hidden="true"></i><span>Selected Work</span></a>
           <p class="eyebrow">04 / Consumer Insight / Strategy</p>
           <h1>Market &amp; Consumer Insight</h1>
@@ -54,9 +55,9 @@
             <div><dt>Role</dt><dd>Research workflow designer</dd></div>
             <div><dt>Year</dt><dd>2026</dd></div>
           </dl>
-          <a class="button button--primary" href="https://github.com/Shawn-cyber666/sentiment-analysis-tool" target="_blank" rel="noreferrer"><span>View GitHub</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+          <a class="button button--primary" href="https://github.com/Shawn-cyber666/sentiment-analysis-tool" target="_blank" rel="noreferrer" data-magnetic><span>View GitHub</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
         </div>
-        <figure class="case-hero__media reveal">
+        <figure class="case-hero__media reveal" data-case-hero-media>
           <img src="../../assets/strategy-hub.png" alt="Signal Studio / Strategy Hub 真实工具界面">
           <figcaption><a href="https://github.com/Shawn-cyber666/sentiment-analysis-tool" target="_blank" rel="noreferrer">Original interface / public-safe demo <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></figcaption>
         </figure>
@@ -67,7 +68,7 @@
           <p>On this case</p>
           <nav><a href="#problem">Problem</a><a href="#method">Method</a><a href="#tool">Tool Evidence</a><a href="#limits">Limits</a><a href="#learning">Learning</a></nav>
         </aside>
-        <div class="case-content"><section class="case-section reveal" id="problem">
+        <div class="case-content"><section class="case-section reveal" id="problem" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">01 / Problem</p>
       <h2>市场信号很多，判断仍然稀缺。</h2>
@@ -82,7 +83,7 @@
       
       
     </div>
-  </section><section class="case-section reveal" id="method">
+  </section><section class="case-section reveal" id="method" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">02 / Method</p>
       <h2>保留证据，再形成结构。</h2>
@@ -97,7 +98,7 @@
       
       
     </div>
-  </section><section class="case-section reveal" id="tool">
+  </section><section class="case-section reveal" id="tool" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">03 / Tool Evidence</p>
       <h2>Signal Studio 用于验证方法，而不是制造答案。</h2>
@@ -110,9 +111,9 @@
       
       
       
-      <div class="case-gallery case-gallery--single"><figure><img src="../../assets/strategy-hub.png" alt="Signal Studio 工具界面" loading="lazy"></figure></div>
+      <div class="case-gallery case-gallery--single"><figure data-image-reveal><img src="../../assets/strategy-hub.png" alt="Signal Studio 工具界面" loading="lazy"></figure></div>
     </div>
-  </section><section class="case-section reveal" id="limits">
+  </section><section class="case-section reveal" id="limits" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">04 / Limits</p>
       <h2>公开信号可以指向问题，不能自动代表市场。</h2>
@@ -127,7 +128,7 @@
       <ul class="case-list"><li>记录来源与时间范围</li><li>说明样本与渠道偏差</li><li>区分搜索结果与真实 UGC</li><li>不虚构样本量和代表性</li><li>不使用 vivo 内部复盘数据</li></ul>
       
     </div>
-  </section><section class="case-section reveal" id="learning">
+  </section><section class="case-section reveal" id="learning" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">05 / Learning</p>
       <h2>工具整理信息，判断决定下一步。</h2>
@@ -150,7 +151,7 @@
         <p>该 Case 只使用公开信息和脱敏演示，不公开公司内部用户数据、后台、销量或策略。</p>
       </aside>
 
-      <nav class="next-case reveal" aria-label="Next case">
+      <nav class="next-case reveal" aria-label="Next case" data-next-case>
         <a href="../marketing-experience/"><span>Next Case · 05</span><strong>Marketing &amp; Experience Projects</strong><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
       </nav>
     </article></main>
@@ -167,6 +168,8 @@
     </div>
     <p class="footer-note">© 2026 Shawn Li. Built as a living portfolio system.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" defer></script>
   <script src="../../assets/scripts/site.js" defer></script>
 </body>
 </html>

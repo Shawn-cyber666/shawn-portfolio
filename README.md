@@ -13,9 +13,10 @@ scripts/dev-server.mjs            本地静态预览
 scripts/check.mjs                 内容与生成文件检查
 scripts/create-pdfs.py            生成 Portfolio / Resume PDF
 assets/styles/site.css            设计系统与响应式样式
-assets/scripts/site.js            导航、Reveal、目录与进度交互
+assets/scripts/site.js            导航、GSAP 动效、目录、进度与无依赖回退
 assets/cases/                     Case 真实截图
 assets/documents/                 可下载 Portfolio 与策略原稿
+design/MOTION-DIRECTION.md        动效边界、交互语法与性能原则
 cases/<slug>/index.html           构建生成的 Case 页面
 resume/index.html                 在线 Resume
 resume.pdf                        通用 Product Marketing Resume
@@ -23,7 +24,7 @@ resume.pdf                        通用 Product Marketing Resume
 
 ## 本地运行
 
-不需要安装第三方前端依赖。
+不需要安装本地第三方前端依赖。浏览器端使用固定版本的 GSAP 3.15.0 与 ScrollTrigger CDN；如果 CDN 不可用，内容会自动回退到原生 Reveal，不影响阅读和导航。
 
 ```bash
 npm run build
@@ -42,6 +43,13 @@ npm run dev
 5. 检查桌面端与手机端，确认无图片裁切、表格溢出和链接错误。
 
 新增 Case 不需要复制页面模板；构建脚本会自动生成路由、首页入口、Next Case 与 sitemap。
+
+## 动效与交互维护
+
+- 动效逻辑集中在 `assets/scripts/site.js`，视觉状态集中在 `assets/styles/site.css`。
+- 页面构建器通过 `data-hero-*`、`data-work-row`、`data-case-section` 等属性绑定交互，新增 Case 不需要单独编写动画。
+- 不要在内容页加入长时间 Pin、强制滚动或自动播放场景；作品集的主要任务仍是快速阅读证据。
+- 修改交互后至少检查 1280px、390px、移动导航、首个 Case 跳转、悬停态与 `prefers-reduced-motion`。
 
 ## 调整 Case 顺序
 

@@ -24,6 +24,15 @@
 | `assets/documents/li-xiang-product-marketing-portfolio.pdf` | 本人作品集 | 11 页独立可读 PDF，链接可点击 |
 | `assets/documents/li-xiang-ace-pro-brand-strategy.pdf` | 本人求职作业 | 原始 8 页英文品牌策略稿；保留招聘笔试性质说明 |
 
+## 第三方前端资源
+
+| 资源 | 用途 | 来源与说明 |
+|---|---|---|
+| GSAP 3.15.0 / ScrollTrigger | 首屏编排、滚动 Reveal、指针响应 | 固定版本 JSDelivr CDN；GreenSock Standard “no charge” license：<https://github.com/greensock/GSAP> |
+| Phosphor Icons 2.1.1 | 导航与操作图标 | 固定版本 unpkg CDN：<https://github.com/phosphor-icons/web> |
+
+两项资源均为渐进增强。加载失败时，正文、导航、Case 路由和下载链接仍可使用。
+
 ## 仓库中保留、当前页面未使用
 
 - `assets/photo-01.jpg` 至 `assets/photo-11.jpg`：既有个人照片与项目照片，暂未进入新版页面。

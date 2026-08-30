@@ -18,18 +18,20 @@
     <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../../assets/avatar.png" type="image/png">
   <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
   <link rel="stylesheet" href="../../assets/styles/site.css">
 </head>
 <body class="case-page">
   <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="reading-progress" data-progress aria-hidden="true"></div>
   <header class="site-header" data-header>
-    <a class="brand" href="../../" aria-label="第八轨道 首页">
+    <a class="brand" href="../../" aria-label="第八轨道 首页" data-magnetic>
       <span class="brand__mark" aria-hidden="true">08</span>
       <span class="brand__name">第八轨道</span>
     </a>
     <nav class="desktop-nav" aria-label="Primary navigation">
-      <a href="../../#work" aria-current="page">Work</a><a href="../../#thinking">Thinking</a><a href="../../#experience">Experience</a><a href="../../#about">About</a><a href="../../resume/">Resume</a><a href="../../#contact">Contact</a>
+      <a href="../../#work" data-nav-link="work" aria-current="page">Work</a><a href="../../#thinking" data-nav-link="thinking">Thinking</a><a href="../../#experience" data-nav-link="experience">Experience</a><a href="../../#about" data-nav-link="about">About</a><a href="../../resume/" data-nav-link="resume">Resume</a><a href="../../#contact" data-nav-link="contact">Contact</a>
     </nav>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-navigation" data-menu-button>
       <span class="sr-only">打开导航</span>
@@ -40,10 +42,9 @@
     </nav>
   </header>
   <main id="main">
-    <div class="reading-progress" data-progress aria-hidden="true"></div>
     <article class="case">
       <header class="case-hero section-pad">
-        <div class="case-hero__copy reveal">
+        <div class="case-hero__copy reveal" data-case-hero-copy>
           <a class="back-link" href="../../#work"><i class="ph ph-arrow-left" aria-hidden="true"></i><span>Selected Work</span></a>
           <p class="eyebrow">05 / Project Management / Stakeholder Management</p>
           <h1>Marketing &amp; Experience Projects</h1>
@@ -56,7 +57,7 @@
           </dl>
           
         </div>
-        <figure class="case-hero__media reveal">
+        <figure class="case-hero__media reveal" data-case-hero-media>
           <img src="../../assets/neptune-horizon-v2.jpg" alt="第八轨道品牌视觉">
           <figcaption>Original brand visual</figcaption>
         </figure>
@@ -67,7 +68,7 @@
           <p>On this case</p>
           <nav><a href="#photography">Exhibition</a><a href="#deep-sea">Forum</a><a href="#experience">Service Experience</a><a href="#proof">What This Proves</a></nav>
         </aside>
-        <div class="case-content"><section class="case-section reveal" id="photography">
+        <div class="case-content"><section class="case-section reveal" id="photography" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">01 / Exhibition</p>
       <h2>澳门大学摄影比赛暨展览</h2>
@@ -82,7 +83,7 @@
       
       
     </div>
-  </section><section class="case-section reveal" id="deep-sea">
+  </section><section class="case-section reveal" id="deep-sea" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">02 / Forum</p>
       <h2>海南省深海科技论坛</h2>
@@ -97,7 +98,7 @@
       
       
     </div>
-  </section><section class="case-section reveal" id="experience">
+  </section><section class="case-section reveal" id="experience" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">03 / Service Experience</p>
       <h2>宾客体验与一线反馈</h2>
@@ -112,7 +113,7 @@
       
       
     </div>
-  </section><section class="case-section reveal" id="proof">
+  </section><section class="case-section reveal" id="proof" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">04 / What This Proves</p>
       <h2>策略之外，也能把事情推进到现场。</h2>
@@ -135,7 +136,7 @@
         <p>这些项目用于证明执行与协同能力，不将职业定位包装为会展或酒店运营。</p>
       </aside>
 
-      <nav class="next-case reveal" aria-label="Next case">
+      <nav class="next-case reveal" aria-label="Next case" data-next-case>
         <a href="../vivo-x-fold6/"><span>Next Case · 01</span><strong>vivo X Fold6</strong><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
       </nav>
     </article></main>
@@ -152,6 +153,8 @@
     </div>
     <p class="footer-note">© 2026 Shawn Li. Built as a living portfolio system.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" defer></script>
   <script src="../../assets/scripts/site.js" defer></script>
 </body>
 </html>

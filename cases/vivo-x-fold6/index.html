@@ -18,18 +18,20 @@
     <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../../assets/avatar.png" type="image/png">
   <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
   <link rel="stylesheet" href="../../assets/styles/site.css">
 </head>
 <body class="case-page">
   <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="reading-progress" data-progress aria-hidden="true"></div>
   <header class="site-header" data-header>
-    <a class="brand" href="../../" aria-label="第八轨道 首页">
+    <a class="brand" href="../../" aria-label="第八轨道 首页" data-magnetic>
       <span class="brand__mark" aria-hidden="true">08</span>
       <span class="brand__name">第八轨道</span>
     </a>
     <nav class="desktop-nav" aria-label="Primary navigation">
-      <a href="../../#work" aria-current="page">Work</a><a href="../../#thinking">Thinking</a><a href="../../#experience">Experience</a><a href="../../#about">About</a><a href="../../resume/">Resume</a><a href="../../#contact">Contact</a>
+      <a href="../../#work" data-nav-link="work" aria-current="page">Work</a><a href="../../#thinking" data-nav-link="thinking">Thinking</a><a href="../../#experience" data-nav-link="experience">Experience</a><a href="../../#about" data-nav-link="about">About</a><a href="../../resume/" data-nav-link="resume">Resume</a><a href="../../#contact" data-nav-link="contact">Contact</a>
     </nav>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-navigation" data-menu-button>
       <span class="sr-only">打开导航</span>
@@ -40,10 +42,9 @@
     </nav>
   </header>
   <main id="main">
-    <div class="reading-progress" data-progress aria-hidden="true"></div>
     <article class="case">
       <header class="case-hero section-pad">
-        <div class="case-hero__copy reveal">
+        <div class="case-hero__copy reveal" data-case-hero-copy>
           <a class="back-link" href="../../#work"><i class="ph ph-arrow-left" aria-hidden="true"></i><span>Selected Work</span></a>
           <p class="eyebrow">01 / Product Marketing / GTM / Launch</p>
           <h1>vivo X Fold6</h1>
@@ -56,7 +57,7 @@
           </dl>
           
         </div>
-        <figure class="case-hero__media reveal">
+        <figure class="case-hero__media reveal" data-case-hero-media>
           <img src="../../assets/vivo-x-fold6-official-page.jpg" alt="vivo X Fold6 官方产品页公开画面">
           <figcaption><a href="https://www.vivo.com.cn/vivo/xfold6" target="_blank" rel="noreferrer">Official public material / vivo official website <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></figcaption>
         </figure>
@@ -67,7 +68,7 @@
           <p>On this case</p>
           <nav><a href="#context">Context</a><a href="#challenge">Challenge</a><a href="#user">User &amp; Scenario</a><a href="#framework">Framework</a><a href="#examples">Selected Thinking</a><a href="#execution">Launch Workflow</a><a href="#result">Public Result</a><a href="#learning">Learning</a></nav>
         </aside>
-        <div class="case-content"><section class="case-section reveal" id="context">
+        <div class="case-content"><section class="case-section reveal" id="context" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">01 / Context</p>
       <h2>旗舰新品的价值表达，不止是功能介绍。</h2>
@@ -82,7 +83,7 @@
       
       
     </div>
-  </section><section class="case-section reveal" id="challenge">
+  </section><section class="case-section reveal" id="challenge" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">02 / Challenge</p>
       <h2>技术能力不等于用户价值。</h2>
@@ -97,7 +98,7 @@
       
       
     </div>
-  </section><section class="case-section reveal" id="user">
+  </section><section class="case-section reveal" id="user" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">03 / User &amp; Scenario</p>
       <h2>从高频移动工作与全天使用场景出发。</h2>
@@ -112,7 +113,7 @@
       
       
     </div>
-  </section><section class="case-section reveal" id="framework">
+  </section><section class="case-section reveal" id="framework" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">04 / Framework</p>
       <h2>从能力证据，到传播表达。</h2>
@@ -127,7 +128,7 @@
       
       
     </div>
-  </section><section class="case-section reveal" id="examples">
+  </section><section class="case-section reveal" id="examples" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">05 / Selected Thinking</p>
       <h2>把功能放回用户的一天里。</h2>
@@ -145,7 +146,7 @@
       
       
     </div>
-  </section><section class="case-section reveal" id="execution">
+  </section><section class="case-section reveal" id="execution" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">06 / Launch Workflow</p>
       <h2>判断必须进入真实交付。</h2>
@@ -160,7 +161,7 @@
       
       
     </div>
-  </section><section class="case-section reveal" id="result">
+  </section><section class="case-section reveal" id="result" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">07 / Public Result</p>
       <h2>只陈述可以公开证明的结果。</h2>
@@ -175,7 +176,7 @@
       <ul class="case-list"><li>部分本人提出的表达进入正式 Keynote 与讲稿。</li><li>支持产品故事、演示素材与旗舰新品正式发布交付。</li><li>参与上市后用户反馈、竞品口碑与传播表现复盘。</li><li>为后续内容优化与策略迭代提供结构化输入。</li></ul>
       
     </div>
-  </section><section class="case-section reveal" id="learning">
+  </section><section class="case-section reveal" id="learning" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">08 / Learning</p>
       <h2>解释更多功能，并不会自动产生更强价值。</h2>
@@ -198,7 +199,7 @@
         <p>公开 Case 不包含 vivo 内部聊天、Keynote 源文件、销售数据、内部策略、用户数据、后台或供应商保密信息。</p>
       </aside>
 
-      <nav class="next-case reveal" aria-label="Next case">
+      <nav class="next-case reveal" aria-label="Next case" data-next-case>
         <a href="../wave-bureau/"><span>Next Case · 02</span><strong>造浪局</strong><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
       </nav>
     </article></main>
@@ -215,6 +216,8 @@
     </div>
     <p class="footer-note">© 2026 Shawn Li. Built as a living portfolio system.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" defer></script>
   <script src="../../assets/scripts/site.js" defer></script>
 </body>
 </html>

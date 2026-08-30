@@ -32,7 +32,7 @@ function icon(name) {
 
 function action(label, url, depth, variant = "primary") {
   const target = external(url) ? ' target="_blank" rel="noreferrer"' : "";
-  return `<a class="button button--${variant}" href="${esc(href(url, depth))}"${target}><span>${esc(label)}</span>${icon(external(url) ? "arrow-up-right" : "arrow-right")}</a>`;
+  return `<a class="button button--${variant}" href="${esc(href(url, depth))}"${target} data-magnetic><span>${esc(label)}</span>${icon(external(url) ? "arrow-up-right" : "arrow-right")}</a>`;
 }
 
 function metadata({ title, description, path = "", image = "assets/og-portfolio.jpg" }) {
@@ -63,12 +63,12 @@ function header(depth, active = "") {
     ["Contact", `${home}#contact`, "contact"]
   ];
   return `<header class="site-header" data-header>
-    <a class="brand" href="${home}" aria-label="${esc(site.brand)} 首页">
+    <a class="brand" href="${home}" aria-label="${esc(site.brand)} 首页" data-magnetic>
       <span class="brand__mark" aria-hidden="true">08</span>
       <span class="brand__name">${esc(site.brand)}</span>
     </a>
     <nav class="desktop-nav" aria-label="Primary navigation">
-      ${nav.map(([label, url, key]) => `<a href="${url}"${active === key ? ' aria-current="page"' : ""}>${label}</a>`).join("")}
+      ${nav.map(([label, url, key]) => `<a href="${url}" data-nav-link="${key}"${active === key ? ' aria-current="page"' : ""}>${label}</a>`).join("")}
     </nav>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-navigation" data-menu-button>
       <span class="sr-only">打开导航</span>
@@ -106,21 +106,25 @@ function shell({ title, description, body, depth = 0, active = "", path = "", pa
   ${metadata({ title, description, path })}
   <link rel="icon" href="${rel(depth)}assets/avatar.png" type="image/png">
   <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
   <link rel="stylesheet" href="${rel(depth)}assets/styles/site.css">
 </head>
 <body class="${esc(pageClass)}">
   <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="reading-progress" data-progress aria-hidden="true"></div>
   ${header(depth, active)}
   <main id="main">${body}</main>
   ${footer(depth)}
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" defer></script>
   <script src="${rel(depth)}assets/scripts/site.js" defer></script>
 </body>
 </html>`;
 }
 
 function caseRow(item, index) {
-  return `<article class="work-row reveal">
+  return `<article class="work-row reveal" data-work-row>
     <a class="work-row__link" href="cases/${esc(item.slug)}/" aria-label="查看 ${esc(item.title)} Case Study">
       <div class="work-row__index">${esc(item.order)}</div>
       <div class="work-row__copy">
@@ -129,7 +133,7 @@ function caseRow(item, index) {
         <p>${esc(item.summary)}</p>
         <ul class="tag-list" aria-label="能力标签">${item.capabilities.map(tag => `<li>${esc(tag)}</li>`).join("")}</ul>
       </div>
-      <figure class="work-row__media">
+      <figure class="work-row__media" data-hover-media>
         <img src="${href(item.hero.src, 0)}" alt="${esc(item.hero.alt)}" loading="${index < 2 ? "eager" : "lazy"}">
       </figure>
       <span class="work-row__arrow">${icon("arrow-up-right")}</span>
@@ -140,21 +144,22 @@ function caseRow(item, index) {
 function homePage() {
   const featured = cases.filter(item => item.featured);
   const lightweight = cases.filter(item => !item.featured);
+  const heroTitle = site.hero.title.split("\n").map(line => `<span class="hero-title__line"><span>${esc(line)}</span></span>`).join("");
   const body = `
     <section class="hero section-pad" aria-labelledby="hero-title">
-      <div class="hero__copy reveal">
-        <p class="eyebrow">${esc(site.hero.eyebrow)}</p>
-        <h1 id="hero-title">${esc(site.hero.title).replaceAll("\n", "<br>")}</h1>
-        <p class="hero__body">${esc(site.hero.body)}</p>
-        <div class="hero__actions">
+      <div class="hero__copy reveal" data-hero-copy>
+        <p class="eyebrow" data-hero-item>${esc(site.hero.eyebrow)}</p>
+        <h1 id="hero-title" data-hero-title>${heroTitle}</h1>
+        <p class="hero__body" data-hero-item>${esc(site.hero.body)}</p>
+        <div class="hero__actions" data-hero-item>
           ${action("View Selected Work", "#work", 0)}
           ${action("Resume", "resume/", 0, "secondary")}
           ${action("Contact", `mailto:${site.email}`, 0, "ghost")}
         </div>
-        <ul class="proof-line" aria-label="核心经历">${site.hero.proof.map(item => `<li>${esc(item)}</li>`).join("")}</ul>
+        <ul class="proof-line" aria-label="核心经历" data-hero-item>${site.hero.proof.map(item => `<li>${esc(item)}</li>`).join("")}</ul>
       </div>
-      <figure class="hero__visual reveal" aria-label="第八轨道品牌视觉">
-        <img src="assets/neptune-orbital-core.webp" alt="深蓝色海王星轨道视觉">
+      <figure class="hero__visual reveal" aria-label="第八轨道品牌视觉" data-hero-visual>
+        <img src="assets/neptune-orbital-core.webp" alt="深蓝色海王星轨道视觉" data-orbit-media>
         <figcaption><span>THE EIGHTH ORBIT</span><span>Product · User · Market</span></figcaption>
       </figure>
     </section>
@@ -164,7 +169,7 @@ function homePage() {
     </section>
 
     <section class="section section--work" id="work" aria-labelledby="work-title">
-      <header class="section-heading reveal">
+      <header class="section-heading reveal" data-section-heading>
         <p class="eyebrow">Selected Work / Selected Cases</p>
         <h2 id="work-title">商业判断，需要可以被验证的证据。</h2>
         <p>从真实新品上市、独立产品，到全球品牌策略与用户洞察方法。</p>
@@ -174,7 +179,7 @@ function homePage() {
     </section>
 
     <section class="section section--thinking" id="thinking" aria-labelledby="thinking-title">
-      <header class="section-heading reveal">
+      <header class="section-heading reveal" data-section-heading>
         <p class="eyebrow">How I Think About Product Marketing</p>
         <h2 id="thinking-title">从用户开始，在市场反馈中结束。</h2>
       </header>
@@ -184,7 +189,7 @@ function homePage() {
     </section>
 
     <section class="section section--experience" id="experience" aria-labelledby="experience-title">
-      <header class="section-heading reveal">
+      <header class="section-heading reveal" data-section-heading>
         <p class="eyebrow">Experience</p>
         <h2 id="experience-title">真实商业项目，与跨文化体验视角。</h2>
       </header>
@@ -195,7 +200,7 @@ function homePage() {
 
     <section class="section section--about" id="about" aria-labelledby="about-title">
       <div class="about-grid">
-        <header class="section-heading reveal">
+        <header class="section-heading reveal" data-section-heading>
           <p class="eyebrow">About / The Eighth Orbit</p>
           <h2 id="about-title">${esc(site.hero.statement)}</h2>
         </header>
@@ -207,7 +212,7 @@ function homePage() {
     </section>
 
     <section class="section section--tools" aria-labelledby="tools-title">
-      <header class="section-heading reveal">
+      <header class="section-heading reveal" data-section-heading>
         <p class="eyebrow">AI & Tools</p>
         <h2 id="tools-title">工具跟着任务走。</h2>
         <p>AI 提高搜索、整理和表达效率；事实核验、优先级与最终判断由人负责。</p>
@@ -218,7 +223,7 @@ function homePage() {
     </section>
 
     <section class="contact section" id="contact" aria-labelledby="contact-title">
-      <div class="contact__inner reveal">
+      <div class="contact__inner reveal" data-section-heading>
         <p class="eyebrow">Contact</p>
         <h2 id="contact-title">一起把好产品，讲成用户在意的价值。</h2>
         <p>Product Marketing · GTM · Consumer Insight · Strategy</p>
@@ -250,11 +255,11 @@ function renderTriad(items) {
 }
 
 function renderGallery(items, depth) {
-  return `<div class="case-gallery ${items.length === 1 ? "case-gallery--single" : ""}">${items.map(item => `<figure><img src="${href(item.src, depth)}" alt="${esc(item.alt)}" loading="lazy"></figure>`).join("")}</div>`;
+  return `<div class="case-gallery ${items.length === 1 ? "case-gallery--single" : ""}">${items.map(item => `<figure data-image-reveal><img src="${href(item.src, depth)}" alt="${esc(item.alt)}" loading="lazy"></figure>`).join("")}</div>`;
 }
 
 function renderCaseSection(section, depth) {
-  return `<section class="case-section reveal" id="${esc(section.id)}">
+  return `<section class="case-section reveal" id="${esc(section.id)}" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">${esc(section.eyebrow)}</p>
       <h2>${esc(section.title)}</h2>
@@ -278,10 +283,9 @@ function casePage(item) {
   const nextIndex = (cases.indexOf(item) + 1) % cases.length;
   const next = cases[nextIndex];
   const body = `
-    <div class="reading-progress" data-progress aria-hidden="true"></div>
     <article class="case">
       <header class="case-hero section-pad">
-        <div class="case-hero__copy reveal">
+        <div class="case-hero__copy reveal" data-case-hero-copy>
           <a class="back-link" href="${rel(depth)}#work">${icon("arrow-left")}<span>Selected Work</span></a>
           <p class="eyebrow">${esc(item.order)} / ${esc(item.type)}</p>
           <h1>${esc(item.title)}</h1>
@@ -294,7 +298,7 @@ function casePage(item) {
           </dl>
           ${item.cta ? action(item.cta.label, item.cta.url, depth) : ""}
         </div>
-        <figure class="case-hero__media reveal">
+        <figure class="case-hero__media reveal" data-case-hero-media>
           <img src="${href(item.hero.src, depth)}" alt="${esc(item.hero.alt)}">
           <figcaption>${localSource ? `<a href="${esc(localSource)}"${external(localSource) ? ' target="_blank" rel="noreferrer"' : ""}>${esc(item.hero.caption)} ${icon("arrow-up-right")}</a>` : esc(item.hero.caption)}</figcaption>
         </figure>
@@ -313,7 +317,7 @@ function casePage(item) {
         <p>${esc(item.disclosure)}</p>
       </aside>
 
-      <nav class="next-case reveal" aria-label="Next case">
+      <nav class="next-case reveal" aria-label="Next case" data-next-case>
         <a href="../${esc(next.slug)}/"><span>Next Case · ${esc(next.order)}</span><strong>${esc(next.title)}</strong>${icon("arrow-right")}</a>
       </nav>
     </article>`;

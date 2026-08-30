@@ -18,18 +18,20 @@
     <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../../assets/avatar.png" type="image/png">
   <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
   <link rel="stylesheet" href="../../assets/styles/site.css">
 </head>
 <body class="case-page">
   <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="reading-progress" data-progress aria-hidden="true"></div>
   <header class="site-header" data-header>
-    <a class="brand" href="../../" aria-label="第八轨道 首页">
+    <a class="brand" href="../../" aria-label="第八轨道 首页" data-magnetic>
       <span class="brand__mark" aria-hidden="true">08</span>
       <span class="brand__name">第八轨道</span>
     </a>
     <nav class="desktop-nav" aria-label="Primary navigation">
-      <a href="../../#work" aria-current="page">Work</a><a href="../../#thinking">Thinking</a><a href="../../#experience">Experience</a><a href="../../#about">About</a><a href="../../resume/">Resume</a><a href="../../#contact">Contact</a>
+      <a href="../../#work" data-nav-link="work" aria-current="page">Work</a><a href="../../#thinking" data-nav-link="thinking">Thinking</a><a href="../../#experience" data-nav-link="experience">Experience</a><a href="../../#about" data-nav-link="about">About</a><a href="../../resume/" data-nav-link="resume">Resume</a><a href="../../#contact" data-nav-link="contact">Contact</a>
     </nav>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-navigation" data-menu-button>
       <span class="sr-only">打开导航</span>
@@ -40,10 +42,9 @@
     </nav>
   </header>
   <main id="main">
-    <div class="reading-progress" data-progress aria-hidden="true"></div>
     <article class="case">
       <header class="case-hero section-pad">
-        <div class="case-hero__copy reveal">
+        <div class="case-hero__copy reveal" data-case-hero-copy>
           <a class="back-link" href="../../#work"><i class="ph ph-arrow-left" aria-hidden="true"></i><span>Selected Work</span></a>
           <p class="eyebrow">02 / Independent Live Product / AI × Marketing</p>
           <h1>造浪局</h1>
@@ -54,9 +55,9 @@
             <div><dt>Role</dt><dd>Product owner / Designer / Builder</dd></div>
             <div><dt>Year</dt><dd>2026 — Present</dd></div>
           </dl>
-          <a class="button button--primary" href="https://shrimp-company.vercel.app/" target="_blank" rel="noreferrer"><span>View Live Product</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+          <a class="button button--primary" href="https://shrimp-company.vercel.app/" target="_blank" rel="noreferrer" data-magnetic><span>View Live Product</span><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
         </div>
-        <figure class="case-hero__media reveal">
+        <figure class="case-hero__media reveal" data-case-hero-media>
           <img src="../../assets/cases/wave-bureau/dashboard.jpg" alt="造浪局真实 Dashboard">
           <figcaption><a href="https://shrimp-company.vercel.app/" target="_blank" rel="noreferrer">Original product interface / audited 2026-08-29 <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></figcaption>
         </figure>
@@ -67,7 +68,7 @@
           <p>On this case</p>
           <nav><a href="#problem">Problem</a><a href="#product">Product Thinking</a><a href="#system">Real Product</a><a href="#workflows">Selected Workflows</a><a href="#boundary">Boundary</a></nav>
         </aside>
-        <div class="case-content"><section class="case-section reveal" id="problem">
+        <div class="case-content"><section class="case-section reveal" id="problem" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">01 / Problem</p>
       <h2>营销工作的问题，常常不是缺工具。</h2>
@@ -82,7 +83,7 @@
       
       
     </div>
-  </section><section class="case-section reveal" id="product">
+  </section><section class="case-section reveal" id="product" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">02 / Product Thinking</p>
       <h2>把输入、AI 处理和营销输出连接起来。</h2>
@@ -97,7 +98,7 @@
       
       
     </div>
-  </section><section class="case-section reveal" id="system">
+  </section><section class="case-section reveal" id="system" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">03 / Real Product</p>
       <h2>不是概念稿，而是可以进入的产品。</h2>
@@ -110,9 +111,9 @@
       
       
       
-      <div class="case-gallery "><figure><img src="../../assets/cases/wave-bureau/dashboard.jpg" alt="造浪局仪表盘" loading="lazy"></figure><figure><img src="../../assets/cases/wave-bureau/workflows.jpg" alt="造浪局工作流页面" loading="lazy"></figure></div>
+      <div class="case-gallery "><figure data-image-reveal><img src="../../assets/cases/wave-bureau/dashboard.jpg" alt="造浪局仪表盘" loading="lazy"></figure><figure data-image-reveal><img src="../../assets/cases/wave-bureau/workflows.jpg" alt="造浪局工作流页面" loading="lazy"></figure></div>
     </div>
-  </section><section class="case-section reveal" id="workflows">
+  </section><section class="case-section reveal" id="workflows" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">04 / Selected Workflows</p>
       <h2>用少数代表流程说明产品边界。</h2>
@@ -127,7 +128,7 @@
       <ul class="case-list"><li>新品上市</li><li>竞品攻防</li><li>发布会全案</li><li>舆情研判</li></ul>
       
     </div>
-  </section><section class="case-section reveal" id="boundary">
+  </section><section class="case-section reveal" id="boundary" data-case-section>
     <header class="case-section__heading">
       <p class="eyebrow">05 / Boundary</p>
       <h2>AI 提高整理与协作效率，不替代判断。</h2>
@@ -150,7 +151,7 @@
         <p>页面只描述当前可访问功能；不使用不存在的自动化能力、效率指标或业务结果。</p>
       </aside>
 
-      <nav class="next-case reveal" aria-label="Next case">
+      <nav class="next-case reveal" aria-label="Next case" data-next-case>
         <a href="../insta360-ace-pro-brand-strategy/"><span>Next Case · 03</span><strong>Insta360 Ace Pro Product Line</strong><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
       </nav>
     </article></main>
@@ -167,6 +168,8 @@
     </div>
     <p class="footer-note">© 2026 Shawn Li. Built as a living portfolio system.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" defer></script>
   <script src="../../assets/scripts/site.js" defer></script>
 </body>
 </html>
